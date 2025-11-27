@@ -1,0 +1,175 @@
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7LFNVr.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32h7xx_hal_msp.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "../../CM7/Core/Src/stm32h7xx_hal_msp.c"
+  18              		.section	.text.HAL_MspInit,"ax",%progbits
+  19              		.align	1
+  20              		.global	HAL_MspInit
+  21              		.syntax unified
+  22              		.thumb
+  23              		.thumb_func
+  25              	HAL_MspInit:
+  26              	.LFB147:
+   1:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE BEGIN Header */
+   2:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /**
+   3:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   ******************************************************************************
+   4:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   * @file         stm32h7xx_hal_msp.c
+   5:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   * @brief        This file provides code for the MSP Initialization
+   6:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   *               and de-Initialization codes.
+   7:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   ******************************************************************************
+   8:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   * @attention
+   9:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   *
+  10:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   * Copyright (c) 2025 STMicroelectronics.
+  11:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   * All rights reserved.
+  12:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   *
+  13:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   * This software is licensed under terms that can be found in the LICENSE file
+  14:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   * in the root directory of this software component.
+  15:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   * If no LICENSE file comes with this software, it is provided AS-IS.
+  16:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   *
+  17:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   ******************************************************************************
+  18:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   */
+  19:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END Header */
+  20:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  21:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* Includes ------------------------------------------------------------------*/
+  22:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** #include "main.h"
+  23:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE BEGIN Includes */
+  24:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  25:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END Includes */
+  26:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  27:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* Private typedef -----------------------------------------------------------*/
+  28:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE BEGIN TD */
+  29:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  30:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END TD */
+  31:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  32:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* Private define ------------------------------------------------------------*/
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7LFNVr.s 			page 2
+
+
+  33:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE BEGIN Define */
+  34:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  35:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END Define */
+  36:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  37:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* Private macro -------------------------------------------------------------*/
+  38:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE BEGIN Macro */
+  39:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  40:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END Macro */
+  41:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  42:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* Private variables ---------------------------------------------------------*/
+  43:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE BEGIN PV */
+  44:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  45:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END PV */
+  46:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  47:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* Private function prototypes -----------------------------------------------*/
+  48:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE BEGIN PFP */
+  49:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  50:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END PFP */
+  51:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  52:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* External functions --------------------------------------------------------*/
+  53:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE BEGIN ExternalFunctions */
+  54:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  55:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END ExternalFunctions */
+  56:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  57:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE BEGIN 0 */
+  58:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  59:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /* USER CODE END 0 */
+  60:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** /**
+  61:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   * Initializes the Global MSP.
+  62:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   */
+  63:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** void HAL_MspInit(void)
+  64:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** {
+  27              		.loc 1 64 1 view -0
+  28              		.cfi_startproc
+  29              		@ args = 0, pretend = 0, frame = 8
+  30              		@ frame_needed = 0, uses_anonymous_args = 0
+  31 0000 00B5     		push	{lr}
+  32              	.LCFI0:
+  33              		.cfi_def_cfa_offset 4
+  34              		.cfi_offset 14, -4
+  35 0002 83B0     		sub	sp, sp, #12
+  36              	.LCFI1:
+  37              		.cfi_def_cfa_offset 16
+  65:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  66:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN MspInit 0 */
+  67:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  68:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END MspInit 0 */
+  69:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  70:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   __HAL_RCC_SYSCFG_CLK_ENABLE();
+  38              		.loc 1 70 3 view .LVU1
+  39              	.LBB2:
+  40              		.loc 1 70 3 view .LVU2
+  41              		.loc 1 70 3 view .LVU3
+  42 0004 0A4B     		ldr	r3, .L3
+  43 0006 D3F8F420 		ldr	r2, [r3, #244]
+  44 000a 42F00202 		orr	r2, r2, #2
+  45 000e C3F8F420 		str	r2, [r3, #244]
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7LFNVr.s 			page 3
+
+
+  46              		.loc 1 70 3 view .LVU4
+  47 0012 D3F8F430 		ldr	r3, [r3, #244]
+  48 0016 03F00203 		and	r3, r3, #2
+  49 001a 0193     		str	r3, [sp, #4]
+  50              		.loc 1 70 3 view .LVU5
+  51 001c 019B     		ldr	r3, [sp, #4]
+  52              	.LBE2:
+  53              		.loc 1 70 3 view .LVU6
+  71:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  72:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   /* System interrupt init*/
+  73:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   /* PendSV_IRQn interrupt configuration */
+  74:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   HAL_NVIC_SetPriority(PendSV_IRQn, 15, 0);
+  54              		.loc 1 74 3 view .LVU7
+  55 001e 0022     		movs	r2, #0
+  56 0020 0F21     		movs	r1, #15
+  57 0022 6FF00100 		mvn	r0, #1
+  58 0026 FFF7FEFF 		bl	HAL_NVIC_SetPriority
+  59              	.LVL0:
+  75:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  76:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE BEGIN MspInit 1 */
+  77:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** 
+  78:../../CM7/Core/Src/stm32h7xx_hal_msp.c ****   /* USER CODE END MspInit 1 */
+  79:../../CM7/Core/Src/stm32h7xx_hal_msp.c **** }
+  60              		.loc 1 79 1 is_stmt 0 view .LVU8
+  61 002a 03B0     		add	sp, sp, #12
+  62              	.LCFI2:
+  63              		.cfi_def_cfa_offset 4
+  64              		@ sp needed
+  65 002c 5DF804FB 		ldr	pc, [sp], #4
+  66              	.L4:
+  67              		.align	2
+  68              	.L3:
+  69 0030 00440258 		.word	1476543488
+  70              		.cfi_endproc
+  71              	.LFE147:
+  73              		.text
+  74              	.Letext0:
+  75              		.file 2 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
+  76              		.file 3 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_defa
+  77              		.file 4 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h
+  78              		.file 5 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_cortex.h"
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7LFNVr.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32h7xx_hal_msp.c
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7LFNVr.s:19     .text.HAL_MspInit:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7LFNVr.s:25     .text.HAL_MspInit:00000000 HAL_MspInit
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7LFNVr.s:69     .text.HAL_MspInit:00000030 $d
+
+UNDEFINED SYMBOLS
+HAL_NVIC_SetPriority

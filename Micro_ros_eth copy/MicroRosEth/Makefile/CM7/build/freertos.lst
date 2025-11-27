@@ -1,0 +1,568 @@
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"freertos.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "../../CM7/Core/Src/freertos.c"
+  18              		.section	.rodata.StartDefaultTask.str1.4,"aMS",%progbits,1
+  19              		.align	2
+  20              	.LC0:
+  21 0000 4572726F 		.ascii	"Error on default allocators (line %d)\012\000"
+  21      72206F6E 
+  21      20646566 
+  21      61756C74 
+  21      20616C6C 
+  22 0027 00       		.align	2
+  23              	.LC1:
+  24 0028 00       		.ascii	"\000"
+  25 0029 000000   		.align	2
+  26              	.LC2:
+  27 002c 63756265 		.ascii	"cubemx_node\000"
+  27      6D785F6E 
+  27      6F646500 
+  28              		.align	2
+  29              	.LC3:
+  30 0038 63756265 		.ascii	"cubemx_publisher\000"
+  30      6D785F70 
+  30      75626C69 
+  30      73686572 
+  30      00
+  31              		.section	.text.StartDefaultTask,"ax",%progbits
+  32              		.align	1
+  33              		.global	StartDefaultTask
+  34              		.syntax unified
+  35              		.thumb
+  36              		.thumb_func
+  38              	StartDefaultTask:
+  39              	.LVL0:
+  40              	.LFB153:
+   1:../../CM7/Core/Src/freertos.c **** /* USER CODE BEGIN Header */
+   2:../../CM7/Core/Src/freertos.c **** /**
+   3:../../CM7/Core/Src/freertos.c ****   ******************************************************************************
+   4:../../CM7/Core/Src/freertos.c ****   * File Name          : freertos.c
+   5:../../CM7/Core/Src/freertos.c ****   * Description        : Code for freertos applications
+   6:../../CM7/Core/Src/freertos.c ****   ******************************************************************************
+   7:../../CM7/Core/Src/freertos.c ****   */
+   8:../../CM7/Core/Src/freertos.c **** /* USER CODE END Header */
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s 			page 2
+
+
+   9:../../CM7/Core/Src/freertos.c **** 
+  10:../../CM7/Core/Src/freertos.c **** /* Includes ------------------------------------------------------------------*/
+  11:../../CM7/Core/Src/freertos.c **** #include "FreeRTOS.h"
+  12:../../CM7/Core/Src/freertos.c **** #include "task.h"
+  13:../../CM7/Core/Src/freertos.c **** #include "main.h"
+  14:../../CM7/Core/Src/freertos.c **** #include "cmsis_os.h"
+  15:../../CM7/Core/Src/freertos.c **** 
+  16:../../CM7/Core/Src/freertos.c **** /* Private includes ----------------------------------------------------------*/
+  17:../../CM7/Core/Src/freertos.c **** /* USER CODE BEGIN Includes */
+  18:../../CM7/Core/Src/freertos.c **** #include <rcl/rcl.h>
+  19:../../CM7/Core/Src/freertos.c **** #include <rcl/error_handling.h>
+  20:../../CM7/Core/Src/freertos.c **** #include <rclc/rclc.h>
+  21:../../CM7/Core/Src/freertos.c **** #include <rclc/executor.h>
+  22:../../CM7/Core/Src/freertos.c **** #include <uxr/client/transport.h>
+  23:../../CM7/Core/Src/freertos.c **** #include <rmw_microxrcedds_c/config.h>
+  24:../../CM7/Core/Src/freertos.c **** #include <rmw_microros/rmw_microros.h>
+  25:../../CM7/Core/Src/freertos.c **** 
+  26:../../CM7/Core/Src/freertos.c **** #include <std_msgs/msg/int32.h>
+  27:../../CM7/Core/Src/freertos.c **** #include <stdio.h>
+  28:../../CM7/Core/Src/freertos.c **** 
+  29:../../CM7/Core/Src/freertos.c **** // **********************************************************
+  30:../../CM7/Core/Src/freertos.c **** // FIX: Manual declaration of transport functions
+  31:../../CM7/Core/Src/freertos.c **** // This bypasses the missing header file issue entirely.
+  32:../../CM7/Core/Src/freertos.c **** // **********************************************************
+  33:../../CM7/Core/Src/freertos.c **** bool platform_create_transport(struct uxrCustomTransport * transport);
+  34:../../CM7/Core/Src/freertos.c **** bool platform_destroy_transport(struct uxrCustomTransport * transport);
+  35:../../CM7/Core/Src/freertos.c **** size_t platform_write_transport(struct uxrCustomTransport* transport, const uint8_t * buf, size_t l
+  36:../../CM7/Core/Src/freertos.c **** size_t platform_read_transport(struct uxrCustomTransport* transport, uint8_t* buf, size_t len, int 
+  37:../../CM7/Core/Src/freertos.c **** 
+  38:../../CM7/Core/Src/freertos.c **** /* USER CODE END Includes */
+  39:../../CM7/Core/Src/freertos.c **** 
+  40:../../CM7/Core/Src/freertos.c **** /* Private typedef -----------------------------------------------------------*/
+  41:../../CM7/Core/Src/freertos.c **** /* USER CODE BEGIN PTD */
+  42:../../CM7/Core/Src/freertos.c **** void * microros_allocate(size_t size, void * state);
+  43:../../CM7/Core/Src/freertos.c **** void microros_deallocate(void * pointer, void * state);
+  44:../../CM7/Core/Src/freertos.c **** void * microros_reallocate(void * pointer, size_t size, void * state);
+  45:../../CM7/Core/Src/freertos.c **** void * microros_zero_allocate(size_t number_of_elements, size_t size_of_element, void * state);
+  46:../../CM7/Core/Src/freertos.c **** /* USER CODE END PTD */
+  47:../../CM7/Core/Src/freertos.c **** 
+  48:../../CM7/Core/Src/freertos.c **** /* Private define ------------------------------------------------------------*/
+  49:../../CM7/Core/Src/freertos.c **** /* USER CODE BEGIN PD */
+  50:../../CM7/Core/Src/freertos.c **** 
+  51:../../CM7/Core/Src/freertos.c **** /* USER CODE END PD */
+  52:../../CM7/Core/Src/freertos.c **** 
+  53:../../CM7/Core/Src/freertos.c **** /* Private macro -------------------------------------------------------------*/
+  54:../../CM7/Core/Src/freertos.c **** /* USER CODE BEGIN PM */
+  55:../../CM7/Core/Src/freertos.c **** 
+  56:../../CM7/Core/Src/freertos.c **** /* USER CODE END PM */
+  57:../../CM7/Core/Src/freertos.c **** 
+  58:../../CM7/Core/Src/freertos.c **** /* Private variables ---------------------------------------------------------*/
+  59:../../CM7/Core/Src/freertos.c **** /* USER CODE BEGIN Variables */
+  60:../../CM7/Core/Src/freertos.c **** 
+  61:../../CM7/Core/Src/freertos.c **** /* USER CODE END Variables */
+  62:../../CM7/Core/Src/freertos.c **** /* Definitions for defaultTask */
+  63:../../CM7/Core/Src/freertos.c **** osThreadId_t defaultTaskHandle;
+  64:../../CM7/Core/Src/freertos.c **** const osThreadAttr_t defaultTask_attributes = {
+  65:../../CM7/Core/Src/freertos.c ****   .name = "defaultTask",
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s 			page 3
+
+
+  66:../../CM7/Core/Src/freertos.c ****   .stack_size = 3000 * 4,
+  67:../../CM7/Core/Src/freertos.c ****   .priority = (osPriority_t) osPriorityNormal,
+  68:../../CM7/Core/Src/freertos.c **** };
+  69:../../CM7/Core/Src/freertos.c **** 
+  70:../../CM7/Core/Src/freertos.c **** /* Private function prototypes -----------------------------------------------*/
+  71:../../CM7/Core/Src/freertos.c **** /* USER CODE BEGIN FunctionPrototypes */
+  72:../../CM7/Core/Src/freertos.c **** 
+  73:../../CM7/Core/Src/freertos.c **** /* USER CODE END FunctionPrototypes */
+  74:../../CM7/Core/Src/freertos.c **** 
+  75:../../CM7/Core/Src/freertos.c **** void StartDefaultTask(void *argument);
+  76:../../CM7/Core/Src/freertos.c **** 
+  77:../../CM7/Core/Src/freertos.c **** extern void MX_LWIP_Init(void);
+  78:../../CM7/Core/Src/freertos.c **** void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
+  79:../../CM7/Core/Src/freertos.c **** 
+  80:../../CM7/Core/Src/freertos.c **** /**
+  81:../../CM7/Core/Src/freertos.c ****   * @brief  FreeRTOS initialization
+  82:../../CM7/Core/Src/freertos.c ****   * @param  None
+  83:../../CM7/Core/Src/freertos.c ****   * @retval None
+  84:../../CM7/Core/Src/freertos.c ****   */
+  85:../../CM7/Core/Src/freertos.c **** void MX_FREERTOS_Init(void) {
+  86:../../CM7/Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
+  87:../../CM7/Core/Src/freertos.c **** 
+  88:../../CM7/Core/Src/freertos.c ****   /* USER CODE END Init */
+  89:../../CM7/Core/Src/freertos.c **** 
+  90:../../CM7/Core/Src/freertos.c ****   /* Create the thread(s) */
+  91:../../CM7/Core/Src/freertos.c ****   /* creation of defaultTask */
+  92:../../CM7/Core/Src/freertos.c ****   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  93:../../CM7/Core/Src/freertos.c **** 
+  94:../../CM7/Core/Src/freertos.c **** }
+  95:../../CM7/Core/Src/freertos.c **** 
+  96:../../CM7/Core/Src/freertos.c **** /* USER CODE BEGIN Header_StartDefaultTask */
+  97:../../CM7/Core/Src/freertos.c **** /**
+  98:../../CM7/Core/Src/freertos.c ****   * @brief  Function implementing the defaultTask thread.
+  99:../../CM7/Core/Src/freertos.c ****   * @param  argument: Not used
+ 100:../../CM7/Core/Src/freertos.c ****   * @retval None
+ 101:../../CM7/Core/Src/freertos.c ****   */
+ 102:../../CM7/Core/Src/freertos.c **** /* USER CODE END Header_StartDefaultTask */
+ 103:../../CM7/Core/Src/freertos.c **** void StartDefaultTask(void *argument)
+ 104:../../CM7/Core/Src/freertos.c **** {
+  41              		.loc 1 104 1 view -0
+  42              		.cfi_startproc
+  43              		@ args = 0, pretend = 0, frame = 136
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45              		.loc 1 104 1 is_stmt 0 view .LVU1
+  46 0000 10B5     		push	{r4, lr}
+  47              	.LCFI0:
+  48              		.cfi_def_cfa_offset 8
+  49              		.cfi_offset 4, -8
+  50              		.cfi_offset 14, -4
+  51 0002 A4B0     		sub	sp, sp, #144
+  52              	.LCFI1:
+  53              		.cfi_def_cfa_offset 152
+ 105:../../CM7/Core/Src/freertos.c ****   /* init code for LWIP */
+ 106:../../CM7/Core/Src/freertos.c ****   MX_LWIP_Init();
+  54              		.loc 1 106 3 is_stmt 1 view .LVU2
+  55 0004 FFF7FEFF 		bl	MX_LWIP_Init
+  56              	.LVL1:
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s 			page 4
+
+
+ 107:../../CM7/Core/Src/freertos.c ****   /* USER CODE BEGIN StartDefaultTask */
+ 108:../../CM7/Core/Src/freertos.c **** 
+ 109:../../CM7/Core/Src/freertos.c ****   // Give network a moment to link up
+ 110:../../CM7/Core/Src/freertos.c ****   osDelay(2000);
+  57              		.loc 1 110 3 view .LVU3
+  58 0008 4FF4FA60 		mov	r0, #2000
+  59 000c FFF7FEFF 		bl	osDelay
+  60              	.LVL2:
+ 111:../../CM7/Core/Src/freertos.c **** 
+ 112:../../CM7/Core/Src/freertos.c ****   // UDP Transport Configuration
+ 113:../../CM7/Core/Src/freertos.c ****   rmw_uros_set_custom_transport(
+  61              		.loc 1 113 3 view .LVU4
+  62 0010 2E4B     		ldr	r3, .L8
+  63 0012 0193     		str	r3, [sp, #4]
+  64 0014 2E4B     		ldr	r3, .L8+4
+  65 0016 0093     		str	r3, [sp]
+  66 0018 2E4B     		ldr	r3, .L8+8
+  67 001a 2F4A     		ldr	r2, .L8+12
+  68 001c 0021     		movs	r1, #0
+  69 001e 0120     		movs	r0, #1
+  70 0020 FFF7FEFF 		bl	rmw_uros_set_custom_transport
+  71              	.LVL3:
+ 114:../../CM7/Core/Src/freertos.c ****     true,
+ 115:../../CM7/Core/Src/freertos.c ****     NULL, // No custom args needed for UDP
+ 116:../../CM7/Core/Src/freertos.c ****     platform_create_transport,
+ 117:../../CM7/Core/Src/freertos.c ****     platform_destroy_transport,
+ 118:../../CM7/Core/Src/freertos.c ****     platform_write_transport,
+ 119:../../CM7/Core/Src/freertos.c ****     platform_read_transport);
+ 120:../../CM7/Core/Src/freertos.c **** 
+ 121:../../CM7/Core/Src/freertos.c ****   rcl_allocator_t freeRTOS_allocator = rcutils_get_zero_initialized_allocator();
+  72              		.loc 1 121 3 view .LVU5
+  73              		.loc 1 121 40 is_stmt 0 view .LVU6
+  74 0024 1FAC     		add	r4, sp, #124
+  75 0026 2046     		mov	r0, r4
+  76 0028 FFF7FEFF 		bl	rcutils_get_zero_initialized_allocator
+  77              	.LVL4:
+ 122:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.allocate = microros_allocate;
+  78              		.loc 1 122 3 is_stmt 1 view .LVU7
+  79              		.loc 1 122 31 is_stmt 0 view .LVU8
+  80 002c 2B4B     		ldr	r3, .L8+16
+  81 002e 1F93     		str	r3, [sp, #124]
+ 123:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.deallocate = microros_deallocate;
+  82              		.loc 1 123 3 is_stmt 1 view .LVU9
+  83              		.loc 1 123 33 is_stmt 0 view .LVU10
+  84 0030 2B4B     		ldr	r3, .L8+20
+  85 0032 2093     		str	r3, [sp, #128]
+ 124:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.reallocate = microros_reallocate;
+  86              		.loc 1 124 3 is_stmt 1 view .LVU11
+  87              		.loc 1 124 33 is_stmt 0 view .LVU12
+  88 0034 2B4B     		ldr	r3, .L8+24
+  89 0036 2193     		str	r3, [sp, #132]
+ 125:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.zero_allocate =  microros_zero_allocate;
+  90              		.loc 1 125 3 is_stmt 1 view .LVU13
+  91              		.loc 1 125 36 is_stmt 0 view .LVU14
+  92 0038 2B4B     		ldr	r3, .L8+28
+  93 003a 2293     		str	r3, [sp, #136]
+ 126:../../CM7/Core/Src/freertos.c **** 
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s 			page 5
+
+
+ 127:../../CM7/Core/Src/freertos.c ****   if (!rcutils_set_default_allocator(&freeRTOS_allocator)) {
+  94              		.loc 1 127 3 is_stmt 1 view .LVU15
+  95              		.loc 1 127 8 is_stmt 0 view .LVU16
+  96 003c 2046     		mov	r0, r4
+  97 003e FFF7FEFF 		bl	rcutils_set_default_allocator
+  98              	.LVL5:
+  99              		.loc 1 127 6 discriminator 1 view .LVU17
+ 100 0042 A8B1     		cbz	r0, .L7
+ 101              	.L2:
+ 128:../../CM7/Core/Src/freertos.c ****       printf("Error on default allocators (line %d)\n", __LINE__);
+ 129:../../CM7/Core/Src/freertos.c ****   }
+ 130:../../CM7/Core/Src/freertos.c **** 
+ 131:../../CM7/Core/Src/freertos.c ****   // micro-ROS app
+ 132:../../CM7/Core/Src/freertos.c ****   rcl_publisher_t publisher;
+ 102              		.loc 1 132 3 is_stmt 1 view .LVU18
+ 133:../../CM7/Core/Src/freertos.c ****   std_msgs__msg__Int32 msg;
+ 103              		.loc 1 133 3 view .LVU19
+ 134:../../CM7/Core/Src/freertos.c ****   rclc_support_t support;
+ 104              		.loc 1 134 3 view .LVU20
+ 135:../../CM7/Core/Src/freertos.c ****   rcl_allocator_t allocator;
+ 105              		.loc 1 135 3 view .LVU21
+ 136:../../CM7/Core/Src/freertos.c ****   rcl_node_t node;
+ 106              		.loc 1 136 3 view .LVU22
+ 137:../../CM7/Core/Src/freertos.c **** 
+ 138:../../CM7/Core/Src/freertos.c ****   allocator = rcl_get_default_allocator();
+ 107              		.loc 1 138 3 view .LVU23
+ 108              		.loc 1 138 15 is_stmt 0 view .LVU24
+ 109 0044 02AC     		add	r4, sp, #8
+ 110 0046 2046     		mov	r0, r4
+ 111 0048 FFF7FEFF 		bl	rcutils_get_default_allocator
+ 112              	.LVL6:
+ 113 004c 0DF12C0E 		add	lr, sp, #44
+ 114 0050 A446     		mov	ip, r4
+ 115 0052 BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
+ 116 0056 AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
+ 117 005a DCF80030 		ldr	r3, [ip]
+ 118 005e CEF80030 		str	r3, [lr]
+ 139:../../CM7/Core/Src/freertos.c **** 
+ 140:../../CM7/Core/Src/freertos.c ****   // Init Options: Loop until connected to Agent
+ 141:../../CM7/Core/Src/freertos.c ****   rcl_ret_t rc = rclc_support_init(&support, 0, NULL, &allocator);
+ 119              		.loc 1 141 3 is_stmt 1 view .LVU25
+ 120              		.loc 1 141 18 is_stmt 0 view .LVU26
+ 121 0062 0BAB     		add	r3, sp, #44
+ 122 0064 0022     		movs	r2, #0
+ 123 0066 1146     		mov	r1, r2
+ 124 0068 10A8     		add	r0, sp, #64
+ 125 006a FFF7FEFF 		bl	rclc_support_init
+ 126              	.LVL7:
+ 142:../../CM7/Core/Src/freertos.c ****   while (rc != RCL_RET_OK) {
+ 127              		.loc 1 142 3 is_stmt 1 view .LVU27
+ 128              		.loc 1 142 9 is_stmt 0 view .LVU28
+ 129 006e 0EE0     		b	.L3
+ 130              	.LVL8:
+ 131              	.L7:
+ 128:../../CM7/Core/Src/freertos.c ****   }
+ 132              		.loc 1 128 7 is_stmt 1 view .LVU29
+ 133 0070 8021     		movs	r1, #128
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s 			page 6
+
+
+ 134 0072 1E48     		ldr	r0, .L8+32
+ 135 0074 FFF7FEFF 		bl	printf
+ 136              	.LVL9:
+ 137 0078 E4E7     		b	.L2
+ 138              	.LVL10:
+ 139              	.L4:
+ 143:../../CM7/Core/Src/freertos.c ****       osDelay(1000);
+ 140              		.loc 1 143 7 view .LVU30
+ 141 007a 4FF47A70 		mov	r0, #1000
+ 142              	.LVL11:
+ 143              		.loc 1 143 7 is_stmt 0 view .LVU31
+ 144 007e FFF7FEFF 		bl	osDelay
+ 145              	.LVL12:
+ 144:../../CM7/Core/Src/freertos.c ****       rc = rclc_support_init(&support, 0, NULL, &allocator);
+ 146              		.loc 1 144 7 is_stmt 1 view .LVU32
+ 147              		.loc 1 144 12 is_stmt 0 view .LVU33
+ 148 0082 0BAB     		add	r3, sp, #44
+ 149 0084 0022     		movs	r2, #0
+ 150 0086 1146     		mov	r1, r2
+ 151 0088 10A8     		add	r0, sp, #64
+ 152 008a FFF7FEFF 		bl	rclc_support_init
+ 153              	.LVL13:
+ 154              	.L3:
+ 142:../../CM7/Core/Src/freertos.c ****       osDelay(1000);
+ 155              		.loc 1 142 13 is_stmt 1 view .LVU34
+ 156 008e 0028     		cmp	r0, #0
+ 157 0090 F3D1     		bne	.L4
+ 145:../../CM7/Core/Src/freertos.c ****   }
+ 146:../../CM7/Core/Src/freertos.c **** 
+ 147:../../CM7/Core/Src/freertos.c ****   // create node
+ 148:../../CM7/Core/Src/freertos.c ****   rclc_node_init_default(&node, "cubemx_node", "", &support);
+ 158              		.loc 1 148 3 view .LVU35
+ 159 0092 09AC     		add	r4, sp, #36
+ 160 0094 10AB     		add	r3, sp, #64
+ 161 0096 164A     		ldr	r2, .L8+36
+ 162 0098 1649     		ldr	r1, .L8+40
+ 163 009a 2046     		mov	r0, r4
+ 164              	.LVL14:
+ 165              		.loc 1 148 3 is_stmt 0 view .LVU36
+ 166 009c FFF7FEFF 		bl	rclc_node_init_default
+ 167              	.LVL15:
+ 149:../../CM7/Core/Src/freertos.c **** 
+ 150:../../CM7/Core/Src/freertos.c ****   // create publisher
+ 151:../../CM7/Core/Src/freertos.c ****   rclc_publisher_init_default(
+ 168              		.loc 1 151 3 is_stmt 1 view .LVU37
+ 169 00a0 FFF7FEFF 		bl	rosidl_typesupport_c__get_message_type_support_handle__std_msgs__msg__Int32
+ 170              	.LVL16:
+ 171 00a4 0246     		mov	r2, r0
+ 172              		.loc 1 151 3 is_stmt 0 discriminator 1 view .LVU38
+ 173 00a6 144B     		ldr	r3, .L8+44
+ 174 00a8 2146     		mov	r1, r4
+ 175 00aa 1EA8     		add	r0, sp, #120
+ 176 00ac FFF7FEFF 		bl	rclc_publisher_init_default
+ 177              	.LVL17:
+ 152:../../CM7/Core/Src/freertos.c ****     &publisher,
+ 153:../../CM7/Core/Src/freertos.c ****     &node,
+ 154:../../CM7/Core/Src/freertos.c ****     ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int32),
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s 			page 7
+
+
+ 155:../../CM7/Core/Src/freertos.c ****     "cubemx_publisher");
+ 156:../../CM7/Core/Src/freertos.c **** 
+ 157:../../CM7/Core/Src/freertos.c ****   msg.data = 0;
+ 178              		.loc 1 157 3 is_stmt 1 view .LVU39
+ 179              		.loc 1 157 12 is_stmt 0 view .LVU40
+ 180 00b0 0023     		movs	r3, #0
+ 181 00b2 1D93     		str	r3, [sp, #116]
+ 182              	.L5:
+ 158:../../CM7/Core/Src/freertos.c **** 
+ 159:../../CM7/Core/Src/freertos.c ****   /* Infinite loop */
+ 160:../../CM7/Core/Src/freertos.c ****   for(;;)
+ 183              		.loc 1 160 3 is_stmt 1 view .LVU41
+ 184              	.LBB2:
+ 161:../../CM7/Core/Src/freertos.c ****   {
+ 162:../../CM7/Core/Src/freertos.c ****     rcl_ret_t ret = rcl_publish(&publisher, &msg, NULL);
+ 185              		.loc 1 162 5 view .LVU42
+ 186              		.loc 1 162 21 is_stmt 0 view .LVU43
+ 187 00b4 0022     		movs	r2, #0
+ 188 00b6 1DA9     		add	r1, sp, #116
+ 189 00b8 1EA8     		add	r0, sp, #120
+ 190 00ba FFF7FEFF 		bl	rcl_publish
+ 191              	.LVL18:
+ 163:../../CM7/Core/Src/freertos.c ****     if (ret != RCL_RET_OK)
+ 192              		.loc 1 163 5 is_stmt 1 view .LVU44
+ 164:../../CM7/Core/Src/freertos.c ****     {
+ 165:../../CM7/Core/Src/freertos.c ****       // printf("Error publishing (line %d)\n", __LINE__);
+ 166:../../CM7/Core/Src/freertos.c ****     }
+ 193              		.loc 1 166 5 view .LVU45
+ 167:../../CM7/Core/Src/freertos.c **** 
+ 168:../../CM7/Core/Src/freertos.c ****     msg.data++;
+ 194              		.loc 1 168 5 view .LVU46
+ 195              		.loc 1 168 8 is_stmt 0 view .LVU47
+ 196 00be 1D9B     		ldr	r3, [sp, #116]
+ 197              		.loc 1 168 13 view .LVU48
+ 198 00c0 0133     		adds	r3, r3, #1
+ 199 00c2 1D93     		str	r3, [sp, #116]
+ 169:../../CM7/Core/Src/freertos.c ****     osDelay(10);
+ 200              		.loc 1 169 5 is_stmt 1 view .LVU49
+ 201 00c4 0A20     		movs	r0, #10
+ 202 00c6 FFF7FEFF 		bl	osDelay
+ 203              	.LVL19:
+ 204              	.LBE2:
+ 160:../../CM7/Core/Src/freertos.c ****   {
+ 205              		.loc 1 160 3 view .LVU50
+ 206 00ca F3E7     		b	.L5
+ 207              	.L9:
+ 208              		.align	2
+ 209              	.L8:
+ 210 00cc 00000000 		.word	platform_read_transport
+ 211 00d0 00000000 		.word	platform_write_transport
+ 212 00d4 00000000 		.word	platform_destroy_transport
+ 213 00d8 00000000 		.word	platform_create_transport
+ 214 00dc 00000000 		.word	microros_allocate
+ 215 00e0 00000000 		.word	microros_deallocate
+ 216 00e4 00000000 		.word	microros_reallocate
+ 217 00e8 00000000 		.word	microros_zero_allocate
+ 218 00ec 00000000 		.word	.LC0
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s 			page 8
+
+
+ 219 00f0 28000000 		.word	.LC1
+ 220 00f4 2C000000 		.word	.LC2
+ 221 00f8 38000000 		.word	.LC3
+ 222              		.cfi_endproc
+ 223              	.LFE153:
+ 225              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+ 226              		.align	1
+ 227              		.global	MX_FREERTOS_Init
+ 228              		.syntax unified
+ 229              		.thumb
+ 230              		.thumb_func
+ 232              	MX_FREERTOS_Init:
+ 233              	.LFB152:
+  85:../../CM7/Core/Src/freertos.c ****   /* USER CODE BEGIN Init */
+ 234              		.loc 1 85 29 view -0
+ 235              		.cfi_startproc
+ 236              		@ args = 0, pretend = 0, frame = 0
+ 237              		@ frame_needed = 0, uses_anonymous_args = 0
+ 238 0000 08B5     		push	{r3, lr}
+ 239              	.LCFI2:
+ 240              		.cfi_def_cfa_offset 8
+ 241              		.cfi_offset 3, -8
+ 242              		.cfi_offset 14, -4
+  92:../../CM7/Core/Src/freertos.c **** 
+ 243              		.loc 1 92 3 view .LVU52
+  92:../../CM7/Core/Src/freertos.c **** 
+ 244              		.loc 1 92 23 is_stmt 0 view .LVU53
+ 245 0002 044A     		ldr	r2, .L12
+ 246 0004 0021     		movs	r1, #0
+ 247 0006 0448     		ldr	r0, .L12+4
+ 248 0008 FFF7FEFF 		bl	osThreadNew
+ 249              	.LVL20:
+  92:../../CM7/Core/Src/freertos.c **** 
+ 250              		.loc 1 92 21 discriminator 1 view .LVU54
+ 251 000c 034B     		ldr	r3, .L12+8
+ 252 000e 1860     		str	r0, [r3]
+  94:../../CM7/Core/Src/freertos.c **** 
+ 253              		.loc 1 94 1 view .LVU55
+ 254 0010 08BD     		pop	{r3, pc}
+ 255              	.L13:
+ 256 0012 00BF     		.align	2
+ 257              	.L12:
+ 258 0014 00000000 		.word	defaultTask_attributes
+ 259 0018 00000000 		.word	StartDefaultTask
+ 260 001c 00000000 		.word	defaultTaskHandle
+ 261              		.cfi_endproc
+ 262              	.LFE152:
+ 264              		.global	defaultTask_attributes
+ 265              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 266              		.align	2
+ 267              	.LC4:
+ 268 0000 64656661 		.ascii	"defaultTask\000"
+ 268      756C7454 
+ 268      61736B00 
+ 269              		.section	.rodata.defaultTask_attributes,"a"
+ 270              		.align	2
+ 273              	defaultTask_attributes:
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s 			page 9
+
+
+ 274 0000 00000000 		.word	.LC4
+ 275 0004 00000000 		.space	16
+ 275      00000000 
+ 275      00000000 
+ 275      00000000 
+ 276 0014 E02E0000 		.word	12000
+ 277 0018 18000000 		.word	24
+ 278 001c 00000000 		.space	8
+ 278      00000000 
+ 279              		.global	defaultTaskHandle
+ 280              		.section	.bss.defaultTaskHandle,"aw",%nobits
+ 281              		.align	2
+ 284              	defaultTaskHandle:
+ 285 0000 00000000 		.space	4
+ 286              		.text
+ 287              	.Letext0:
+ 288              		.file 2 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/14.3.1/includ
+ 289              		.file 3 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_defa
+ 290              		.file 4 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h
+ 291              		.file 5 "../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ 292              		.file 6 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rc
+ 293              		.file 7 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rc
+ 294              		.file 8 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rm
+ 295              		.file 9 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rc
+ 296              		.file 10 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 297              		.file 11 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 298              		.file 12 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 299              		.file 13 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 300              		.file 14 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 301              		.file 15 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 302              		.file 16 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 303              		.file 17 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 304              		.file 18 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 305              		.file 19 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 306              		.file 20 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 307              		.file 21 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/u
+ 308              		.file 22 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/u
+ 309              		.file 23 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/u
+ 310              		.file 24 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/s
+ 311              		.file 25 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 312              		.file 26 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 313              		.file 27 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 314              		.file 28 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/stdio.h"
+ 315              		.file 29 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/s
+ 316              		.file 30 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 freertos.c
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:19     .rodata.StartDefaultTask.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:32     .text.StartDefaultTask:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:38     .text.StartDefaultTask:00000000 StartDefaultTask
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:210    .text.StartDefaultTask:000000cc $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:226    .text.MX_FREERTOS_Init:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:232    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:258    .text.MX_FREERTOS_Init:00000014 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:273    .rodata.defaultTask_attributes:00000000 defaultTask_attributes
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:284    .bss.defaultTaskHandle:00000000 defaultTaskHandle
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:266    .rodata.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:270    .rodata.defaultTask_attributes:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccjQL9PR.s:281    .bss.defaultTaskHandle:00000000 $d
+
+UNDEFINED SYMBOLS
+MX_LWIP_Init
+osDelay
+rmw_uros_set_custom_transport
+rcutils_get_zero_initialized_allocator
+rcutils_set_default_allocator
+rcutils_get_default_allocator
+rclc_support_init
+printf
+rclc_node_init_default
+rosidl_typesupport_c__get_message_type_support_handle__std_msgs__msg__Int32
+rclc_publisher_init_default
+rcl_publish
+platform_read_transport
+platform_write_transport
+platform_destroy_transport
+platform_create_transport
+microros_allocate
+microros_deallocate
+microros_reallocate
+microros_zero_allocate
+osThreadNew
