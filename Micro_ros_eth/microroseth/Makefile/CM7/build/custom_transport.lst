@@ -1,0 +1,553 @@
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s 			page 1
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"custom_transport.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.file 1 "../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c"
+  18              		.section	.rodata.cubemx_transport_open.str1.4,"aMS",%progbits,1
+  19              		.align	2
+  20              	.LC0:
+  21 0000 3137322E 		.ascii	"172.20.10.13\000"
+  21      32302E31 
+  21      302E3133 
+  21      00
+  22              		.section	.text.cubemx_transport_open,"ax",%progbits
+  23              		.align	1
+  24              		.global	cubemx_transport_open
+  25              		.syntax unified
+  26              		.thumb
+  27              		.thumb_func
+  29              	cubemx_transport_open:
+  30              	.LVL0:
+  31              	.LFB170:
+   1:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** #include <uxr/client/profile/transport/custom/custom_transport.h>
+   2:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** #include "lwip/sockets.h"
+   3:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** #include <string.h>
+   4:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+   5:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** static int sock_fd = -1;
+   6:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+   7:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** bool cubemx_transport_open(struct uxrCustomTransport * transport) {
+  32              		.loc 1 7 67 view -0
+  33              		.cfi_startproc
+  34              		@ args = 0, pretend = 0, frame = 16
+  35              		@ frame_needed = 0, uses_anonymous_args = 0
+  36              		.loc 1 7 67 is_stmt 0 view .LVU1
+  37 0000 30B5     		push	{r4, r5, lr}
+  38              	.LCFI0:
+  39              		.cfi_def_cfa_offset 12
+  40              		.cfi_offset 4, -12
+  41              		.cfi_offset 5, -8
+  42              		.cfi_offset 14, -4
+  43 0002 85B0     		sub	sp, sp, #20
+  44              	.LCFI1:
+  45              		.cfi_def_cfa_offset 32
+   8:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     struct sockaddr_in addr;
+  46              		.loc 1 8 5 is_stmt 1 view .LVU2
+   9:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     memset(&addr, 0, sizeof(addr));
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s 			page 2
+
+
+  47              		.loc 1 9 5 view .LVU3
+  48 0004 0024     		movs	r4, #0
+  49 0006 0094     		str	r4, [sp]
+  50 0008 0194     		str	r4, [sp, #4]
+  51 000a 0294     		str	r4, [sp, #8]
+  52 000c 0394     		str	r4, [sp, #12]
+  10:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     addr.sin_family = AF_INET;
+  53              		.loc 1 10 5 view .LVU4
+  54              		.loc 1 10 21 is_stmt 0 view .LVU5
+  55 000e 0225     		movs	r5, #2
+  56 0010 8DF80150 		strb	r5, [sp, #1]
+  11:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     addr.sin_port = htons(8888);
+  57              		.loc 1 11 5 is_stmt 1 view .LVU6
+  58              		.loc 1 11 21 is_stmt 0 view .LVU7
+  59 0014 42F2B820 		movw	r0, #8888
+  60              	.LVL1:
+  61              		.loc 1 11 21 view .LVU8
+  62 0018 FFF7FEFF 		bl	lwip_htons
+  63              	.LVL2:
+  64              		.loc 1 11 19 discriminator 1 view .LVU9
+  65 001c ADF80200 		strh	r0, [sp, #2]	@ movhi
+  12:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     addr.sin_addr.s_addr = inet_addr("172.20.10.13");
+  66              		.loc 1 12 5 is_stmt 1 view .LVU10
+  67              		.loc 1 12 28 is_stmt 0 view .LVU11
+  68 0020 1048     		ldr	r0, .L7
+  69 0022 FFF7FEFF 		bl	ipaddr_addr
+  70              	.LVL3:
+  71              		.loc 1 12 26 discriminator 1 view .LVU12
+  72 0026 0190     		str	r0, [sp, #4]
+  13:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+  14:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     sock_fd = socket(AF_INET, SOCK_DGRAM, 0);
+  73              		.loc 1 14 5 is_stmt 1 view .LVU13
+  74              		.loc 1 14 15 is_stmt 0 view .LVU14
+  75 0028 2246     		mov	r2, r4
+  76 002a 2946     		mov	r1, r5
+  77 002c 2846     		mov	r0, r5
+  78 002e FFF7FEFF 		bl	lwip_socket
+  79              	.LVL4:
+  80              		.loc 1 14 13 discriminator 1 view .LVU15
+  81 0032 0D4B     		ldr	r3, .L7+4
+  82 0034 1860     		str	r0, [r3]
+  15:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     if (sock_fd < 0) return false;
+  83              		.loc 1 15 5 is_stmt 1 view .LVU16
+  84              		.loc 1 15 8 is_stmt 0 view .LVU17
+  85 0036 A042     		cmp	r0, r4
+  86 0038 11DB     		blt	.L3
+  16:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+  17:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     if (connect(sock_fd, (struct sockaddr*)&addr, sizeof(addr)) < 0) {
+  87              		.loc 1 17 5 is_stmt 1 view .LVU18
+  88              		.loc 1 17 9 is_stmt 0 view .LVU19
+  89 003a 1022     		movs	r2, #16
+  90 003c 6946     		mov	r1, sp
+  91 003e FFF7FEFF 		bl	lwip_connect
+  92              	.LVL5:
+  93              		.loc 1 17 8 discriminator 1 view .LVU20
+  94 0042 A042     		cmp	r0, r4
+  95 0044 02DB     		blt	.L6
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s 			page 3
+
+
+  18:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         close(sock_fd);
+  19:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         sock_fd = -1;
+  20:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return false;
+  21:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+  22:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     return true;
+  96              		.loc 1 22 12 view .LVU21
+  97 0046 0120     		movs	r0, #1
+  98              	.L2:
+  23:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** }
+  99              		.loc 1 23 1 view .LVU22
+ 100 0048 05B0     		add	sp, sp, #20
+ 101              	.LCFI2:
+ 102              		.cfi_remember_state
+ 103              		.cfi_def_cfa_offset 12
+ 104              		@ sp needed
+ 105 004a 30BD     		pop	{r4, r5, pc}
+ 106              	.L6:
+ 107              	.LCFI3:
+ 108              		.cfi_restore_state
+  18:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         close(sock_fd);
+ 109              		.loc 1 18 9 is_stmt 1 view .LVU23
+ 110 004c 064C     		ldr	r4, .L7+4
+ 111 004e 2068     		ldr	r0, [r4]
+ 112 0050 FFF7FEFF 		bl	lwip_close
+ 113              	.LVL6:
+  19:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return false;
+ 114              		.loc 1 19 9 view .LVU24
+  19:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return false;
+ 115              		.loc 1 19 17 is_stmt 0 view .LVU25
+ 116 0054 4FF0FF33 		mov	r3, #-1
+ 117 0058 2360     		str	r3, [r4]
+  20:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 118              		.loc 1 20 9 is_stmt 1 view .LVU26
+  20:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 119              		.loc 1 20 16 is_stmt 0 view .LVU27
+ 120 005a 0020     		movs	r0, #0
+ 121 005c F4E7     		b	.L2
+ 122              	.L3:
+  15:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+ 123              		.loc 1 15 29 discriminator 1 view .LVU28
+ 124 005e 0020     		movs	r0, #0
+ 125 0060 F2E7     		b	.L2
+ 126              	.L8:
+ 127 0062 00BF     		.align	2
+ 128              	.L7:
+ 129 0064 00000000 		.word	.LC0
+ 130 0068 00000000 		.word	sock_fd
+ 131              		.cfi_endproc
+ 132              	.LFE170:
+ 134              		.section	.text.cubemx_transport_close,"ax",%progbits
+ 135              		.align	1
+ 136              		.global	cubemx_transport_close
+ 137              		.syntax unified
+ 138              		.thumb
+ 139              		.thumb_func
+ 141              	cubemx_transport_close:
+ 142              	.LVL7:
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s 			page 4
+
+
+ 143              	.LFB171:
+  24:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+  25:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** bool cubemx_transport_close(struct uxrCustomTransport * transport) {
+ 144              		.loc 1 25 68 is_stmt 1 view -0
+ 145              		.cfi_startproc
+ 146              		@ args = 0, pretend = 0, frame = 0
+ 147              		@ frame_needed = 0, uses_anonymous_args = 0
+ 148              		.loc 1 25 68 is_stmt 0 view .LVU30
+ 149 0000 08B5     		push	{r3, lr}
+ 150              	.LCFI4:
+ 151              		.cfi_def_cfa_offset 8
+ 152              		.cfi_offset 3, -8
+ 153              		.cfi_offset 14, -4
+  26:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     if (sock_fd >= 0) {
+ 154              		.loc 1 26 5 is_stmt 1 view .LVU31
+ 155              		.loc 1 26 17 is_stmt 0 view .LVU32
+ 156 0002 064B     		ldr	r3, .L13
+ 157 0004 1868     		ldr	r0, [r3]
+ 158              	.LVL8:
+ 159              		.loc 1 26 8 view .LVU33
+ 160 0006 0028     		cmp	r0, #0
+ 161 0008 01DA     		bge	.L12
+ 162              	.L10:
+  27:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         close(sock_fd);
+  28:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         sock_fd = -1;
+  29:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+  30:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     return true;
+ 163              		.loc 1 30 5 is_stmt 1 view .LVU34
+  31:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** }
+ 164              		.loc 1 31 1 is_stmt 0 view .LVU35
+ 165 000a 0120     		movs	r0, #1
+ 166 000c 08BD     		pop	{r3, pc}
+ 167              	.L12:
+  27:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         close(sock_fd);
+ 168              		.loc 1 27 9 is_stmt 1 view .LVU36
+ 169 000e FFF7FEFF 		bl	lwip_close
+ 170              	.LVL9:
+  28:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 171              		.loc 1 28 9 view .LVU37
+  28:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 172              		.loc 1 28 17 is_stmt 0 view .LVU38
+ 173 0012 024B     		ldr	r3, .L13
+ 174 0014 4FF0FF32 		mov	r2, #-1
+ 175 0018 1A60     		str	r2, [r3]
+ 176 001a F6E7     		b	.L10
+ 177              	.L14:
+ 178              		.align	2
+ 179              	.L13:
+ 180 001c 00000000 		.word	sock_fd
+ 181              		.cfi_endproc
+ 182              	.LFE171:
+ 184              		.section	.text.cubemx_transport_write,"ax",%progbits
+ 185              		.align	1
+ 186              		.global	cubemx_transport_write
+ 187              		.syntax unified
+ 188              		.thumb
+ 189              		.thumb_func
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s 			page 5
+
+
+ 191              	cubemx_transport_write:
+ 192              	.LVL10:
+ 193              	.LFB172:
+  32:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+  33:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** size_t cubemx_transport_write(struct uxrCustomTransport* transport, const uint8_t * buf, size_t len
+ 194              		.loc 1 33 117 is_stmt 1 view -0
+ 195              		.cfi_startproc
+ 196              		@ args = 0, pretend = 0, frame = 0
+ 197              		@ frame_needed = 0, uses_anonymous_args = 0
+ 198              		.loc 1 33 117 is_stmt 0 view .LVU40
+ 199 0000 10B5     		push	{r4, lr}
+ 200              	.LCFI5:
+ 201              		.cfi_def_cfa_offset 8
+ 202              		.cfi_offset 4, -8
+ 203              		.cfi_offset 14, -4
+ 204 0002 1C46     		mov	r4, r3
+  34:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     if (sock_fd < 0) {
+ 205              		.loc 1 34 5 is_stmt 1 view .LVU41
+ 206              		.loc 1 34 17 is_stmt 0 view .LVU42
+ 207 0004 0848     		ldr	r0, .L22
+ 208              	.LVL11:
+ 209              		.loc 1 34 17 view .LVU43
+ 210 0006 0068     		ldr	r0, [r0]
+ 211              		.loc 1 34 8 view .LVU44
+ 212 0008 0028     		cmp	r0, #0
+ 213 000a 05DB     		blt	.L20
+  35:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         *err = 1;
+  36:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return 0;
+  37:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+  38:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+  39:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     ssize_t sent = send(sock_fd, buf, len, 0);
+ 214              		.loc 1 39 5 is_stmt 1 view .LVU45
+ 215              		.loc 1 39 20 is_stmt 0 view .LVU46
+ 216 000c 0023     		movs	r3, #0
+ 217              	.LVL12:
+ 218              		.loc 1 39 20 view .LVU47
+ 219 000e FFF7FEFF 		bl	lwip_send
+ 220              	.LVL13:
+  40:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     if (sent < 0) {
+ 221              		.loc 1 40 5 is_stmt 1 view .LVU48
+ 222              		.loc 1 40 8 is_stmt 0 view .LVU49
+ 223 0012 0028     		cmp	r0, #0
+ 224              		.loc 1 40 8 view .LVU50
+ 225 0014 04DB     		blt	.L21
+ 226              	.LVL14:
+ 227              	.L15:
+  41:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         *err = 1;
+  42:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return 0;
+  43:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+  44:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     return sent;
+  45:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** }
+ 228              		.loc 1 45 1 view .LVU51
+ 229 0016 10BD     		pop	{r4, pc}
+ 230              	.LVL15:
+ 231              	.L20:
+  35:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return 0;
+ 232              		.loc 1 35 9 is_stmt 1 view .LVU52
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s 			page 6
+
+
+  35:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return 0;
+ 233              		.loc 1 35 14 is_stmt 0 view .LVU53
+ 234 0018 0123     		movs	r3, #1
+ 235              	.LVL16:
+  35:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return 0;
+ 236              		.loc 1 35 14 view .LVU54
+ 237 001a 2370     		strb	r3, [r4]
+  36:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 238              		.loc 1 36 9 is_stmt 1 view .LVU55
+  36:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 239              		.loc 1 36 16 is_stmt 0 view .LVU56
+ 240 001c 0020     		movs	r0, #0
+ 241 001e FAE7     		b	.L15
+ 242              	.LVL17:
+ 243              	.L21:
+  41:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         *err = 1;
+ 244              		.loc 1 41 9 is_stmt 1 view .LVU57
+  41:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         *err = 1;
+ 245              		.loc 1 41 14 is_stmt 0 view .LVU58
+ 246 0020 0123     		movs	r3, #1
+ 247 0022 2370     		strb	r3, [r4]
+  42:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 248              		.loc 1 42 9 is_stmt 1 view .LVU59
+  42:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 249              		.loc 1 42 16 is_stmt 0 view .LVU60
+ 250 0024 0020     		movs	r0, #0
+ 251              	.LVL18:
+  42:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 252              		.loc 1 42 16 view .LVU61
+ 253 0026 F6E7     		b	.L15
+ 254              	.L23:
+ 255              		.align	2
+ 256              	.L22:
+ 257 0028 00000000 		.word	sock_fd
+ 258              		.cfi_endproc
+ 259              	.LFE172:
+ 261              		.section	.text.cubemx_transport_read,"ax",%progbits
+ 262              		.align	1
+ 263              		.global	cubemx_transport_read
+ 264              		.syntax unified
+ 265              		.thumb
+ 266              		.thumb_func
+ 268              	cubemx_transport_read:
+ 269              	.LVL19:
+ 270              	.LFB173:
+  46:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+  47:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** size_t cubemx_transport_read(struct uxrCustomTransport* transport, uint8_t* buf, size_t len, int ti
+ 271              		.loc 1 47 121 is_stmt 1 view -0
+ 272              		.cfi_startproc
+ 273              		@ args = 4, pretend = 0, frame = 16
+ 274              		@ frame_needed = 0, uses_anonymous_args = 0
+ 275              		.loc 1 47 121 is_stmt 0 view .LVU63
+ 276 0000 30B5     		push	{r4, r5, lr}
+ 277              	.LCFI6:
+ 278              		.cfi_def_cfa_offset 12
+ 279              		.cfi_offset 4, -12
+ 280              		.cfi_offset 5, -8
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s 			page 7
+
+
+ 281              		.cfi_offset 14, -4
+ 282 0002 87B0     		sub	sp, sp, #28
+ 283              	.LCFI7:
+ 284              		.cfi_def_cfa_offset 40
+ 285 0004 1546     		mov	r5, r2
+  48:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     if (sock_fd < 0) {
+ 286              		.loc 1 48 5 is_stmt 1 view .LVU64
+ 287              		.loc 1 48 17 is_stmt 0 view .LVU65
+ 288 0006 194A     		ldr	r2, .L31
+ 289              	.LVL20:
+ 290              		.loc 1 48 17 view .LVU66
+ 291 0008 1068     		ldr	r0, [r2]
+ 292              	.LVL21:
+ 293              		.loc 1 48 8 view .LVU67
+ 294 000a 0028     		cmp	r0, #0
+ 295 000c 24DB     		blt	.L29
+ 296 000e 0C46     		mov	r4, r1
+  49:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         *err = 1;
+  50:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return 0;
+  51:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+  52:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+  53:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     struct timeval tv;
+ 297              		.loc 1 53 5 is_stmt 1 view .LVU68
+  54:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     tv.tv_sec = timeout / 1000;
+ 298              		.loc 1 54 5 view .LVU69
+ 299              		.loc 1 54 25 is_stmt 0 view .LVU70
+ 300 0010 1749     		ldr	r1, .L31+4
+ 301              	.LVL22:
+ 302              		.loc 1 54 25 view .LVU71
+ 303 0012 81FB0321 		smull	r2, r1, r1, r3
+ 304 0016 DA17     		asrs	r2, r3, #31
+ 305 0018 C2EBA112 		rsb	r2, r2, r1, asr #6
+ 306 001c D117     		asrs	r1, r2, #31
+ 307              		.loc 1 54 15 view .LVU72
+ 308 001e 0292     		str	r2, [sp, #8]
+ 309 0020 0391     		str	r1, [sp, #12]
+  55:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     tv.tv_usec = (timeout % 1000) * 1000;
+ 310              		.loc 1 55 5 is_stmt 1 view .LVU73
+ 311              		.loc 1 55 27 is_stmt 0 view .LVU74
+ 312 0022 4FF47A71 		mov	r1, #1000
+ 313 0026 01FB1233 		mls	r3, r1, r2, r3
+ 314              	.LVL23:
+ 315              		.loc 1 55 35 view .LVU75
+ 316 002a 01FB03F3 		mul	r3, r1, r3
+ 317              		.loc 1 55 16 view .LVU76
+ 318 002e 0493     		str	r3, [sp, #16]
+  56:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     setsockopt(sock_fd, SOL_SOCKET, SO_RCVTIMEO, &tv, sizeof(tv));
+ 319              		.loc 1 56 5 is_stmt 1 view .LVU77
+ 320 0030 1023     		movs	r3, #16
+ 321 0032 0093     		str	r3, [sp]
+ 322 0034 02AB     		add	r3, sp, #8
+ 323 0036 41F20602 		movw	r2, #4102
+ 324 003a 40F6FF71 		movw	r1, #4095
+ 325 003e FFF7FEFF 		bl	lwip_setsockopt
+ 326              	.LVL24:
+  57:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** 
+  58:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     ssize_t received = recv(sock_fd, buf, len, 0);
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s 			page 8
+
+
+ 327              		.loc 1 58 5 view .LVU78
+ 328              		.loc 1 58 24 is_stmt 0 view .LVU79
+ 329 0042 0023     		movs	r3, #0
+ 330 0044 2A46     		mov	r2, r5
+ 331 0046 2146     		mov	r1, r4
+ 332 0048 0848     		ldr	r0, .L31
+ 333 004a 0068     		ldr	r0, [r0]
+ 334 004c FFF7FEFF 		bl	lwip_recv
+ 335              	.LVL25:
+  59:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     if (received < 0) {
+ 336              		.loc 1 59 5 is_stmt 1 view .LVU80
+ 337              		.loc 1 59 8 is_stmt 0 view .LVU81
+ 338 0050 0028     		cmp	r0, #0
+ 339              		.loc 1 59 8 view .LVU82
+ 340 0052 06DB     		blt	.L30
+ 341              	.LVL26:
+ 342              	.L24:
+  60:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         *err = 1;
+  61:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return 0;
+  62:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+  63:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     return received;
+  64:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c **** }
+ 343              		.loc 1 64 1 view .LVU83
+ 344 0054 07B0     		add	sp, sp, #28
+ 345              	.LCFI8:
+ 346              		.cfi_remember_state
+ 347              		.cfi_def_cfa_offset 12
+ 348              		@ sp needed
+ 349 0056 30BD     		pop	{r4, r5, pc}
+ 350              	.LVL27:
+ 351              	.L29:
+ 352              	.LCFI9:
+ 353              		.cfi_restore_state
+  49:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return 0;
+ 354              		.loc 1 49 9 is_stmt 1 view .LVU84
+  49:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return 0;
+ 355              		.loc 1 49 14 is_stmt 0 view .LVU85
+ 356 0058 0123     		movs	r3, #1
+ 357              	.LVL28:
+  49:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         return 0;
+ 358              		.loc 1 49 14 view .LVU86
+ 359 005a 0A9A     		ldr	r2, [sp, #40]
+ 360 005c 1370     		strb	r3, [r2]
+  50:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 361              		.loc 1 50 9 is_stmt 1 view .LVU87
+  50:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 362              		.loc 1 50 16 is_stmt 0 view .LVU88
+ 363 005e 0020     		movs	r0, #0
+ 364 0060 F8E7     		b	.L24
+ 365              	.LVL29:
+ 366              	.L30:
+  60:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         *err = 1;
+ 367              		.loc 1 60 9 is_stmt 1 view .LVU89
+  60:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****         *err = 1;
+ 368              		.loc 1 60 14 is_stmt 0 view .LVU90
+ 369 0062 0123     		movs	r3, #1
+ 370 0064 0A9A     		ldr	r2, [sp, #40]
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s 			page 9
+
+
+ 371 0066 1370     		strb	r3, [r2]
+  61:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 372              		.loc 1 61 9 is_stmt 1 view .LVU91
+  61:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 373              		.loc 1 61 16 is_stmt 0 view .LVU92
+ 374 0068 0020     		movs	r0, #0
+ 375              	.LVL30:
+  61:../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/custom_transport.c ****     }
+ 376              		.loc 1 61 16 view .LVU93
+ 377 006a F3E7     		b	.L24
+ 378              	.L32:
+ 379              		.align	2
+ 380              	.L31:
+ 381 006c 00000000 		.word	sock_fd
+ 382 0070 D34D6210 		.word	274877907
+ 383              		.cfi_endproc
+ 384              	.LFE173:
+ 386              		.section	.data.sock_fd,"aw"
+ 387              		.align	2
+ 390              	sock_fd:
+ 391 0000 FFFFFFFF 		.word	-1
+ 392              		.text
+ 393              	.Letext0:
+ 394              		.file 2 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_defa
+ 395              		.file 3 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h
+ 396              		.file 4 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/14.3.1/includ
+ 397              		.file 5 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/ux
+ 398              		.file 6 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/ux
+ 399              		.file 7 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/ux
+ 400              		.file 8 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_types.h"
+ 401              		.file 9 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/stdio.h"
+ 402              		.file 10 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_timeval
+ 403              		.file 11 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/types.h"
+ 404              		.file 12 "../../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h"
+ 405              		.file 13 "../../Middlewares/Third_Party/LwIP/src/include/lwip/inet.h"
+ 406              		.file 14 "../../Middlewares/Third_Party/LwIP/src/include/lwip/sockets.h"
+ 407              		.file 15 "../../Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h"
+ 408              		.file 16 "../../Middlewares/Third_Party/LwIP/src/include/lwip/def.h"
+ 409              		.file 17 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h"
+ 410              		.file 18 "../../Middlewares/Third_Party/LwIP/src/include/lwip/memp.h"
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 custom_transport.c
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:19     .rodata.cubemx_transport_open.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:23     .text.cubemx_transport_open:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:29     .text.cubemx_transport_open:00000000 cubemx_transport_open
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:129    .text.cubemx_transport_open:00000064 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:390    .data.sock_fd:00000000 sock_fd
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:135    .text.cubemx_transport_close:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:141    .text.cubemx_transport_close:00000000 cubemx_transport_close
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:180    .text.cubemx_transport_close:0000001c $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:185    .text.cubemx_transport_write:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:191    .text.cubemx_transport_write:00000000 cubemx_transport_write
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:257    .text.cubemx_transport_write:00000028 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:262    .text.cubemx_transport_read:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:268    .text.cubemx_transport_read:00000000 cubemx_transport_read
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:381    .text.cubemx_transport_read:0000006c $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc5xN7pl.s:387    .data.sock_fd:00000000 $d
+
+UNDEFINED SYMBOLS
+lwip_htons
+ipaddr_addr
+lwip_socket
+lwip_connect
+lwip_close
+lwip_send
+lwip_setsockopt
+lwip_recv
