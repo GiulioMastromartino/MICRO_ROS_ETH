@@ -66,10 +66,10 @@ void MX_LWIP_Init(void)
   // Change from 192.168.1.x to 172.20.10.x subnet
 
   // STM32 IP Address (choose any free IP on the 172.20.10.x network)
-  IP_ADDRESS[0] = 172;
-  IP_ADDRESS[1] = 20;
-  IP_ADDRESS[2] = 10;
-  IP_ADDRESS[3] = 10;  // ← STM32's IP (not .12 which is Raspberry Pi)
+  IP_ADDRESS[0] = 192;
+  IP_ADDRESS[1] = 168;
+  IP_ADDRESS[2] = 0;
+  IP_ADDRESS[3] = 3;  // ← STM32's IP (not .12 which is Raspberry Pi)
 
   // Subnet Mask (stays the same)
   NETMASK_ADDRESS[0] = 255;
@@ -78,10 +78,10 @@ void MX_LWIP_Init(void)
   NETMASK_ADDRESS[3] = 240;
 
   // Gateway Address (your router/hotspot)
-  GATEWAY_ADDRESS[0] = 172;
-  GATEWAY_ADDRESS[1] = 20;
-  GATEWAY_ADDRESS[2] = 10;
-  GATEWAY_ADDRESS[3] = 13;  // ← Usually .1 is the gateway
+  GATEWAY_ADDRESS[0] = 192;
+  GATEWAY_ADDRESS[1] = 168;
+  GATEWAY_ADDRESS[2] = 0;
+  GATEWAY_ADDRESS[3] = 8;  // ← Usually .1 is the gateway
 
 
 /* USER CODE BEGIN IP_ADDRESSES */
