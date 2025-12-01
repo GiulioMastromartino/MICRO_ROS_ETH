@@ -301,9 +301,38 @@ static void low_level_init(struct netif *netif)
   osThreadNew(ethernetif_input, netif, &attributes);
 /* USER CODE END OS_THREAD_NEW_CMSIS_RTOS_V2 */
 
-/* USER CODE BEGIN PHY_PRE_CONFIG */
+//* USER CODE BEGIN PHY_PRE_CONFIG */
+// Software reset of LAN8742 PHY to prevent cold-boot startup delays
+// PHY address is 0 on STM32H755 Nucleo board
+uint32_t regvalue = 0;
+uint32_t tickstart = HAL_GetTick();
 
+// Read current BCR value (register 0x00 = Basic Control Register)
+if(HAL_ETH_ReadPHYRegister(&heth, 0, LAN8742_BCR, &regvalue) == HAL_OK)
+{
+    // Set software reset bit (bit 15)
+    regvalue |= LAN8742_BCR_SOFT_RESET;
+    HAL_ETH_WritePHYRegister(&heth, 0, LAN8742_BCR, regvalue);
+
+    // Wait for reset to complete (bit auto-clears when done)
+    // Maximum wait time: 500ms
+    do {
+        HAL_ETH_ReadPHYRegister(&heth, 0, LAN8742_BCR, &regvalue);
+        if((HAL_GetTick() - tickstart) > 500U)
+        {
+            // Timeout - continue anyway
+            break;
+        }
+    } while (regvalue & LAN8742_BCR_SOFT_RESET);
+
+    // Additional settling time after reset
+    osDelay(50);
+}
 /* USER CODE END PHY_PRE_CONFIG */
+
+
+
+
   /* Set PHY IO functions */
   LAN8742_RegisterBusIO(&LAN8742, &LAN8742_IOCtx);
 
