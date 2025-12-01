@@ -156,8 +156,23 @@ lan8742_IOCtx_t  LAN8742_IOCtx = {ETH_PHY_IO_Init,
                                   ETH_PHY_IO_GetTick};
 
 /* USER CODE BEGIN 3 */
+/**
+  * @brief  Safe wrapper for HAL_ETH_Transmit_IT with memory barriers
+  * @param  heth: pointer to ETH handle
+  * @param  pTxConfig: pointer to TX packet configuration
+  * @retval HAL status
+  */
+HAL_StatusTypeDef HAL_ETH_Transmit_IT_Safe(ETH_HandleTypeDef *heth, ETH_TxPacketConfig *pTxConfig)
+{
+    // Ensure all descriptor writes complete before starting DMA
+    __DMB();  // Data Memory Barrier - wait for writes to finish
+    __DSB();  // Data Synchronization Barrier - flush write buffer
 
+    // Now safe to trigger DMA operation
+    return HAL_ETH_Transmit_IT(heth, pTxConfig);
+}
 /* USER CODE END 3 */
+
 
 /* Private functions ---------------------------------------------------------*/
 void pbuf_free_custom(struct pbuf *p);
@@ -416,7 +431,7 @@ static err_t low_level_output(struct netif *netif, struct pbuf *p)
 
   do
   {
-    if(HAL_ETH_Transmit_IT(&heth, &TxConfig) == HAL_OK)
+      if(HAL_ETH_Transmit_IT_Safe(&heth, &TxConfig) == HAL_OK)
     {
       errval = ERR_OK;
     }
@@ -942,4 +957,3 @@ void HAL_ETH_TxFreeCallback(uint32_t * buff)
 /* USER CODE BEGIN 8 */
 
 /* USER CODE END 8 */
-

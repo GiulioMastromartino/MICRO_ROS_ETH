@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
   30:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
   31:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  * SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
   32:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 2
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 2
 
 
   33:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  * OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
   45 000a 20B1     		cbz	r0, .L1
   69:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****     memset(buf, 0, sizeof(struct netbuf));
   46              		.loc 1 69 5 is_stmt 1 view .LVU6
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 3
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 3
 
 
   47 000c 0022     		movs	r2, #0
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
   87              		.loc 1 84 5 is_stmt 1 view .LVU15
   88              		.loc 1 84 12 is_stmt 0 view .LVU16
   89 0006 0068     		ldr	r0, [r0]
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 4
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 4
 
 
   90              	.LVL3:
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  131 0050 41737365 		.ascii	"Assertion \"%s\" failed at line %d in %s\012\000"
  131      7274696F 
  131      6E202225 
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 5
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 5
 
 
  131      73222066 
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  164              		.loc 1 107 3 view .LVU31
  165              		.loc 1 107 10 is_stmt 0 view .LVU32
  166 0008 0068     		ldr	r0, [r0]
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 6
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 6
 
 
  167              	.LVL8:
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  104:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c **** 
  209              		.loc 1 104 3 discriminator 1 view .LVU51
  210 002e 074B     		ldr	r3, .L19
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 7
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 7
 
 
  211 0030 6822     		movs	r2, #104
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  256              	netbuf_free:
  257              	.LVL17:
  258              	.LFB173:
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 8
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 8
 
 
  119:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c **** 
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  293              		.loc 1 138 1 view .LVU72
  294 0014 10BD     		pop	{r4, pc}
  295              	.LVL21:
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 9
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 9
 
 
  296              	.L26:
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  147:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  * @return ERR_OK if data is referenced
  148:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  *         ERR_MEM if data couldn't be referenced due to lack of memory
  149:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  */
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 10
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 10
 
 
  150:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c **** err_t
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  162:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****   ((struct pbuf_rom *)buf->p)->payload = dataptr;
  376              		.loc 1 162 3 is_stmt 1 view .LVU94
  377              		.loc 1 162 40 is_stmt 0 view .LVU95
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 11
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 11
 
 
  378 0020 4660     		str	r6, [r0, #4]
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  420 0042 F5E7     		b	.L31
  421              	.LVL34:
  422              	.L36:
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 12
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 12
 
 
  159:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****     return ERR_MEM;
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  177:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c **** {
  457              		.loc 1 177 1 is_stmt 1 view -0
  458              		.cfi_startproc
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 13
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 13
 
 
  459              		@ args = 0, pretend = 0, frame = 0
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  178:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****   LWIP_ERROR("netbuf_chain: invalid tail", (tail != NULL), return;);
  506              		.loc 1 178 3 discriminator 1 view .LVU138
  507 0020 064B     		ldr	r3, .L46
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 14
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 14
 
 
  508 0022 B222     		movs	r2, #178
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  551              	.LC8:
  552 0000 6E657462 		.ascii	"netbuf_data: invalid buf\000"
  552      75665F64 
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 15
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 15
 
 
  552      6174613A 
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  582 0004 0346     		mov	r3, r0
  583              		.loc 1 198 3 view .LVU155
  584              		.loc 1 198 3 view .LVU156
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 16
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 16
 
 
  199:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****   LWIP_ERROR("netbuf_data: invalid dataptr", (dataptr != NULL), return ERR_ARG;);
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  627              	.LVL53:
  198:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****   LWIP_ERROR("netbuf_data: invalid dataptr", (dataptr != NULL), return ERR_ARG;);
  628              		.loc 1 198 3 is_stmt 0 discriminator 1 view .LVU180
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 17
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 17
 
 
  629 0020 0E49     		ldr	r1, .L58+4
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  668 0042 C822     		movs	r2, #200
  669              	.LVL63:
  200:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c **** 
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 18
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 18
 
 
  670              		.loc 1 200 3 is_stmt 0 discriminator 1 view .LVU196
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  211:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  * @ingroup netbuf
  212:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  * Move the current data pointer of a packet buffer contained in a netbuf
  213:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  * to the next part.
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 19
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 19
 
 
  214:../../Middlewares/Third_Party/LwIP/src/api/netbuf.c ****  * The packet buffer itself is not modified.
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  748              		.loc 1 233 1 view .LVU219
  749 0012 08BD     		pop	{r3, pc}
  750              	.LVL70:
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 20
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 20
 
 
  751              	.L66:
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  793      3A20696E 
  793      76616C69 
  794              		.section	.text.netbuf_first,"ax",%progbits
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 21
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 21
 
 
  795              		.align	1
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  833 000c F622     		movs	r2, #246
  834 000e 0349     		ldr	r1, .L74+4
  835 0010 0348     		ldr	r0, .L74+8
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 22
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 22
 
 
  836              	.LVL80:
@@ -1294,43 +1294,43 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 1
  863              		.file 10 "../../Middlewares/Third_Party/LwIP/src/include/lwip/memp.h"
  864              		.file 11 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/stdio.h"
  865              		.file 12 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h"
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s 			page 23
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s 			page 23
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 netbuf.c
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:19     .text.netbuf_new:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:25     .text.netbuf_new:00000000 netbuf_new
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:64     .text.netbuf_delete:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:70     .text.netbuf_delete:00000000 netbuf_delete
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:122    .rodata.netbuf_alloc.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:136    .text.netbuf_alloc:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:142    .text.netbuf_alloc:00000000 netbuf_alloc
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:238    .text.netbuf_alloc:0000004c $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:246    .rodata.netbuf_free.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:250    .text.netbuf_free:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:256    .text.netbuf_free:00000000 netbuf_free
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:314    .text.netbuf_free:00000024 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:321    .rodata.netbuf_ref.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:325    .text.netbuf_ref:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:331    .text.netbuf_ref:00000000 netbuf_ref
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:434    .text.netbuf_ref:00000050 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:441    .rodata.netbuf_chain.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:448    .text.netbuf_chain:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:454    .text.netbuf_chain:00000000 netbuf_chain
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:542    .text.netbuf_chain:0000003c $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:550    .rodata.netbuf_data.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:560    .text.netbuf_data:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:566    .text.netbuf_data:00000000 netbuf_data
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:692    .text.netbuf_data:00000058 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:701    .rodata.netbuf_next.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:705    .text.netbuf_next:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:711    .text.netbuf_next:00000000 netbuf_next
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:784    .text.netbuf_next:00000030 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:791    .rodata.netbuf_first.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:795    .text.netbuf_first:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:801    .text.netbuf_first:00000000 netbuf_first
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccX7SWMf.s:847    .text.netbuf_first:00000018 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:19     .text.netbuf_new:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:25     .text.netbuf_new:00000000 netbuf_new
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:64     .text.netbuf_delete:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:70     .text.netbuf_delete:00000000 netbuf_delete
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:122    .rodata.netbuf_alloc.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:136    .text.netbuf_alloc:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:142    .text.netbuf_alloc:00000000 netbuf_alloc
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:238    .text.netbuf_alloc:0000004c $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:246    .rodata.netbuf_free.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:250    .text.netbuf_free:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:256    .text.netbuf_free:00000000 netbuf_free
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:314    .text.netbuf_free:00000024 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:321    .rodata.netbuf_ref.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:325    .text.netbuf_ref:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:331    .text.netbuf_ref:00000000 netbuf_ref
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:434    .text.netbuf_ref:00000050 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:441    .rodata.netbuf_chain.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:448    .text.netbuf_chain:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:454    .text.netbuf_chain:00000000 netbuf_chain
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:542    .text.netbuf_chain:0000003c $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:550    .rodata.netbuf_data.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:560    .text.netbuf_data:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:566    .text.netbuf_data:00000000 netbuf_data
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:692    .text.netbuf_data:00000058 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:701    .rodata.netbuf_next.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:705    .text.netbuf_next:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:711    .text.netbuf_next:00000000 netbuf_next
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:784    .text.netbuf_next:00000030 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:791    .rodata.netbuf_first.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:795    .text.netbuf_first:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:801    .text.netbuf_first:00000000 netbuf_first
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc64M7ae.s:847    .text.netbuf_first:00000018 $d
 
 UNDEFINED SYMBOLS
 memp_malloc
