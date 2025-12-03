@@ -56,6 +56,8 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
+extern ETH_HandleTypeDef heth;
+void MX_ETH_Init(void);
 
 /* USER CODE END EFP */
 

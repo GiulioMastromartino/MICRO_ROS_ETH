@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 1
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 1
   30:../../CM7/LWIP/App/lwip.c **** 
   31:../../CM7/LWIP/App/lwip.c **** /* USER CODE BEGIN 0 */
   32:../../CM7/LWIP/App/lwip.c **** 
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 2
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s 			page 2
 
 
   33:../../CM7/LWIP/App/lwip.c **** /* USER CODE END 0 */
@@ -109,16 +109,16 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 1
   78:../../CM7/LWIP/App/lwip.c ****   NETMASK_ADDRESS[3] = 240;
   79:../../CM7/LWIP/App/lwip.c **** 
   80:../../CM7/LWIP/App/lwip.c ****   // Gateway Address (your router/hotspot)
-  81:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[0] = 192;
-  82:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[1] = 168;
+  81:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[0] = 0;
+  82:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[1] = 0;
   83:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[2] = 0;
-  84:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[3] = 8;  // ← Usually .1 is the gateway
+  84:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[3] = 0;  // ← Usually .1 is the gateway
   85:../../CM7/LWIP/App/lwip.c **** 
   86:../../CM7/LWIP/App/lwip.c **** 
   87:../../CM7/LWIP/App/lwip.c **** /* USER CODE BEGIN IP_ADDRESSES */
   88:../../CM7/LWIP/App/lwip.c **** /* USER CODE END IP_ADDRESSES */
   89:../../CM7/LWIP/App/lwip.c **** 
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 3
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s 			page 3
 
 
   90:../../CM7/LWIP/App/lwip.c ****   /* Initialize the LwIP stack with RTOS */
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 1
   32              		.loc 1 138 3 view .LVU1
  139:../../CM7/LWIP/App/lwip.c ****   {
  140:../../CM7/LWIP/App/lwip.c **** /* USER CODE BEGIN 5 */
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 4
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s 			page 4
 
 
  141:../../CM7/LWIP/App/lwip.c **** /* USER CODE END 5 */
@@ -229,16 +229,16 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 1
   69:../../CM7/LWIP/App/lwip.c ****   IP_ADDRESS[1] = 168;
   69              		.loc 1 69 17 is_stmt 0 view .LVU7
   70 0004 424F     		ldr	r7, .L4
-  71 0006 C021     		movs	r1, #192
-  72 0008 3970     		strb	r1, [r7]
+  71 0006 C023     		movs	r3, #192
+  72 0008 3B70     		strb	r3, [r7]
   70:../../CM7/LWIP/App/lwip.c ****   IP_ADDRESS[2] = 0;
   73              		.loc 1 70 3 is_stmt 1 view .LVU8
   70:../../CM7/LWIP/App/lwip.c ****   IP_ADDRESS[2] = 0;
   74              		.loc 1 70 17 is_stmt 0 view .LVU9
-  75 000a A822     		movs	r2, #168
-  76 000c 7A70     		strb	r2, [r7, #1]
+  75 000a A823     		movs	r3, #168
+  76 000c 7B70     		strb	r3, [r7, #1]
   71:../../CM7/LWIP/App/lwip.c ****   IP_ADDRESS[3] = 3;  // ← STM32's IP (not .12 which is Raspberry Pi)
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 5
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s 			page 5
 
 
   77              		.loc 1 71 3 is_stmt 1 view .LVU10
@@ -275,279 +275,278 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 1
   97              		.loc 1 78 22 is_stmt 0 view .LVU21
   98 0020 F023     		movs	r3, #240
   99 0022 F370     		strb	r3, [r6, #3]
-  81:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[1] = 168;
+  81:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[1] = 0;
  100              		.loc 1 81 3 is_stmt 1 view .LVU22
-  81:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[1] = 168;
+  81:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[1] = 0;
  101              		.loc 1 81 22 is_stmt 0 view .LVU23
  102 0024 3C4D     		ldr	r5, .L4+8
- 103 0026 2970     		strb	r1, [r5]
+ 103 0026 2C70     		strb	r4, [r5]
   82:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[2] = 0;
  104              		.loc 1 82 3 is_stmt 1 view .LVU24
   82:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[2] = 0;
  105              		.loc 1 82 22 is_stmt 0 view .LVU25
- 106 0028 6A70     		strb	r2, [r5, #1]
-  83:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[3] = 8;  // ← Usually .1 is the gateway
+ 106 0028 6C70     		strb	r4, [r5, #1]
+  83:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[3] = 0;  // ← Usually .1 is the gateway
  107              		.loc 1 83 3 is_stmt 1 view .LVU26
-  83:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[3] = 8;  // ← Usually .1 is the gateway
+  83:../../CM7/LWIP/App/lwip.c ****   GATEWAY_ADDRESS[3] = 0;  // ← Usually .1 is the gateway
  108              		.loc 1 83 22 is_stmt 0 view .LVU27
  109 002a AC70     		strb	r4, [r5, #2]
   84:../../CM7/LWIP/App/lwip.c **** 
  110              		.loc 1 84 3 is_stmt 1 view .LVU28
   84:../../CM7/LWIP/App/lwip.c **** 
  111              		.loc 1 84 22 is_stmt 0 view .LVU29
- 112 002c 0823     		movs	r3, #8
- 113 002e EB70     		strb	r3, [r5, #3]
+ 112 002c EC70     		strb	r4, [r5, #3]
   91:../../CM7/LWIP/App/lwip.c **** 
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 6
+ 113              		.loc 1 91 3 is_stmt 1 view .LVU30
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s 			page 6
 
 
- 114              		.loc 1 91 3 is_stmt 1 view .LVU30
- 115 0030 2146     		mov	r1, r4
- 116 0032 2046     		mov	r0, r4
- 117 0034 FFF7FEFF 		bl	tcpip_init
- 118              	.LVL1:
+ 114 002e 2146     		mov	r1, r4
+ 115 0030 2046     		mov	r0, r4
+ 116 0032 FFF7FEFF 		bl	tcpip_init
+ 117              	.LVL1:
   94:../../CM7/LWIP/App/lwip.c ****   IP4_ADDR(&netmask, NETMASK_ADDRESS[0], NETMASK_ADDRESS[1] , NETMASK_ADDRESS[2], NETMASK_ADDRESS[3
- 119              		.loc 1 94 3 view .LVU31
- 120 0038 3A78     		ldrb	r2, [r7]	@ zero_extendqisi2
- 121 003a 7B78     		ldrb	r3, [r7, #1]	@ zero_extendqisi2
- 122 003c 1B04     		lsls	r3, r3, #16
- 123 003e 43EA0263 		orr	r3, r3, r2, lsl #24
- 124 0042 BA78     		ldrb	r2, [r7, #2]	@ zero_extendqisi2
- 125 0044 43EA0223 		orr	r3, r3, r2, lsl #8
- 126 0048 F978     		ldrb	r1, [r7, #3]	@ zero_extendqisi2
- 127 004a 0B43     		orrs	r3, r3, r1
- 128 004c 1A02     		lsls	r2, r3, #8
- 129 004e 02F47F02 		and	r2, r2, #16711680
- 130 0052 42EA0162 		orr	r2, r2, r1, lsl #24
- 131 0056 190A     		lsrs	r1, r3, #8
- 132 0058 01F47F41 		and	r1, r1, #65280
- 133 005c 0A43     		orrs	r2, r2, r1
- 134 005e 42EA1363 		orr	r3, r2, r3, lsr #24
- 135 0062 2E49     		ldr	r1, .L4+12
- 136 0064 0B60     		str	r3, [r1]
+ 118              		.loc 1 94 3 view .LVU31
+ 119 0036 3A78     		ldrb	r2, [r7]	@ zero_extendqisi2
+ 120 0038 7B78     		ldrb	r3, [r7, #1]	@ zero_extendqisi2
+ 121 003a 1B04     		lsls	r3, r3, #16
+ 122 003c 43EA0263 		orr	r3, r3, r2, lsl #24
+ 123 0040 BA78     		ldrb	r2, [r7, #2]	@ zero_extendqisi2
+ 124 0042 43EA0223 		orr	r3, r3, r2, lsl #8
+ 125 0046 F978     		ldrb	r1, [r7, #3]	@ zero_extendqisi2
+ 126 0048 0B43     		orrs	r3, r3, r1
+ 127 004a 1A02     		lsls	r2, r3, #8
+ 128 004c 02F47F02 		and	r2, r2, #16711680
+ 129 0050 42EA0162 		orr	r2, r2, r1, lsl #24
+ 130 0054 190A     		lsrs	r1, r3, #8
+ 131 0056 01F47F41 		and	r1, r1, #65280
+ 132 005a 0A43     		orrs	r2, r2, r1
+ 133 005c 42EA1363 		orr	r3, r2, r3, lsr #24
+ 134 0060 2E49     		ldr	r1, .L4+12
+ 135 0062 0B60     		str	r3, [r1]
   95:../../CM7/LWIP/App/lwip.c ****   IP4_ADDR(&gw, GATEWAY_ADDRESS[0], GATEWAY_ADDRESS[1], GATEWAY_ADDRESS[2], GATEWAY_ADDRESS[3]);
- 137              		.loc 1 95 3 view .LVU32
- 138 0066 3278     		ldrb	r2, [r6]	@ zero_extendqisi2
- 139 0068 7378     		ldrb	r3, [r6, #1]	@ zero_extendqisi2
- 140 006a 1B04     		lsls	r3, r3, #16
- 141 006c 43EA0263 		orr	r3, r3, r2, lsl #24
- 142 0070 B278     		ldrb	r2, [r6, #2]	@ zero_extendqisi2
- 143 0072 43EA0223 		orr	r3, r3, r2, lsl #8
- 144 0076 F078     		ldrb	r0, [r6, #3]	@ zero_extendqisi2
- 145 0078 0343     		orrs	r3, r3, r0
- 146 007a 1A02     		lsls	r2, r3, #8
- 147 007c 02F47F02 		and	r2, r2, #16711680
- 148 0080 42EA0062 		orr	r2, r2, r0, lsl #24
- 149 0084 180A     		lsrs	r0, r3, #8
- 150 0086 00F47F40 		and	r0, r0, #65280
- 151 008a 0243     		orrs	r2, r2, r0
- 152 008c 42EA1363 		orr	r3, r2, r3, lsr #24
- 153 0090 234A     		ldr	r2, .L4+16
- 154 0092 1360     		str	r3, [r2]
+ 136              		.loc 1 95 3 view .LVU32
+ 137 0064 3278     		ldrb	r2, [r6]	@ zero_extendqisi2
+ 138 0066 7378     		ldrb	r3, [r6, #1]	@ zero_extendqisi2
+ 139 0068 1B04     		lsls	r3, r3, #16
+ 140 006a 43EA0263 		orr	r3, r3, r2, lsl #24
+ 141 006e B278     		ldrb	r2, [r6, #2]	@ zero_extendqisi2
+ 142 0070 43EA0223 		orr	r3, r3, r2, lsl #8
+ 143 0074 F078     		ldrb	r0, [r6, #3]	@ zero_extendqisi2
+ 144 0076 0343     		orrs	r3, r3, r0
+ 145 0078 1A02     		lsls	r2, r3, #8
+ 146 007a 02F47F02 		and	r2, r2, #16711680
+ 147 007e 42EA0062 		orr	r2, r2, r0, lsl #24
+ 148 0082 180A     		lsrs	r0, r3, #8
+ 149 0084 00F47F40 		and	r0, r0, #65280
+ 150 0088 0243     		orrs	r2, r2, r0
+ 151 008a 42EA1363 		orr	r3, r2, r3, lsr #24
+ 152 008e 244A     		ldr	r2, .L4+16
+ 153 0090 1360     		str	r3, [r2]
   96:../../CM7/LWIP/App/lwip.c **** 
- 155              		.loc 1 96 3 view .LVU33
- 156 0094 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
- 157 0096 6B78     		ldrb	r3, [r5, #1]	@ zero_extendqisi2
- 158 0098 1B04     		lsls	r3, r3, #16
- 159 009a 43EA0063 		orr	r3, r3, r0, lsl #24
- 160 009e A878     		ldrb	r0, [r5, #2]	@ zero_extendqisi2
- 161 00a0 43EA0023 		orr	r3, r3, r0, lsl #8
- 162 00a4 ED78     		ldrb	r5, [r5, #3]	@ zero_extendqisi2
- 163 00a6 2B43     		orrs	r3, r3, r5
- 164 00a8 1802     		lsls	r0, r3, #8
- 165 00aa 00F47F00 		and	r0, r0, #16711680
- 166 00ae 40EA0560 		orr	r0, r0, r5, lsl #24
- 167 00b2 1D0A     		lsrs	r5, r3, #8
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 7
+ 154              		.loc 1 96 3 view .LVU33
+ 155 0092 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+ 156 0094 6B78     		ldrb	r3, [r5, #1]	@ zero_extendqisi2
+ 157 0096 1B04     		lsls	r3, r3, #16
+ 158 0098 43EA0063 		orr	r3, r3, r0, lsl #24
+ 159 009c A878     		ldrb	r0, [r5, #2]	@ zero_extendqisi2
+ 160 009e 43EA0023 		orr	r3, r3, r0, lsl #8
+ 161 00a2 ED78     		ldrb	r5, [r5, #3]	@ zero_extendqisi2
+ 162 00a4 2B43     		orrs	r3, r3, r5
+ 163 00a6 1802     		lsls	r0, r3, #8
+ 164 00a8 00F47F00 		and	r0, r0, #16711680
+ 165 00ac 40EA0560 		orr	r0, r0, r5, lsl #24
+ 166 00b0 1D0A     		lsrs	r5, r3, #8
+ 167 00b2 05F47F45 		and	r5, r5, #65280
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s 			page 7
 
 
- 168 00b4 05F47F45 		and	r5, r5, #65280
- 169 00b8 2843     		orrs	r0, r0, r5
- 170 00ba 40EA1360 		orr	r0, r0, r3, lsr #24
- 171 00be 194B     		ldr	r3, .L4+20
- 172 00c0 1860     		str	r0, [r3]
+ 168 00b6 2843     		orrs	r0, r0, r5
+ 169 00b8 40EA1360 		orr	r0, r0, r3, lsr #24
+ 170 00bc 194B     		ldr	r3, .L4+20
+ 171 00be 1860     		str	r0, [r3]
   99:../../CM7/LWIP/App/lwip.c **** 
- 173              		.loc 1 99 3 view .LVU34
- 174 00c2 194D     		ldr	r5, .L4+24
- 175 00c4 1948     		ldr	r0, .L4+28
- 176 00c6 0290     		str	r0, [sp, #8]
- 177 00c8 1948     		ldr	r0, .L4+32
- 178 00ca 0190     		str	r0, [sp, #4]
- 179 00cc 0094     		str	r4, [sp]
- 180 00ce 2846     		mov	r0, r5
- 181 00d0 FFF7FEFF 		bl	netif_add
- 182              	.LVL2:
+ 172              		.loc 1 99 3 view .LVU34
+ 173 00c0 194D     		ldr	r5, .L4+24
+ 174 00c2 1A48     		ldr	r0, .L4+28
+ 175 00c4 0290     		str	r0, [sp, #8]
+ 176 00c6 1A48     		ldr	r0, .L4+32
+ 177 00c8 0190     		str	r0, [sp, #4]
+ 178 00ca 0094     		str	r4, [sp]
+ 179 00cc 2846     		mov	r0, r5
+ 180 00ce FFF7FEFF 		bl	netif_add
+ 181              	.LVL2:
  102:../../CM7/LWIP/App/lwip.c **** 
- 183              		.loc 1 102 3 view .LVU35
- 184 00d4 2846     		mov	r0, r5
- 185 00d6 FFF7FEFF 		bl	netif_set_default
- 186              	.LVL3:
+ 182              		.loc 1 102 3 view .LVU35
+ 183 00d2 2846     		mov	r0, r5
+ 184 00d4 FFF7FEFF 		bl	netif_set_default
+ 185              	.LVL3:
  105:../../CM7/LWIP/App/lwip.c **** 
- 187              		.loc 1 105 3 view .LVU36
- 188 00da 2846     		mov	r0, r5
- 189 00dc FFF7FEFF 		bl	netif_set_up
- 190              	.LVL4:
+ 186              		.loc 1 105 3 view .LVU36
+ 187 00d8 2846     		mov	r0, r5
+ 188 00da FFF7FEFF 		bl	netif_set_up
+ 189              	.LVL4:
  108:../../CM7/LWIP/App/lwip.c **** 
- 191              		.loc 1 108 3 view .LVU37
- 192 00e0 1449     		ldr	r1, .L4+36
- 193 00e2 2846     		mov	r0, r5
- 194 00e4 FFF7FEFF 		bl	netif_set_link_callback
- 195              	.LVL5:
+ 190              		.loc 1 108 3 view .LVU37
+ 191 00de 1549     		ldr	r1, .L4+36
+ 192 00e0 2846     		mov	r0, r5
+ 193 00e2 FFF7FEFF 		bl	netif_set_link_callback
+ 194              	.LVL5:
  112:../../CM7/LWIP/App/lwip.c ****   attributes.name = "EthLink";
- 196              		.loc 1 112 3 view .LVU38
- 197 00e8 134E     		ldr	r6, .L4+40
- 198 00ea 2422     		movs	r2, #36
- 199 00ec 2146     		mov	r1, r4
- 200 00ee 3046     		mov	r0, r6
- 201 00f0 FFF7FEFF 		bl	memset
- 202              	.LVL6:
+ 195              		.loc 1 112 3 view .LVU38
+ 196 00e6 144E     		ldr	r6, .L4+40
+ 197 00e8 2422     		movs	r2, #36
+ 198 00ea 2146     		mov	r1, r4
+ 199 00ec 3046     		mov	r0, r6
+ 200 00ee FFF7FEFF 		bl	memset
+ 201              	.LVL6:
  113:../../CM7/LWIP/App/lwip.c ****   attributes.stack_size = INTERFACE_THREAD_STACK_SIZE;
- 203              		.loc 1 113 3 view .LVU39
+ 202              		.loc 1 113 3 view .LVU39
  113:../../CM7/LWIP/App/lwip.c ****   attributes.stack_size = INTERFACE_THREAD_STACK_SIZE;
- 204              		.loc 1 113 19 is_stmt 0 view .LVU40
- 205 00f4 114B     		ldr	r3, .L4+44
- 206 00f6 3360     		str	r3, [r6]
+ 203              		.loc 1 113 19 is_stmt 0 view .LVU40
+ 204 00f2 124B     		ldr	r3, .L4+44
+ 205 00f4 3360     		str	r3, [r6]
  114:../../CM7/LWIP/App/lwip.c ****   attributes.priority = osPriorityBelowNormal;
- 207              		.loc 1 114 3 is_stmt 1 view .LVU41
+ 206              		.loc 1 114 3 is_stmt 1 view .LVU41
  114:../../CM7/LWIP/App/lwip.c ****   attributes.priority = osPriorityBelowNormal;
- 208              		.loc 1 114 25 is_stmt 0 view .LVU42
- 209 00f8 4FF48063 		mov	r3, #1024
- 210 00fc 7361     		str	r3, [r6, #20]
+ 207              		.loc 1 114 25 is_stmt 0 view .LVU42
+ 208 00f6 4FF48063 		mov	r3, #1024
+ 209 00fa 7361     		str	r3, [r6, #20]
  115:../../CM7/LWIP/App/lwip.c ****   osThreadNew(ethernet_link_thread, &gnetif, &attributes);
- 211              		.loc 1 115 3 is_stmt 1 view .LVU43
+ 210              		.loc 1 115 3 is_stmt 1 view .LVU43
  115:../../CM7/LWIP/App/lwip.c ****   osThreadNew(ethernet_link_thread, &gnetif, &attributes);
- 212              		.loc 1 115 23 is_stmt 0 view .LVU44
- 213 00fe 1023     		movs	r3, #16
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 8
+ 211              		.loc 1 115 23 is_stmt 0 view .LVU44
+ 212 00fc 1023     		movs	r3, #16
+ 213 00fe B361     		str	r3, [r6, #24]
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s 			page 8
 
 
- 214 0100 B361     		str	r3, [r6, #24]
  116:../../CM7/LWIP/App/lwip.c **** /* USER CODE END H7_OS_THREAD_NEW_CMSIS_RTOS_V2 */
- 215              		.loc 1 116 3 is_stmt 1 view .LVU45
- 216 0102 3246     		mov	r2, r6
- 217 0104 2946     		mov	r1, r5
- 218 0106 0E48     		ldr	r0, .L4+48
- 219 0108 FFF7FEFF 		bl	osThreadNew
- 220              	.LVL7:
+ 214              		.loc 1 116 3 is_stmt 1 view .LVU45
+ 215 0100 3246     		mov	r2, r6
+ 216 0102 2946     		mov	r1, r5
+ 217 0104 0E48     		ldr	r0, .L4+48
+ 218 0106 FFF7FEFF 		bl	osThreadNew
+ 219              	.LVL7:
  122:../../CM7/LWIP/App/lwip.c **** 
- 221              		.loc 1 122 1 is_stmt 0 view .LVU46
- 222 010c 05B0     		add	sp, sp, #20
- 223              	.LCFI2:
- 224              		.cfi_def_cfa_offset 20
- 225              		@ sp needed
- 226 010e F0BD     		pop	{r4, r5, r6, r7, pc}
- 227              	.L5:
- 228              		.align	2
- 229              	.L4:
- 230 0110 00000000 		.word	IP_ADDRESS
- 231 0114 00000000 		.word	NETMASK_ADDRESS
- 232 0118 00000000 		.word	GATEWAY_ADDRESS
- 233 011c 00000000 		.word	ipaddr
- 234 0120 00000000 		.word	netmask
- 235 0124 00000000 		.word	gw
- 236 0128 00000000 		.word	gnetif
- 237 012c 00000000 		.word	tcpip_input
- 238 0130 00000000 		.word	ethernetif_init
- 239 0134 00000000 		.word	ethernet_link_status_updated
- 240 0138 00000000 		.word	attributes
- 241 013c 00000000 		.word	.LC0
- 242 0140 00000000 		.word	ethernet_link_thread
- 243              		.cfi_endproc
- 244              	.LFE174:
- 246              		.global	attributes
- 247              		.section	.bss.attributes,"aw",%nobits
- 248              		.align	2
- 251              	attributes:
- 252 0000 00000000 		.space	36
- 252      00000000 
- 252      00000000 
- 252      00000000 
- 252      00000000 
- 253              		.global	GATEWAY_ADDRESS
- 254              		.section	.bss.GATEWAY_ADDRESS,"aw",%nobits
- 255              		.align	2
- 258              	GATEWAY_ADDRESS:
- 259 0000 00000000 		.space	4
- 260              		.global	NETMASK_ADDRESS
- 261              		.section	.bss.NETMASK_ADDRESS,"aw",%nobits
- 262              		.align	2
- 265              	NETMASK_ADDRESS:
- 266 0000 00000000 		.space	4
- 267              		.global	IP_ADDRESS
- 268              		.section	.bss.IP_ADDRESS,"aw",%nobits
- 269              		.align	2
- 272              	IP_ADDRESS:
- 273 0000 00000000 		.space	4
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 9
+ 220              		.loc 1 122 1 is_stmt 0 view .LVU46
+ 221 010a 05B0     		add	sp, sp, #20
+ 222              	.LCFI2:
+ 223              		.cfi_def_cfa_offset 20
+ 224              		@ sp needed
+ 225 010c F0BD     		pop	{r4, r5, r6, r7, pc}
+ 226              	.L5:
+ 227 010e 00BF     		.align	2
+ 228              	.L4:
+ 229 0110 00000000 		.word	IP_ADDRESS
+ 230 0114 00000000 		.word	NETMASK_ADDRESS
+ 231 0118 00000000 		.word	GATEWAY_ADDRESS
+ 232 011c 00000000 		.word	ipaddr
+ 233 0120 00000000 		.word	netmask
+ 234 0124 00000000 		.word	gw
+ 235 0128 00000000 		.word	gnetif
+ 236 012c 00000000 		.word	tcpip_input
+ 237 0130 00000000 		.word	ethernetif_init
+ 238 0134 00000000 		.word	ethernet_link_status_updated
+ 239 0138 00000000 		.word	attributes
+ 240 013c 00000000 		.word	.LC0
+ 241 0140 00000000 		.word	ethernet_link_thread
+ 242              		.cfi_endproc
+ 243              	.LFE174:
+ 245              		.global	attributes
+ 246              		.section	.bss.attributes,"aw",%nobits
+ 247              		.align	2
+ 250              	attributes:
+ 251 0000 00000000 		.space	36
+ 251      00000000 
+ 251      00000000 
+ 251      00000000 
+ 251      00000000 
+ 252              		.global	GATEWAY_ADDRESS
+ 253              		.section	.bss.GATEWAY_ADDRESS,"aw",%nobits
+ 254              		.align	2
+ 257              	GATEWAY_ADDRESS:
+ 258 0000 00000000 		.space	4
+ 259              		.global	NETMASK_ADDRESS
+ 260              		.section	.bss.NETMASK_ADDRESS,"aw",%nobits
+ 261              		.align	2
+ 264              	NETMASK_ADDRESS:
+ 265 0000 00000000 		.space	4
+ 266              		.global	IP_ADDRESS
+ 267              		.section	.bss.IP_ADDRESS,"aw",%nobits
+ 268              		.align	2
+ 271              	IP_ADDRESS:
+ 272 0000 00000000 		.space	4
+ 273              		.global	gw
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s 			page 9
 
 
- 274              		.global	gw
- 275              		.section	.bss.gw,"aw",%nobits
- 276              		.align	2
- 279              	gw:
- 280 0000 00000000 		.space	4
- 281              		.global	netmask
- 282              		.section	.bss.netmask,"aw",%nobits
- 283              		.align	2
- 286              	netmask:
- 287 0000 00000000 		.space	4
- 288              		.global	ipaddr
- 289              		.section	.bss.ipaddr,"aw",%nobits
- 290              		.align	2
- 293              	ipaddr:
- 294 0000 00000000 		.space	4
- 295              		.global	gnetif
- 296              		.section	.bss.gnetif,"aw",%nobits
- 297              		.align	2
- 300              	gnetif:
- 301 0000 00000000 		.space	52
- 301      00000000 
- 301      00000000 
- 301      00000000 
- 301      00000000 
- 302              		.text
- 303              	.Letext0:
- 304              		.file 2 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_defa
- 305              		.file 3 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h
- 306              		.file 4 "../../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h"
- 307              		.file 5 "../../Middlewares/Third_Party/LwIP/src/include/lwip/err.h"
- 308              		.file 6 "../../Middlewares/Third_Party/LwIP/src/include/lwip/pbuf.h"
- 309              		.file 7 "../../Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h"
- 310              		.file 8 "../../Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h"
- 311              		.file 9 "../../Middlewares/Third_Party/LwIP/src/include/lwip/netif.h"
- 312              		.file 10 "../../Middlewares/Third_Party/LwIP/src/include/lwip/memp.h"
- 313              		.file 11 "../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
- 314              		.file 12 "../../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h"
- 315              		.file 13 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h"
- 316              		.file 14 "../../CM7/LWIP/Target/ethernetif.h"
- 317              		.file 15 "<built-in>"
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s 			page 10
+ 274              		.section	.bss.gw,"aw",%nobits
+ 275              		.align	2
+ 278              	gw:
+ 279 0000 00000000 		.space	4
+ 280              		.global	netmask
+ 281              		.section	.bss.netmask,"aw",%nobits
+ 282              		.align	2
+ 285              	netmask:
+ 286 0000 00000000 		.space	4
+ 287              		.global	ipaddr
+ 288              		.section	.bss.ipaddr,"aw",%nobits
+ 289              		.align	2
+ 292              	ipaddr:
+ 293 0000 00000000 		.space	4
+ 294              		.global	gnetif
+ 295              		.section	.bss.gnetif,"aw",%nobits
+ 296              		.align	2
+ 299              	gnetif:
+ 300 0000 00000000 		.space	52
+ 300      00000000 
+ 300      00000000 
+ 300      00000000 
+ 300      00000000 
+ 301              		.text
+ 302              	.Letext0:
+ 303              		.file 2 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_defa
+ 304              		.file 3 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h
+ 305              		.file 4 "../../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h"
+ 306              		.file 5 "../../Middlewares/Third_Party/LwIP/src/include/lwip/err.h"
+ 307              		.file 6 "../../Middlewares/Third_Party/LwIP/src/include/lwip/pbuf.h"
+ 308              		.file 7 "../../Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h"
+ 309              		.file 8 "../../Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h"
+ 310              		.file 9 "../../Middlewares/Third_Party/LwIP/src/include/lwip/netif.h"
+ 311              		.file 10 "../../Middlewares/Third_Party/LwIP/src/include/lwip/memp.h"
+ 312              		.file 11 "../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ 313              		.file 12 "../../Middlewares/Third_Party/LwIP/src/include/lwip/tcpip.h"
+ 314              		.file 13 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h"
+ 315              		.file 14 "../../CM7/LWIP/Target/ethernetif.h"
+ 316              		.file 15 "<built-in>"
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 lwip.c
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:19     .text.ethernet_link_status_updated:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:24     .text.ethernet_link_status_updated:00000000 ethernet_link_status_updated
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:41     .rodata.MX_LWIP_Init.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:45     .text.MX_LWIP_Init:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:51     .text.MX_LWIP_Init:00000000 MX_LWIP_Init
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:230    .text.MX_LWIP_Init:00000110 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:272    .bss.IP_ADDRESS:00000000 IP_ADDRESS
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:265    .bss.NETMASK_ADDRESS:00000000 NETMASK_ADDRESS
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:258    .bss.GATEWAY_ADDRESS:00000000 GATEWAY_ADDRESS
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:293    .bss.ipaddr:00000000 ipaddr
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:286    .bss.netmask:00000000 netmask
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:279    .bss.gw:00000000 gw
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:300    .bss.gnetif:00000000 gnetif
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:251    .bss.attributes:00000000 attributes
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:248    .bss.attributes:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:255    .bss.GATEWAY_ADDRESS:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:262    .bss.NETMASK_ADDRESS:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:269    .bss.IP_ADDRESS:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:276    .bss.gw:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:283    .bss.netmask:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:290    .bss.ipaddr:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwmd0Gv.s:297    .bss.gnetif:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:19     .text.ethernet_link_status_updated:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:24     .text.ethernet_link_status_updated:00000000 ethernet_link_status_updated
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:41     .rodata.MX_LWIP_Init.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:45     .text.MX_LWIP_Init:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:51     .text.MX_LWIP_Init:00000000 MX_LWIP_Init
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:229    .text.MX_LWIP_Init:00000110 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:271    .bss.IP_ADDRESS:00000000 IP_ADDRESS
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:264    .bss.NETMASK_ADDRESS:00000000 NETMASK_ADDRESS
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:257    .bss.GATEWAY_ADDRESS:00000000 GATEWAY_ADDRESS
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:292    .bss.ipaddr:00000000 ipaddr
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:285    .bss.netmask:00000000 netmask
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:278    .bss.gw:00000000 gw
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:299    .bss.gnetif:00000000 gnetif
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:250    .bss.attributes:00000000 attributes
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:247    .bss.attributes:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:254    .bss.GATEWAY_ADDRESS:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:261    .bss.NETMASK_ADDRESS:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:268    .bss.IP_ADDRESS:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:275    .bss.gw:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:282    .bss.netmask:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:289    .bss.ipaddr:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc8FA9SK.s:296    .bss.gnetif:00000000 $d
 
 UNDEFINED SYMBOLS
 tcpip_init

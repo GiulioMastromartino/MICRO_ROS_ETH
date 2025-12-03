@@ -78,10 +78,10 @@ void MX_LWIP_Init(void)
   NETMASK_ADDRESS[3] = 240;
 
   // Gateway Address (your router/hotspot)
-  GATEWAY_ADDRESS[0] = 192;
-  GATEWAY_ADDRESS[1] = 168;
+  GATEWAY_ADDRESS[0] = 0;
+  GATEWAY_ADDRESS[1] = 0;
   GATEWAY_ADDRESS[2] = 0;
-  GATEWAY_ADDRESS[3] = 8;  // ← Usually .1 is the gateway
+  GATEWAY_ADDRESS[3] = 0;  // ← Usually .1 is the gateway
 
 
 /* USER CODE BEGIN IP_ADDRESSES */

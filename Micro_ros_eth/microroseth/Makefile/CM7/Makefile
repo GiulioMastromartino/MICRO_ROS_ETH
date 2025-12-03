@@ -37,6 +37,7 @@ C_SOURCES =  \
 ../../CM7/Core/Src/main.c \
 ../../CM7/Core/Src/gpio.c \
 ../../CM7/Core/Src/freertos.c \
+../../CM7/Core/Src/eth.c \
 ../../CM7/Core/Src/stm32h7xx_it.c \
 ../../CM7/Core/Src/stm32h7xx_hal_msp.c \
 ../../CM7/Core/Src/stm32h7xx_hal_timebase_tim.c \

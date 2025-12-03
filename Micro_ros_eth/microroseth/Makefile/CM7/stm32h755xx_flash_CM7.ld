@@ -3,29 +3,10 @@
 **
 **  File        : LinkerScript.ld
 **
+**  Abstract    : Linker script for STM32H755 (Cortex-M7)
+**                1024Kbytes FLASH and correct RAM mapping for Ethernet
 **
-**  Abstract    : Linker script for STM32H7 series
-**                1024Kbytes FLASH and 192Kbytes RAM
-**
-**                Set heap size, stack size and stack location according
-**                to application requirements.
-**
-**                Set memory bank area and size if external memory is used.
-**
-**  Target      : STMicroelectronics STM32
-**
-**  Distribution: The file is distributed �as is,� without any warranty
-**                of any kind.
-**
-*****************************************************************************
-** @attention
-**
-** Copyright (c) 2019 STMicroelectronics.
-** All rights reserved.
-**
-** This software is licensed under terms that can be found in the LICENSE file
-** in the root directory of this software component.
-** If no LICENSE file comes with this software, it is provided AS-IS.
+**  Target      : STMicroelectronics STM32H755ZIT6
 **
 ******************************************************************************
 */
@@ -33,19 +14,23 @@
 /* Entry Point */
 ENTRY(Reset_Handler)
 
-
 /* Specify the memory areas */
 MEMORY
 {
-FLASH (rx)      : ORIGIN = 0x08000000, LENGTH = 1024K
-RAM (xrw)      : ORIGIN = 0x20000000, LENGTH = 128K
-ITCMRAM (xrw)      : ORIGIN = 0x00000000, LENGTH = 64K
+  DTCMRAM (xrw)  : ORIGIN = 0x20000000, LENGTH = 128K
+  ITCMRAM (xrw)  : ORIGIN = 0x00000000, LENGTH = 64K
+  RAM_D1 (xrw)   : ORIGIN = 0x24000000, LENGTH = 512K  /* AXI SRAM */
+  RAM_D2 (xrw)   : ORIGIN = 0x30000000, LENGTH = 288K  /* AHB SRAM (for Ethernet DMA) */
+  RAM_D3 (xrw)   : ORIGIN = 0x38000000, LENGTH = 64K   /* AHB SRAM 4 */
+  FLASH (rx)     : ORIGIN = 0x08000000, LENGTH = 1024K
 }
+
 /* Highest address of the user mode stack */
-_estack = 0x20020000;    /* end of RAM */
+_estack = 0x20020000;    /* end of DTCMRAM */
+
 /* Generate a link error if heap and stack don't fit into RAM */
 _Min_Heap_Size = 0x200;      /* required amount of heap  */
-_Min_Stack_Size = 0x400; /* required amount of stack */
+_Min_Stack_Size = 0x400;     /* required amount of stack */
 
 /* Define output sections */
 SECTIONS
@@ -90,6 +75,7 @@ SECTIONS
     *(.ARM.extab* .gnu.linkonce.armextab.*)
     . = ALIGN(4);
   } >FLASH
+
   .ARM (READONLY) : /* The READONLY keyword is only supported in GCC11 and later, remove it if using GCC10 or earlier. */
   {
     . = ALIGN(4);
@@ -107,6 +93,7 @@ SECTIONS
     PROVIDE_HIDDEN (__preinit_array_end = .);
     . = ALIGN(4);
   } >FLASH
+
   .init_array (READONLY) : /* The READONLY keyword is only supported in GCC11 and later, remove it if using GCC10 or earlier. */
   {
     . = ALIGN(4);
@@ -116,6 +103,7 @@ SECTIONS
     PROVIDE_HIDDEN (__init_array_end = .);
     . = ALIGN(4);
   } >FLASH
+
   .fini_array (READONLY) : /* The READONLY keyword is only supported in GCC11 and later, remove it if using GCC10 or earlier. */
   {
     . = ALIGN(4);
@@ -130,15 +118,14 @@ SECTIONS
   _sidata = LOADADDR(.data);
 
   /* Initialized data sections goes into RAM, load LMA copy after code */
-  .data : 
+  .data :
   {
     . = ALIGN(4);
     _sdata = .;        /* create a global symbol at data start */
     *(.data)           /* .data sections */
     *(.data*)          /* .data* sections */
-
     . = ALIGN(4);
-  } >RAM AT> FLASH
+  } >RAM_D1 AT> FLASH
 
   /* Initialized TLS data section */
   .tdata : ALIGN(4)
@@ -148,7 +135,7 @@ SECTIONS
     _edata = .;        /* define a global symbol at data end */
     PROVIDE(__data_end = .);
     PROVIDE(__tdata_end = .);
-  } >RAM AT> FLASH
+  } >RAM_D1 AT> FLASH
 
   PROVIDE( __tdata_start = ADDR(.tdata) );
   PROVIDE( __tdata_size = __tdata_end - __tdata_start );
@@ -164,9 +151,6 @@ SECTIONS
   PROVIDE( __data_source_end = __tdata_source_end );
   PROVIDE( __data_source_size = __data_source_end - __data_source );
 
-
-  
-  /* Uninitialized data section */
   /* Uninitialized TLS data section */
   .tbss (NOLOAD) : ALIGN(4)
   {
@@ -175,7 +159,7 @@ SECTIONS
     *(.tbss .tbss.*)
     . = ALIGN(4);
     PROVIDE( __tbss_end = . );
-  } >RAM
+  } >RAM_D1
 
   PROVIDE( __tbss_start = ADDR(.tbss) );
   PROVIDE( __tbss_size = __tbss_end - __tbss_start );
@@ -189,23 +173,40 @@ SECTIONS
   PROVIDE( __arm32_tls_tcb_offset = MAX(8, __tls_align) );
   PROVIDE( __arm64_tls_tcb_offset = MAX(16, __tls_align) );
 
+  /* Uninitialized data section */
   .bss (NOLOAD) : ALIGN(4)
   {
-    /* This is used by the startup in order to initialize the .bss secion */
     *(.bss)
     *(.bss*)
     *(COMMON)
-
     . = ALIGN(4);
     _ebss = .;         /* define a global symbol at bss end */
     __bss_end__ = _ebss;
-      PROVIDE( __bss_end = .);
-  } >RAM
-  PROVIDE( __non_tls_bss_start = ADDR(.bss) );
+    PROVIDE( __bss_end = .);
+  } >RAM_D1
 
+  PROVIDE( __non_tls_bss_start = ADDR(.bss) );
   PROVIDE( __bss_start = __tbss_start );
   PROVIDE( __bss_size = __bss_end - __bss_start );
 
+  /* ========================================================================== */
+  /* CRITICAL: Ethernet DMA Descriptors and Buffers in D2 SRAM (Non-Cacheable) */
+  /* This MUST be in RAM_D2 (0x30000000) for proper MPU configuration          */
+  /* ========================================================================== */
+  .lwip_sec (NOLOAD) :
+  {
+    . = ABSOLUTE(0x30000000);
+    *(.RxDecripSection)       /* Ethernet RX DMA Descriptors */
+
+    . = ABSOLUTE(0x30000060);
+    *(.TxDecripSection)       /* Ethernet TX DMA Descriptors */
+
+    . = ABSOLUTE(0x30000200);
+    *(.RxArraySection)        /* Ethernet RX Buffers */
+
+    . = ABSOLUTE(0x30004000);
+    *(.Heap_Mem_Section)      /* LwIP Heap Memory */
+  } >RAM_D2
 
   /* User_heap_stack section, used to check that there is enough RAM left */
   ._user_heap_stack (NOLOAD) :
@@ -216,19 +217,15 @@ SECTIONS
     . = . + _Min_Heap_Size;
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
-  } >RAM
-
-  
+  } >RAM_D1
 
   /* Remove information from the standard libraries */
   /DISCARD/ :
   {
-    libc.a:* ( * )
-    libm.a:* ( * )
-    libgcc.a:* ( * )
+    libc.a ( * )
+    libm.a ( * )
+    libgcc.a ( * )
   }
 
   .ARM.attributes 0 : { *(.ARM.attributes) }
 }
-
-

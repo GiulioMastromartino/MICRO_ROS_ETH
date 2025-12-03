@@ -43,6 +43,7 @@
 void SystemClock_Config(void);
 static void MPU_Config(void);
 void MX_FREERTOS_Init(void);
+void MX_ETH_Init(void);
 /* USER CODE BEGIN PFP */
 /* USER CODE END PFP */
 
@@ -119,6 +120,7 @@ Error_Handler();
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  MX_ETH_Init();
 
   // NOTE: MX_LWIP_Init() is NOT called here because it uses RTOS primitives.
   // It is usually called inside the DefaultTask in freertos.c or automagically
