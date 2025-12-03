@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
    1:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** /**
    2:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****  * @file
    3:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****  * SLIP Interface
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 2
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 2
 
 
    4:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****  *
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
   58:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****  *           pbuf_alloc to work on ISR level!).
   59:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****  *
   60:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****  */
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 3
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 3
 
 
   61:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** 
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  115:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** static err_t
  116:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** slipif_output(struct netif *netif, struct pbuf *p)
  117:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** {
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 4
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 4
 
 
  118:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****   struct slipif_priv *priv;
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  172:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** slipif_output_v4(struct netif *netif, struct pbuf *p, const ip4_addr_t *ipaddr)
  173:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** {
  174:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****   LWIP_UNUSED_ARG(ipaddr);
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 5
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 5
 
 
  175:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****   return slipif_output(netif, p);
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
   57              		.loc 1 212 3 view .LVU5
   58 0004 0446     		mov	r4, r0
   59 0006 60B1     		cbz	r0, .L19
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 6
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 6
 
 
   60              	.LVL1:
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  245:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****       switch (c) {
   82              		.loc 1 245 7 is_stmt 1 view .LVU17
   83 0016 DC2D     		cmp	r5, #220
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 7
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 7
 
 
   84 0018 27D0     		beq	.L15
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  236:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****           return NULL;
  125              		.loc 1 236 23 is_stmt 0 view .LVU28
  126 0046 0123     		movs	r3, #1
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 8
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 8
 
 
  127 0048 2373     		strb	r3, [r4, #12]
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  163              		.loc 1 232 13 is_stmt 1 view .LVU46
  232:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****           }
  164              		.loc 1 232 20 is_stmt 0 view .LVU47
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 9
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 9
 
 
  165 0068 39E0     		b	.L1
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  284:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****   if ((priv->p != NULL) && (priv->recved <= SLIP_MAX_SIZE)) {
  185              		.loc 1 284 3 is_stmt 1 view .LVU55
  186              		.loc 1 284 12 is_stmt 0 view .LVU56
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 10
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 10
 
 
  187 0074 6068     		ldr	r0, [r4, #4]
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  234              		.loc 1 291 49 discriminator 1 view .LVU79
  235 00a8 5A89     		ldrh	r2, [r3, #10]
  236              		.loc 1 291 33 discriminator 1 view .LVU80
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 11
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 11
 
 
  237 00aa A2B1     		cbz	r2, .L13
@@ -658,7 +658,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  270              	.L12:
  279:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****     }
  271              		.loc 1 279 7 view .LVU95
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 12
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 12
 
 
  279:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****     }
@@ -718,7 +718,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  314              		@ args = 0, pretend = 0, frame = 0
  315              		@ frame_needed = 0, uses_anonymous_args = 0
  316              		.loc 1 311 1 is_stmt 0 view .LVU103
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 13
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 13
 
 
  317 0000 38B5     		push	{r3, r4, r5, lr}
@@ -778,7 +778,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  364              	slipif_loop_thread:
  365              	.LVL25:
  366              	.LFB178:
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 14
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 14
 
 
  320:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** 
@@ -838,7 +838,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  402 0018 9DF80710 		ldrb	r1, [sp, #7]	@ zero_extendqisi2
  403 001c 2846     		mov	r0, r5
  404 001e FFF7FEFF 		bl	slipif_rxbyte_input
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 15
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 15
 
 
  405              	.LVL29:
@@ -898,7 +898,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  448              		.loc 1 124 3 view .LVU137
  124:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****   LWIP_ASSERT("p != NULL", (p != NULL));
  449              		.loc 1 124 3 view .LVU138
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 16
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 16
 
 
  450 0008 236A     		ldr	r3, [r4, #32]
@@ -958,7 +958,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  488 0026 EFE7     		b	.L34
  489              	.L48:
  124:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****   LWIP_ASSERT("p != NULL", (p != NULL));
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 17
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 17
 
 
  490              		.loc 1 124 3 is_stmt 1 discriminator 1 view .LVU155
@@ -1018,7 +1018,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  533              		.loc 1 135 22 is_stmt 0 discriminator 1 view .LVU166
  534 0058 6B89     		ldrh	r3, [r5, #10]
  135:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****       c = ((u8_t *)q->payload)[i];
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 18
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 18
 
 
  535              		.loc 1 135 19 discriminator 1 view .LVU167
@@ -1078,7 +1078,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  577              		.loc 1 134 17 discriminator 1 view .LVU179
  578 0086 0DB1     		cbz	r5, .L51
  135:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****       c = ((u8_t *)q->payload)[i];
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 19
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 19
 
 
  579              		.loc 1 135 12 is_stmt 0 view .LVU180
@@ -1138,7 +1138,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  626              		.loc 1 175 10 is_stmt 0 view .LVU189
  627 0002 FFF7FEFF 		bl	slipif_output
  628              	.LVL57:
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 20
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 20
 
 
  176:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** #endif /* LWIP_IPV4 */
@@ -1198,7 +1198,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  655              		.loc 1 361 1 is_stmt 0 view .LVU192
  656 0000 70B5     		push	{r4, r5, r6, lr}
  657              	.LCFI6:
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 21
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 21
 
 
  658              		.cfi_def_cfa_offset 16
@@ -1258,7 +1258,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  695 001c 84F82E30 		strb	r3, [r4, #46]
  379:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****   netif->name[1] = 'l';
  696              		.loc 1 379 3 is_stmt 1 view .LVU208
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 22
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 22
 
 
  697              		.loc 1 379 18 is_stmt 0 view .LVU209
@@ -1318,7 +1318,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  731 0040 3573     		strb	r5, [r6, #12]
  400:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****   priv->i = 0;
  732              		.loc 1 400 3 is_stmt 1 view .LVU227
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 23
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 23
 
 
  733              		.loc 1 400 11 is_stmt 0 view .LVU228
@@ -1378,7 +1378,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  768 0060 0B4B     		ldr	r3, .L64+12
  769 0062 40F26D12 		movw	r2, #365
  770 0066 0B49     		ldr	r1, .L64+16
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 24
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 24
 
 
  771 0068 0B48     		ldr	r0, .L64+20
@@ -1438,7 +1438,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  423:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****  * @param netif The lwip network interface structure for this slipif
  424:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c ****  */
  425:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** void
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 25
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 25
 
 
  426:../../Middlewares/Third_Party/LwIP/src/netif/slipif.c **** slipif_poll(struct netif *netif)
@@ -1498,7 +1498,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  857              		.loc 1 431 3 discriminator 1 view .LVU263
  858 0010 0F4B     		ldr	r3, .L74
  859 0012 40F2AF12 		movw	r2, #431
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 26
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 26
 
 
  860 0016 0F49     		ldr	r1, .L74+4
@@ -1558,7 +1558,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  905              	.L74:
  906 0050 00000000 		.word	.LC0
  907 0054 38000000 		.word	.LC1
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 27
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 27
 
 
  908 0058 48000000 		.word	.LC2
@@ -1582,32 +1582,32 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 1
  927              		.file 14 "../../Middlewares/Third_Party/LwIP/src/include/lwip/sys.h"
  928              		.file 15 "../../Middlewares/Third_Party/LwIP/src/include/lwip/sio.h"
  929              		.file 16 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/stdio.h"
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s 			page 28
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s 			page 28
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 slipif.c
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:19     .rodata.slipif_rxbyte.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:33     .text.slipif_rxbyte:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:38     .text.slipif_rxbyte:00000000 slipif_rxbyte
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:296    .text.slipif_rxbyte:000000e4 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:304    .text.slipif_rxbyte_input:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:309    .text.slipif_rxbyte_input:00000000 slipif_rxbyte_input
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:359    .text.slipif_loop_thread:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:364    .text.slipif_loop_thread:00000000 slipif_loop_thread
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:411    .rodata.slipif_output.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:415    .text.slipif_output:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:420    .text.slipif_output:00000000 slipif_output
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:597    .text.slipif_output:00000098 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:606    .text.slipif_output_v4:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:611    .text.slipif_output_v4:00000000 slipif_output_v4
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:635    .rodata.slipif_init.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:642    .text.slipif_init:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:648    .text.slipif_init:00000000 slipif_init
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:797    .text.slipif_init:00000084 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:807    .text.slipif_poll:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:813    .text.slipif_poll:00000000 slipif_poll
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccSWziIg.s:906    .text.slipif_poll:00000050 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:19     .rodata.slipif_rxbyte.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:33     .text.slipif_rxbyte:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:38     .text.slipif_rxbyte:00000000 slipif_rxbyte
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:296    .text.slipif_rxbyte:000000e4 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:304    .text.slipif_rxbyte_input:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:309    .text.slipif_rxbyte_input:00000000 slipif_rxbyte_input
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:359    .text.slipif_loop_thread:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:364    .text.slipif_loop_thread:00000000 slipif_loop_thread
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:411    .rodata.slipif_output.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:415    .text.slipif_output:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:420    .text.slipif_output:00000000 slipif_output
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:597    .text.slipif_output:00000098 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:606    .text.slipif_output_v4:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:611    .text.slipif_output_v4:00000000 slipif_output_v4
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:635    .rodata.slipif_init.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:642    .text.slipif_init:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:648    .text.slipif_init:00000000 slipif_init
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:797    .text.slipif_init:00000084 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:807    .text.slipif_poll:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:813    .text.slipif_poll:00000000 slipif_poll
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccwu30MC.s:906    .text.slipif_poll:00000050 $d
 
 UNDEFINED SYMBOLS
 printf
