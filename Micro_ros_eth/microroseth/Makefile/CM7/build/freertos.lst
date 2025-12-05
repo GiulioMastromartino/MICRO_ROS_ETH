@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 1
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 1
   13:../../CM7/Core/Src/freertos.c **** 
   14:../../CM7/Core/Src/freertos.c **** /* USER CODE BEGIN Includes */
   15:../../CM7/Core/Src/freertos.c **** #include <rcl/rcl.h>
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 2
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 2
 
 
   16:../../CM7/Core/Src/freertos.c **** #include <rcl/error_handling.h>
@@ -110,412 +110,514 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 1
   51              		.loc 1 48 3 is_stmt 1 view .LVU2
   52 0004 FFF7FEFF 		bl	MX_LWIP_Init
   53              	.LVL1:
-  49:../../CM7/Core/Src/freertos.c ****   osDelay(3000);
+  49:../../CM7/Core/Src/freertos.c ****   extern struct netif gnetif;  // Reference to network interface in lwip.c
   54              		.loc 1 49 3 view .LVU3
-  55 0008 40F6B830 		movw	r0, #3000
-  56 000c FFF7FEFF 		bl	osDelay
-  57              	.LVL2:
   50:../../CM7/Core/Src/freertos.c **** 
-  51:../../CM7/Core/Src/freertos.c ****   rmw_uros_set_custom_transport(
-  58              		.loc 1 51 3 view .LVU4
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 3
+  51:../../CM7/Core/Src/freertos.c ****   uint32_t wait_start = HAL_GetTick();
+  55              		.loc 1 51 3 view .LVU4
+  56              		.loc 1 51 25 is_stmt 0 view .LVU5
+  57 0008 FFF7FEFF 		bl	HAL_GetTick
+  58              	.LVL2:
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 3
 
 
-  59 0010 384B     		ldr	r3, .L11
-  60 0012 0193     		str	r3, [sp, #4]
-  61 0014 384B     		ldr	r3, .L11+4
-  62 0016 0093     		str	r3, [sp]
-  63 0018 384B     		ldr	r3, .L11+8
-  64 001a 394A     		ldr	r2, .L11+12
-  65 001c 0021     		movs	r1, #0
-  66 001e 0846     		mov	r0, r1
-  67 0020 FFF7FEFF 		bl	rmw_uros_set_custom_transport
-  68              	.LVL3:
-  52:../../CM7/Core/Src/freertos.c ****     false,
-  53:../../CM7/Core/Src/freertos.c ****     NULL,
-  54:../../CM7/Core/Src/freertos.c ****     cubemx_transport_open,
-  55:../../CM7/Core/Src/freertos.c ****     cubemx_transport_close,
-  56:../../CM7/Core/Src/freertos.c ****     cubemx_transport_write,
-  57:../../CM7/Core/Src/freertos.c ****     cubemx_transport_read
-  58:../../CM7/Core/Src/freertos.c ****   );
-  59:../../CM7/Core/Src/freertos.c **** 
-  60:../../CM7/Core/Src/freertos.c ****   rcl_allocator_t freeRTOS_allocator = rcutils_get_zero_initialized_allocator();
-  69              		.loc 1 60 3 view .LVU5
-  70              		.loc 1 60 40 is_stmt 0 view .LVU6
-  71 0024 1FAC     		add	r4, sp, #124
-  72 0026 2046     		mov	r0, r4
-  73 0028 FFF7FEFF 		bl	rcutils_get_zero_initialized_allocator
-  74              	.LVL4:
-  61:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.allocate = microros_allocate;
-  75              		.loc 1 61 3 is_stmt 1 view .LVU7
-  76              		.loc 1 61 31 is_stmt 0 view .LVU8
-  77 002c 354B     		ldr	r3, .L11+16
-  78 002e 1F93     		str	r3, [sp, #124]
-  62:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.deallocate = microros_deallocate;
-  79              		.loc 1 62 3 is_stmt 1 view .LVU9
-  80              		.loc 1 62 33 is_stmt 0 view .LVU10
-  81 0030 354B     		ldr	r3, .L11+20
-  82 0032 2093     		str	r3, [sp, #128]
-  63:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.reallocate = microros_reallocate;
-  83              		.loc 1 63 3 is_stmt 1 view .LVU11
-  84              		.loc 1 63 33 is_stmt 0 view .LVU12
-  85 0034 354B     		ldr	r3, .L11+24
-  86 0036 2193     		str	r3, [sp, #132]
-  64:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.zero_allocate = microros_zero_allocate;
-  87              		.loc 1 64 3 is_stmt 1 view .LVU13
-  88              		.loc 1 64 36 is_stmt 0 view .LVU14
-  89 0038 354B     		ldr	r3, .L11+28
-  90 003a 2293     		str	r3, [sp, #136]
-  65:../../CM7/Core/Src/freertos.c **** 
-  66:../../CM7/Core/Src/freertos.c ****   if (!rcutils_set_default_allocator(&freeRTOS_allocator)) {
-  91              		.loc 1 66 3 is_stmt 1 view .LVU15
-  92              		.loc 1 66 8 is_stmt 0 view .LVU16
-  93 003c 2046     		mov	r0, r4
-  94 003e FFF7FEFF 		bl	rcutils_set_default_allocator
-  95              	.LVL5:
-  96              		.loc 1 66 6 discriminator 1 view .LVU17
-  97 0042 40B9     		cbnz	r0, .L2
-  98              	.L3:
-  67:../../CM7/Core/Src/freertos.c ****       while(1) { HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14); osDelay(100); }
-  99              		.loc 1 67 7 is_stmt 1 discriminator 1 view .LVU18
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 4
+  59 000c 0446     		mov	r4, r0
+  60              	.LVL3:
+  52:../../CM7/Core/Src/freertos.c **** 
+  53:../../CM7/Core/Src/freertos.c ****   while ((HAL_GetTick() - wait_start) < 30000) {
+  61              		.loc 1 53 3 is_stmt 1 view .LVU6
+  62              		.loc 1 53 9 is_stmt 0 view .LVU7
+  63 000e 06E0     		b	.L2
+  64              	.LVL4:
+  65              	.L3:
+  54:../../CM7/Core/Src/freertos.c ****       if (netif_is_up(&gnetif) && netif_is_link_up(&gnetif)) {
+  55:../../CM7/Core/Src/freertos.c ****           // Network ready!
+  56:../../CM7/Core/Src/freertos.c ****           break;
+  57:../../CM7/Core/Src/freertos.c ****       }
+  58:../../CM7/Core/Src/freertos.c **** 
+  59:../../CM7/Core/Src/freertos.c ****       HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+  66              		.loc 1 59 7 is_stmt 1 view .LVU8
+  67 0010 0121     		movs	r1, #1
+  68 0012 4A48     		ldr	r0, .L16
+  69 0014 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+  70              	.LVL5:
+  60:../../CM7/Core/Src/freertos.c ****       osDelay(100);
+  71              		.loc 1 60 7 view .LVU9
+  72 0018 6420     		movs	r0, #100
+  73 001a FFF7FEFF 		bl	osDelay
+  74              	.LVL6:
+  75              	.L2:
+  53:../../CM7/Core/Src/freertos.c ****       if (netif_is_up(&gnetif) && netif_is_link_up(&gnetif)) {
+  76              		.loc 1 53 39 view .LVU10
+  53:../../CM7/Core/Src/freertos.c ****       if (netif_is_up(&gnetif) && netif_is_link_up(&gnetif)) {
+  77              		.loc 1 53 11 is_stmt 0 view .LVU11
+  78 001e FFF7FEFF 		bl	HAL_GetTick
+  79              	.LVL7:
+  53:../../CM7/Core/Src/freertos.c ****       if (netif_is_up(&gnetif) && netif_is_link_up(&gnetif)) {
+  80              		.loc 1 53 25 discriminator 1 view .LVU12
+  81 0022 001B     		subs	r0, r0, r4
+  53:../../CM7/Core/Src/freertos.c ****       if (netif_is_up(&gnetif) && netif_is_link_up(&gnetif)) {
+  82              		.loc 1 53 39 discriminator 1 view .LVU13
+  83 0024 47F22F53 		movw	r3, #29999
+  84 0028 9842     		cmp	r0, r3
+  85 002a 08D8     		bhi	.L4
+  54:../../CM7/Core/Src/freertos.c ****       if (netif_is_up(&gnetif) && netif_is_link_up(&gnetif)) {
+  86              		.loc 1 54 7 is_stmt 1 view .LVU14
+  54:../../CM7/Core/Src/freertos.c ****       if (netif_is_up(&gnetif) && netif_is_link_up(&gnetif)) {
+  87              		.loc 1 54 11 is_stmt 0 view .LVU15
+  88 002c 444B     		ldr	r3, .L16+4
+  89 002e 93F82D30 		ldrb	r3, [r3, #45]	@ zero_extendqisi2
+  54:../../CM7/Core/Src/freertos.c ****       if (netif_is_up(&gnetif) && netif_is_link_up(&gnetif)) {
+  90              		.loc 1 54 10 view .LVU16
+  91 0032 13F0010F 		tst	r3, #1
+  92 0036 EBD0     		beq	.L3
+  54:../../CM7/Core/Src/freertos.c ****       if (netif_is_up(&gnetif) && netif_is_link_up(&gnetif)) {
+  93              		.loc 1 54 32 discriminator 1 view .LVU17
+  94 0038 13F0040F 		tst	r3, #4
+  95 003c E8D0     		beq	.L3
+  96              	.L4:
+  61:../../CM7/Core/Src/freertos.c ****   }
+  62:../../CM7/Core/Src/freertos.c **** 
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 4
 
 
- 100              		.loc 1 67 18 discriminator 1 view .LVU19
- 101 0044 4FF48041 		mov	r1, #16384
- 102 0048 3248     		ldr	r0, .L11+32
- 103 004a FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 104              	.LVL6:
- 105              		.loc 1 67 58 discriminator 1 view .LVU20
- 106 004e 6420     		movs	r0, #100
- 107 0050 FFF7FEFF 		bl	osDelay
- 108              	.LVL7:
- 109              		.loc 1 67 12 discriminator 1 view .LVU21
- 110 0054 F6E7     		b	.L3
- 111              	.L2:
-  68:../../CM7/Core/Src/freertos.c ****   }
-  69:../../CM7/Core/Src/freertos.c **** 
-  70:../../CM7/Core/Src/freertos.c ****   rcl_publisher_t publisher;
- 112              		.loc 1 70 3 view .LVU22
-  71:../../CM7/Core/Src/freertos.c ****   std_msgs__msg__Int32 msg;
- 113              		.loc 1 71 3 view .LVU23
-  72:../../CM7/Core/Src/freertos.c ****   rclc_support_t support;
- 114              		.loc 1 72 3 view .LVU24
-  73:../../CM7/Core/Src/freertos.c ****   rcl_allocator_t allocator;
- 115              		.loc 1 73 3 view .LVU25
-  74:../../CM7/Core/Src/freertos.c ****   rcl_node_t node;
- 116              		.loc 1 74 3 view .LVU26
-  75:../../CM7/Core/Src/freertos.c **** 
-  76:../../CM7/Core/Src/freertos.c ****   allocator = rcl_get_default_allocator();
- 117              		.loc 1 76 3 view .LVU27
- 118              		.loc 1 76 15 is_stmt 0 view .LVU28
- 119 0056 02AC     		add	r4, sp, #8
- 120 0058 2046     		mov	r0, r4
- 121 005a FFF7FEFF 		bl	rcutils_get_default_allocator
- 122              	.LVL8:
- 123 005e 0DF12C0E 		add	lr, sp, #44
- 124 0062 A446     		mov	ip, r4
- 125 0064 BCE80F00 		ldmia	ip!, {r0, r1, r2, r3}
- 126 0068 AEE80F00 		stmia	lr!, {r0, r1, r2, r3}
- 127 006c DCF80030 		ldr	r3, [ip]
- 128 0070 CEF80030 		str	r3, [lr]
-  77:../../CM7/Core/Src/freertos.c **** 
-  78:../../CM7/Core/Src/freertos.c ****   rcl_ret_t ret = rclc_support_init(&support, 0, NULL, &allocator);
- 129              		.loc 1 78 3 is_stmt 1 view .LVU29
- 130              		.loc 1 78 19 is_stmt 0 view .LVU30
- 131 0074 0BAB     		add	r3, sp, #44
- 132 0076 0022     		movs	r2, #0
- 133 0078 1146     		mov	r1, r2
- 134 007a 10A8     		add	r0, sp, #64
- 135 007c FFF7FEFF 		bl	rclc_support_init
- 136              	.LVL9:
+  63:../../CM7/Core/Src/freertos.c ****   if (!netif_is_link_up(&gnetif)) {
+  97              		.loc 1 63 3 is_stmt 1 view .LVU18
+  98              		.loc 1 63 8 is_stmt 0 view .LVU19
+  99 003e 404B     		ldr	r3, .L16+4
+ 100 0040 93F82D30 		ldrb	r3, [r3, #45]	@ zero_extendqisi2
+ 101              		.loc 1 63 6 view .LVU20
+ 102 0044 13F0040F 		tst	r3, #4
+ 103 0048 08D1     		bne	.L6
+ 104              	.L7:
+  64:../../CM7/Core/Src/freertos.c ****       // Network failed - error handling
+  65:../../CM7/Core/Src/freertos.c ****       while(1) {
+ 105              		.loc 1 65 7 is_stmt 1 view .LVU21
+  66:../../CM7/Core/Src/freertos.c ****           HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+ 106              		.loc 1 66 11 view .LVU22
+ 107 004a 4FF48041 		mov	r1, #16384
+ 108 004e 3B48     		ldr	r0, .L16
+ 109 0050 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 110              	.LVL8:
+  67:../../CM7/Core/Src/freertos.c ****           osDelay(200);
+ 111              		.loc 1 67 11 discriminator 1 view .LVU23
+ 112 0054 C820     		movs	r0, #200
+ 113 0056 FFF7FEFF 		bl	osDelay
+ 114              	.LVL9:
+  65:../../CM7/Core/Src/freertos.c ****           HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+ 115              		.loc 1 65 12 view .LVU24
+ 116 005a F6E7     		b	.L7
+ 117              	.L6:
+  68:../../CM7/Core/Src/freertos.c ****       }
+  69:../../CM7/Core/Src/freertos.c ****   }
+  70:../../CM7/Core/Src/freertos.c **** 
+  71:../../CM7/Core/Src/freertos.c ****   rmw_uros_set_custom_transport(
+ 118              		.loc 1 71 3 view .LVU25
+ 119 005c 394B     		ldr	r3, .L16+8
+ 120 005e 0193     		str	r3, [sp, #4]
+ 121 0060 394B     		ldr	r3, .L16+12
+ 122 0062 0093     		str	r3, [sp]
+ 123 0064 394B     		ldr	r3, .L16+16
+ 124 0066 3A4A     		ldr	r2, .L16+20
+ 125 0068 0021     		movs	r1, #0
+ 126 006a 0846     		mov	r0, r1
+ 127 006c FFF7FEFF 		bl	rmw_uros_set_custom_transport
+ 128              	.LVL10:
+  72:../../CM7/Core/Src/freertos.c ****     false,
+  73:../../CM7/Core/Src/freertos.c ****     NULL,
+  74:../../CM7/Core/Src/freertos.c ****     cubemx_transport_open,
+  75:../../CM7/Core/Src/freertos.c ****     cubemx_transport_close,
+  76:../../CM7/Core/Src/freertos.c ****     cubemx_transport_write,
+  77:../../CM7/Core/Src/freertos.c ****     cubemx_transport_read
+  78:../../CM7/Core/Src/freertos.c ****   );
   79:../../CM7/Core/Src/freertos.c **** 
-  80:../../CM7/Core/Src/freertos.c ****   if (ret != RCL_RET_OK) {
- 137              		.loc 1 80 3 is_stmt 1 view .LVU31
- 138              		.loc 1 80 6 is_stmt 0 view .LVU32
- 139 0080 40B1     		cbz	r0, .L4
- 140              	.LVL10:
- 141              	.L5:
-  81:../../CM7/Core/Src/freertos.c ****     while(1) {
- 142              		.loc 1 81 5 is_stmt 1 view .LVU33
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 5
+  80:../../CM7/Core/Src/freertos.c ****   rcl_allocator_t freeRTOS_allocator = rcutils_get_zero_initialized_allocator();
+ 129              		.loc 1 80 3 view .LVU26
+ 130              		.loc 1 80 40 is_stmt 0 view .LVU27
+ 131 0070 1FAC     		add	r4, sp, #124
+ 132              	.LVL11:
+ 133              		.loc 1 80 40 view .LVU28
+ 134 0072 2046     		mov	r0, r4
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 5
 
 
-  82:../../CM7/Core/Src/freertos.c ****         HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
- 143              		.loc 1 82 9 view .LVU34
- 144 0082 4FF48041 		mov	r1, #16384
- 145 0086 2348     		ldr	r0, .L11+32
- 146 0088 FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 147              	.LVL11:
-  83:../../CM7/Core/Src/freertos.c ****         osDelay(100);
- 148              		.loc 1 83 9 discriminator 1 view .LVU35
- 149 008c 6420     		movs	r0, #100
- 150 008e FFF7FEFF 		bl	osDelay
- 151              	.LVL12:
-  81:../../CM7/Core/Src/freertos.c ****     while(1) {
- 152              		.loc 1 81 10 view .LVU36
- 153 0092 F6E7     		b	.L5
- 154              	.LVL13:
- 155              	.L4:
-  84:../../CM7/Core/Src/freertos.c ****     }
-  85:../../CM7/Core/Src/freertos.c ****   }
-  86:../../CM7/Core/Src/freertos.c **** 
-  87:../../CM7/Core/Src/freertos.c ****   rclc_node_init_default(&node, "stm32_eth_node", "", &support);
- 156              		.loc 1 87 3 view .LVU37
- 157 0094 09AC     		add	r4, sp, #36
- 158 0096 10AB     		add	r3, sp, #64
- 159 0098 1F4A     		ldr	r2, .L11+36
- 160 009a 2049     		ldr	r1, .L11+40
- 161 009c 2046     		mov	r0, r4
- 162              	.LVL14:
- 163              		.loc 1 87 3 is_stmt 0 view .LVU38
- 164 009e FFF7FEFF 		bl	rclc_node_init_default
- 165              	.LVL15:
-  88:../../CM7/Core/Src/freertos.c ****   rclc_publisher_init_default(&publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int32),
- 166              		.loc 1 88 3 is_stmt 1 view .LVU39
- 167 00a2 FFF7FEFF 		bl	rosidl_typesupport_c__get_message_type_support_handle__std_msgs__msg__Int32
- 168              	.LVL16:
- 169 00a6 0246     		mov	r2, r0
- 170              		.loc 1 88 3 is_stmt 0 discriminator 1 view .LVU40
- 171 00a8 1D4B     		ldr	r3, .L11+44
- 172 00aa 2146     		mov	r1, r4
- 173 00ac 1EA8     		add	r0, sp, #120
- 174 00ae FFF7FEFF 		bl	rclc_publisher_init_default
- 175              	.LVL17:
+ 135 0074 FFF7FEFF 		bl	rcutils_get_zero_initialized_allocator
+ 136              	.LVL12:
+  81:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.allocate = microros_allocate;
+ 137              		.loc 1 81 3 is_stmt 1 view .LVU29
+ 138              		.loc 1 81 31 is_stmt 0 view .LVU30
+ 139 0078 364B     		ldr	r3, .L16+24
+ 140 007a 1F93     		str	r3, [sp, #124]
+  82:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.deallocate = microros_deallocate;
+ 141              		.loc 1 82 3 is_stmt 1 view .LVU31
+ 142              		.loc 1 82 33 is_stmt 0 view .LVU32
+ 143 007c 364B     		ldr	r3, .L16+28
+ 144 007e 2093     		str	r3, [sp, #128]
+  83:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.reallocate = microros_reallocate;
+ 145              		.loc 1 83 3 is_stmt 1 view .LVU33
+ 146              		.loc 1 83 33 is_stmt 0 view .LVU34
+ 147 0080 364B     		ldr	r3, .L16+32
+ 148 0082 2193     		str	r3, [sp, #132]
+  84:../../CM7/Core/Src/freertos.c ****   freeRTOS_allocator.zero_allocate = microros_zero_allocate;
+ 149              		.loc 1 84 3 is_stmt 1 view .LVU35
+ 150              		.loc 1 84 36 is_stmt 0 view .LVU36
+ 151 0084 364B     		ldr	r3, .L16+36
+ 152 0086 2293     		str	r3, [sp, #136]
+  85:../../CM7/Core/Src/freertos.c **** 
+  86:../../CM7/Core/Src/freertos.c ****   if (!rcutils_set_default_allocator(&freeRTOS_allocator)) {
+ 153              		.loc 1 86 3 is_stmt 1 view .LVU37
+ 154              		.loc 1 86 8 is_stmt 0 view .LVU38
+ 155 0088 2046     		mov	r0, r4
+ 156 008a FFF7FEFF 		bl	rcutils_set_default_allocator
+ 157              	.LVL13:
+ 158              		.loc 1 86 6 discriminator 1 view .LVU39
+ 159 008e 40B9     		cbnz	r0, .L8
+ 160              	.L9:
+  87:../../CM7/Core/Src/freertos.c ****       while(1) { HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14); osDelay(100); }
+ 161              		.loc 1 87 7 is_stmt 1 discriminator 1 view .LVU40
+ 162              		.loc 1 87 18 discriminator 1 view .LVU41
+ 163 0090 4FF48041 		mov	r1, #16384
+ 164 0094 2948     		ldr	r0, .L16
+ 165 0096 FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 166              	.LVL14:
+ 167              		.loc 1 87 58 discriminator 1 view .LVU42
+ 168 009a 6420     		movs	r0, #100
+ 169 009c FFF7FEFF 		bl	osDelay
+ 170              	.LVL15:
+ 171              		.loc 1 87 12 discriminator 1 view .LVU43
+ 172 00a0 F6E7     		b	.L9
+ 173              	.L8:
+  88:../../CM7/Core/Src/freertos.c ****   }
   89:../../CM7/Core/Src/freertos.c **** 
-  90:../../CM7/Core/Src/freertos.c ****   msg.data = 0;
- 176              		.loc 1 90 3 is_stmt 1 view .LVU41
- 177              		.loc 1 90 12 is_stmt 0 view .LVU42
- 178 00b2 0023     		movs	r3, #0
- 179 00b4 1D93     		str	r3, [sp, #116]
- 180 00b6 0BE0     		b	.L8
- 181              	.LVL18:
- 182              	.L10:
-  91:../../CM7/Core/Src/freertos.c **** 
-  92:../../CM7/Core/Src/freertos.c ****   for(;;)
-  93:../../CM7/Core/Src/freertos.c ****   {
-  94:../../CM7/Core/Src/freertos.c ****     HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+  90:../../CM7/Core/Src/freertos.c ****   rcl_publisher_t publisher;
+ 174              		.loc 1 90 3 view .LVU44
+  91:../../CM7/Core/Src/freertos.c ****   std_msgs__msg__Int32 msg;
+ 175              		.loc 1 91 3 view .LVU45
+  92:../../CM7/Core/Src/freertos.c ****   rclc_support_t support;
+ 176              		.loc 1 92 3 view .LVU46
+  93:../../CM7/Core/Src/freertos.c ****   rcl_allocator_t allocator;
+ 177              		.loc 1 93 3 view .LVU47
+  94:../../CM7/Core/Src/freertos.c ****   rcl_node_t node;
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 6
+
+
+ 178              		.loc 1 94 3 view .LVU48
   95:../../CM7/Core/Src/freertos.c **** 
-  96:../../CM7/Core/Src/freertos.c ****     ret = rcl_publish(&publisher, &msg, NULL);
+  96:../../CM7/Core/Src/freertos.c ****   allocator = rcl_get_default_allocator();
+ 179              		.loc 1 96 3 view .LVU49
+ 180              		.loc 1 96 15 is_stmt 0 view .LVU50
+ 181 00a2 02AC     		add	r4, sp, #8
+ 182 00a4 2046     		mov	r0, r4
+ 183 00a6 FFF7FEFF 		bl	rcutils_get_default_allocator
+ 184              	.LVL16:
+ 185 00aa 0DF12C0C 		add	ip, sp, #44
+ 186 00ae 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
+ 187 00b0 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
+ 188 00b4 2368     		ldr	r3, [r4]
+ 189 00b6 CCF80030 		str	r3, [ip]
   97:../../CM7/Core/Src/freertos.c **** 
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 6
+  98:../../CM7/Core/Src/freertos.c ****   rcl_ret_t ret = rclc_support_init(&support, 0, NULL, &allocator);
+ 190              		.loc 1 98 3 is_stmt 1 view .LVU51
+ 191              		.loc 1 98 19 is_stmt 0 view .LVU52
+ 192 00ba 0BAB     		add	r3, sp, #44
+ 193 00bc 0022     		movs	r2, #0
+ 194 00be 1146     		mov	r1, r2
+ 195 00c0 10A8     		add	r0, sp, #64
+ 196 00c2 FFF7FEFF 		bl	rclc_support_init
+ 197              	.LVL17:
+  99:../../CM7/Core/Src/freertos.c **** 
+ 100:../../CM7/Core/Src/freertos.c ****   if (ret != RCL_RET_OK) {
+ 198              		.loc 1 100 3 is_stmt 1 view .LVU53
+ 199              		.loc 1 100 6 is_stmt 0 view .LVU54
+ 200 00c6 40B1     		cbz	r0, .L10
+ 201              	.LVL18:
+ 202              	.L11:
+ 101:../../CM7/Core/Src/freertos.c ****     while(1) {
+ 203              		.loc 1 101 5 is_stmt 1 view .LVU55
+ 102:../../CM7/Core/Src/freertos.c ****         HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+ 204              		.loc 1 102 9 view .LVU56
+ 205 00c8 4FF48041 		mov	r1, #16384
+ 206 00cc 1B48     		ldr	r0, .L16
+ 207 00ce FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 208              	.LVL19:
+ 103:../../CM7/Core/Src/freertos.c ****         osDelay(100);
+ 209              		.loc 1 103 9 discriminator 1 view .LVU57
+ 210 00d2 6420     		movs	r0, #100
+ 211 00d4 FFF7FEFF 		bl	osDelay
+ 212              	.LVL20:
+ 101:../../CM7/Core/Src/freertos.c ****     while(1) {
+ 213              		.loc 1 101 10 view .LVU58
+ 214 00d8 F6E7     		b	.L11
+ 215              	.LVL21:
+ 216              	.L10:
+ 104:../../CM7/Core/Src/freertos.c ****     }
+ 105:../../CM7/Core/Src/freertos.c ****   }
+ 106:../../CM7/Core/Src/freertos.c **** 
+ 107:../../CM7/Core/Src/freertos.c ****   rclc_node_init_default(&node, "stm32_eth_node", "", &support);
+ 217              		.loc 1 107 3 view .LVU59
+ 218 00da 09AC     		add	r4, sp, #36
+ 219 00dc 10AB     		add	r3, sp, #64
+ 220 00de 214A     		ldr	r2, .L16+40
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 7
 
 
-  98:../../CM7/Core/Src/freertos.c ****     if (ret != RCL_RET_OK) {
-  99:../../CM7/Core/Src/freertos.c ****         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
- 183              		.loc 1 99 9 is_stmt 1 view .LVU43
- 184 00b8 0122     		movs	r2, #1
- 185 00ba 4FF48041 		mov	r1, #16384
- 186 00be 1548     		ldr	r0, .L11+32
- 187              	.LVL19:
- 188              		.loc 1 99 9 is_stmt 0 view .LVU44
- 189 00c0 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 190              	.LVL20:
- 191              	.L7:
- 100:../../CM7/Core/Src/freertos.c ****     } else {
- 101:../../CM7/Core/Src/freertos.c ****         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
- 102:../../CM7/Core/Src/freertos.c ****     }
- 103:../../CM7/Core/Src/freertos.c **** 
- 104:../../CM7/Core/Src/freertos.c ****     msg.data++;
- 192              		.loc 1 104 5 is_stmt 1 view .LVU45
- 193              		.loc 1 104 8 is_stmt 0 view .LVU46
- 194 00c4 1D9B     		ldr	r3, [sp, #116]
- 195              		.loc 1 104 13 view .LVU47
- 196 00c6 0133     		adds	r3, r3, #1
- 197 00c8 1D93     		str	r3, [sp, #116]
- 105:../../CM7/Core/Src/freertos.c ****     osDelay(100);
- 198              		.loc 1 105 5 is_stmt 1 view .LVU48
- 199 00ca 6420     		movs	r0, #100
- 200 00cc FFF7FEFF 		bl	osDelay
- 201              	.LVL21:
-  92:../../CM7/Core/Src/freertos.c ****   {
- 202              		.loc 1 92 3 view .LVU49
- 203              	.L8:
-  92:../../CM7/Core/Src/freertos.c ****   {
- 204              		.loc 1 92 3 view .LVU50
-  94:../../CM7/Core/Src/freertos.c **** 
- 205              		.loc 1 94 5 view .LVU51
- 206 00d0 0121     		movs	r1, #1
- 207 00d2 1048     		ldr	r0, .L11+32
- 208 00d4 FFF7FEFF 		bl	HAL_GPIO_TogglePin
- 209              	.LVL22:
-  96:../../CM7/Core/Src/freertos.c **** 
- 210              		.loc 1 96 5 view .LVU52
-  96:../../CM7/Core/Src/freertos.c **** 
- 211              		.loc 1 96 11 is_stmt 0 view .LVU53
- 212 00d8 0022     		movs	r2, #0
- 213 00da 1DA9     		add	r1, sp, #116
- 214 00dc 1EA8     		add	r0, sp, #120
- 215 00de FFF7FEFF 		bl	rcl_publish
- 216              	.LVL23:
-  98:../../CM7/Core/Src/freertos.c ****         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
- 217              		.loc 1 98 5 is_stmt 1 view .LVU54
-  98:../../CM7/Core/Src/freertos.c ****         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
- 218              		.loc 1 98 8 is_stmt 0 view .LVU55
- 219 00e2 0028     		cmp	r0, #0
- 220 00e4 E8D1     		bne	.L10
- 101:../../CM7/Core/Src/freertos.c ****     }
- 221              		.loc 1 101 9 is_stmt 1 view .LVU56
- 222 00e6 0022     		movs	r2, #0
- 223 00e8 4FF48041 		mov	r1, #16384
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 7
+ 221 00e0 2149     		ldr	r1, .L16+44
+ 222 00e2 2046     		mov	r0, r4
+ 223              	.LVL22:
+ 224              		.loc 1 107 3 is_stmt 0 view .LVU60
+ 225 00e4 FFF7FEFF 		bl	rclc_node_init_default
+ 226              	.LVL23:
+ 108:../../CM7/Core/Src/freertos.c ****   rclc_publisher_init_default(&publisher, &node, ROSIDL_GET_MSG_TYPE_SUPPORT(std_msgs, msg, Int32),
+ 227              		.loc 1 108 3 is_stmt 1 view .LVU61
+ 228 00e8 FFF7FEFF 		bl	rosidl_typesupport_c__get_message_type_support_handle__std_msgs__msg__Int32
+ 229              	.LVL24:
+ 230 00ec 0246     		mov	r2, r0
+ 231              		.loc 1 108 3 is_stmt 0 discriminator 1 view .LVU62
+ 232 00ee 1F4B     		ldr	r3, .L16+48
+ 233 00f0 2146     		mov	r1, r4
+ 234 00f2 1EA8     		add	r0, sp, #120
+ 235 00f4 FFF7FEFF 		bl	rclc_publisher_init_default
+ 236              	.LVL25:
+ 109:../../CM7/Core/Src/freertos.c **** 
+ 110:../../CM7/Core/Src/freertos.c ****   msg.data = 0;
+ 237              		.loc 1 110 3 is_stmt 1 view .LVU63
+ 238              		.loc 1 110 12 is_stmt 0 view .LVU64
+ 239 00f8 0023     		movs	r3, #0
+ 240 00fa 1D93     		str	r3, [sp, #116]
+ 241 00fc 0BE0     		b	.L14
+ 242              	.LVL26:
+ 243              	.L12:
+ 111:../../CM7/Core/Src/freertos.c **** 
+ 112:../../CM7/Core/Src/freertos.c ****   for(;;)
+ 113:../../CM7/Core/Src/freertos.c ****   {
+ 114:../../CM7/Core/Src/freertos.c ****     HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+ 115:../../CM7/Core/Src/freertos.c **** 
+ 116:../../CM7/Core/Src/freertos.c ****     ret = rcl_publish(&publisher, &msg, NULL);
+ 117:../../CM7/Core/Src/freertos.c **** 
+ 118:../../CM7/Core/Src/freertos.c ****     if (ret != RCL_RET_OK) {
+ 119:../../CM7/Core/Src/freertos.c ****         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
+ 120:../../CM7/Core/Src/freertos.c ****     } else {
+ 121:../../CM7/Core/Src/freertos.c ****         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_RESET);
+ 244              		.loc 1 121 9 is_stmt 1 view .LVU65
+ 245 00fe 0022     		movs	r2, #0
+ 246 0100 4FF48041 		mov	r1, #16384
+ 247 0104 0D48     		ldr	r0, .L16
+ 248              	.LVL27:
+ 249              		.loc 1 121 9 is_stmt 0 view .LVU66
+ 250 0106 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 251              	.LVL28:
+ 252              	.L13:
+ 122:../../CM7/Core/Src/freertos.c ****     }
+ 123:../../CM7/Core/Src/freertos.c **** 
+ 124:../../CM7/Core/Src/freertos.c ****     msg.data++;
+ 253              		.loc 1 124 5 is_stmt 1 view .LVU67
+ 254              		.loc 1 124 8 is_stmt 0 view .LVU68
+ 255 010a 1D9B     		ldr	r3, [sp, #116]
+ 256              		.loc 1 124 13 view .LVU69
+ 257 010c 0133     		adds	r3, r3, #1
+ 258 010e 1D93     		str	r3, [sp, #116]
+ 125:../../CM7/Core/Src/freertos.c ****     osDelay(100);
+ 259              		.loc 1 125 5 is_stmt 1 view .LVU70
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 8
 
 
- 224 00ec 0948     		ldr	r0, .L11+32
- 225              	.LVL24:
- 101:../../CM7/Core/Src/freertos.c ****     }
- 226              		.loc 1 101 9 is_stmt 0 view .LVU57
- 227 00ee FFF7FEFF 		bl	HAL_GPIO_WritePin
- 228              	.LVL25:
- 229 00f2 E7E7     		b	.L7
- 230              	.L12:
- 231              		.align	2
- 232              	.L11:
- 233 00f4 00000000 		.word	cubemx_transport_read
- 234 00f8 00000000 		.word	cubemx_transport_write
- 235 00fc 00000000 		.word	cubemx_transport_close
- 236 0100 00000000 		.word	cubemx_transport_open
- 237 0104 00000000 		.word	microros_allocate
- 238 0108 00000000 		.word	microros_deallocate
- 239 010c 00000000 		.word	microros_reallocate
- 240 0110 00000000 		.word	microros_zero_allocate
- 241 0114 00040258 		.word	1476527104
- 242 0118 00000000 		.word	.LC0
- 243 011c 04000000 		.word	.LC1
- 244 0120 14000000 		.word	.LC2
- 245              		.cfi_endproc
- 246              	.LFE176:
- 248              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
- 249              		.align	1
- 250              		.global	MX_FREERTOS_Init
- 251              		.syntax unified
- 252              		.thumb
- 253              		.thumb_func
- 255              	MX_FREERTOS_Init:
- 256              	.LFB175:
+ 260 0110 6420     		movs	r0, #100
+ 261 0112 FFF7FEFF 		bl	osDelay
+ 262              	.LVL29:
+ 112:../../CM7/Core/Src/freertos.c ****   {
+ 263              		.loc 1 112 3 view .LVU71
+ 264              	.L14:
+ 112:../../CM7/Core/Src/freertos.c ****   {
+ 265              		.loc 1 112 3 view .LVU72
+ 114:../../CM7/Core/Src/freertos.c **** 
+ 266              		.loc 1 114 5 view .LVU73
+ 267 0116 0121     		movs	r1, #1
+ 268 0118 0848     		ldr	r0, .L16
+ 269 011a FFF7FEFF 		bl	HAL_GPIO_TogglePin
+ 270              	.LVL30:
+ 116:../../CM7/Core/Src/freertos.c **** 
+ 271              		.loc 1 116 5 view .LVU74
+ 116:../../CM7/Core/Src/freertos.c **** 
+ 272              		.loc 1 116 11 is_stmt 0 view .LVU75
+ 273 011e 0022     		movs	r2, #0
+ 274 0120 1DA9     		add	r1, sp, #116
+ 275 0122 1EA8     		add	r0, sp, #120
+ 276 0124 FFF7FEFF 		bl	rcl_publish
+ 277              	.LVL31:
+ 118:../../CM7/Core/Src/freertos.c ****         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
+ 278              		.loc 1 118 5 is_stmt 1 view .LVU76
+ 118:../../CM7/Core/Src/freertos.c ****         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_14, GPIO_PIN_SET);
+ 279              		.loc 1 118 8 is_stmt 0 view .LVU77
+ 280 0128 0028     		cmp	r0, #0
+ 281 012a E8D0     		beq	.L12
+ 119:../../CM7/Core/Src/freertos.c ****     } else {
+ 282              		.loc 1 119 9 is_stmt 1 view .LVU78
+ 283 012c 0122     		movs	r2, #1
+ 284 012e 4FF48041 		mov	r1, #16384
+ 285 0132 0248     		ldr	r0, .L16
+ 286              	.LVL32:
+ 119:../../CM7/Core/Src/freertos.c ****     } else {
+ 287              		.loc 1 119 9 is_stmt 0 view .LVU79
+ 288 0134 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 289              	.LVL33:
+ 290 0138 E7E7     		b	.L13
+ 291              	.L17:
+ 292 013a 00BF     		.align	2
+ 293              	.L16:
+ 294 013c 00040258 		.word	1476527104
+ 295 0140 00000000 		.word	gnetif
+ 296 0144 00000000 		.word	cubemx_transport_read
+ 297 0148 00000000 		.word	cubemx_transport_write
+ 298 014c 00000000 		.word	cubemx_transport_close
+ 299 0150 00000000 		.word	cubemx_transport_open
+ 300 0154 00000000 		.word	microros_allocate
+ 301 0158 00000000 		.word	microros_deallocate
+ 302 015c 00000000 		.word	microros_reallocate
+ 303 0160 00000000 		.word	microros_zero_allocate
+ 304 0164 00000000 		.word	.LC0
+ 305 0168 04000000 		.word	.LC1
+ 306 016c 14000000 		.word	.LC2
+ 307              		.cfi_endproc
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 9
+
+
+ 308              	.LFE176:
+ 310              		.section	.text.MX_FREERTOS_Init,"ax",%progbits
+ 311              		.align	1
+ 312              		.global	MX_FREERTOS_Init
+ 313              		.syntax unified
+ 314              		.thumb
+ 315              		.thumb_func
+ 317              	MX_FREERTOS_Init:
+ 318              	.LFB175:
   40:../../CM7/Core/Src/freertos.c ****   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
- 257              		.loc 1 40 29 is_stmt 1 view -0
- 258              		.cfi_startproc
- 259              		@ args = 0, pretend = 0, frame = 0
- 260              		@ frame_needed = 0, uses_anonymous_args = 0
- 261 0000 08B5     		push	{r3, lr}
- 262              	.LCFI2:
- 263              		.cfi_def_cfa_offset 8
- 264              		.cfi_offset 3, -8
- 265              		.cfi_offset 14, -4
+ 319              		.loc 1 40 29 is_stmt 1 view -0
+ 320              		.cfi_startproc
+ 321              		@ args = 0, pretend = 0, frame = 0
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323 0000 08B5     		push	{r3, lr}
+ 324              	.LCFI2:
+ 325              		.cfi_def_cfa_offset 8
+ 326              		.cfi_offset 3, -8
+ 327              		.cfi_offset 14, -4
   41:../../CM7/Core/Src/freertos.c **** }
- 266              		.loc 1 41 3 view .LVU59
+ 328              		.loc 1 41 3 view .LVU81
   41:../../CM7/Core/Src/freertos.c **** }
- 267              		.loc 1 41 23 is_stmt 0 view .LVU60
- 268 0002 044A     		ldr	r2, .L15
- 269 0004 0021     		movs	r1, #0
- 270 0006 0448     		ldr	r0, .L15+4
- 271 0008 FFF7FEFF 		bl	osThreadNew
- 272              	.LVL26:
+ 329              		.loc 1 41 23 is_stmt 0 view .LVU82
+ 330 0002 044A     		ldr	r2, .L20
+ 331 0004 0021     		movs	r1, #0
+ 332 0006 0448     		ldr	r0, .L20+4
+ 333 0008 FFF7FEFF 		bl	osThreadNew
+ 334              	.LVL34:
   41:../../CM7/Core/Src/freertos.c **** }
- 273              		.loc 1 41 21 discriminator 1 view .LVU61
- 274 000c 034B     		ldr	r3, .L15+8
- 275 000e 1860     		str	r0, [r3]
+ 335              		.loc 1 41 21 discriminator 1 view .LVU83
+ 336 000c 034B     		ldr	r3, .L20+8
+ 337 000e 1860     		str	r0, [r3]
   42:../../CM7/Core/Src/freertos.c **** 
- 276              		.loc 1 42 1 view .LVU62
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 8
+ 338              		.loc 1 42 1 view .LVU84
+ 339 0010 08BD     		pop	{r3, pc}
+ 340              	.L21:
+ 341 0012 00BF     		.align	2
+ 342              	.L20:
+ 343 0014 00000000 		.word	defaultTask_attributes
+ 344 0018 00000000 		.word	StartDefaultTask
+ 345 001c 00000000 		.word	defaultTaskHandle
+ 346              		.cfi_endproc
+ 347              	.LFE175:
+ 349              		.global	defaultTask_attributes
+ 350              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 351              		.align	2
+ 352              	.LC3:
+ 353 0000 64656661 		.ascii	"defaultTask\000"
+ 353      756C7454 
+ 353      61736B00 
+ 354              		.section	.rodata.defaultTask_attributes,"a"
+ 355              		.align	2
+ 358              	defaultTask_attributes:
+ 359 0000 00000000 		.word	.LC3
+ 360 0004 00000000 		.space	16
+ 360      00000000 
+ 360      00000000 
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 10
 
 
- 277 0010 08BD     		pop	{r3, pc}
- 278              	.L16:
- 279 0012 00BF     		.align	2
- 280              	.L15:
- 281 0014 00000000 		.word	defaultTask_attributes
- 282 0018 00000000 		.word	StartDefaultTask
- 283 001c 00000000 		.word	defaultTaskHandle
- 284              		.cfi_endproc
- 285              	.LFE175:
- 287              		.global	defaultTask_attributes
- 288              		.section	.rodata.str1.4,"aMS",%progbits,1
- 289              		.align	2
- 290              	.LC3:
- 291 0000 64656661 		.ascii	"defaultTask\000"
- 291      756C7454 
- 291      61736B00 
- 292              		.section	.rodata.defaultTask_attributes,"a"
- 293              		.align	2
- 296              	defaultTask_attributes:
- 297 0000 00000000 		.word	.LC3
- 298 0004 00000000 		.space	16
- 298      00000000 
- 298      00000000 
- 298      00000000 
- 299 0014 803E0000 		.word	16000
- 300 0018 18000000 		.word	24
- 301 001c 00000000 		.space	8
- 301      00000000 
- 302              		.global	defaultTaskHandle
- 303              		.section	.bss.defaultTaskHandle,"aw",%nobits
- 304              		.align	2
- 307              	defaultTaskHandle:
- 308 0000 00000000 		.space	4
- 309              		.text
- 310              	.Letext0:
- 311              		.file 2 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/14.3.1/includ
- 312              		.file 3 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_defa
- 313              		.file 4 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h
- 314              		.file 5 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
- 315              		.file 6 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
- 316              		.file 7 "../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
- 317              		.file 8 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rc
- 318              		.file 9 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rc
- 319              		.file 10 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 320              		.file 11 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 321              		.file 12 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 322              		.file 13 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 323              		.file 14 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 324              		.file 15 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 325              		.file 16 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 326              		.file 17 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 327              		.file 18 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 328              		.file 19 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 329              		.file 20 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 330              		.file 21 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 331              		.file 22 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 332              		.file 23 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/u
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 9
-
-
- 333              		.file 24 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/u
- 334              		.file 25 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/u
- 335              		.file 26 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/s
- 336              		.file 27 "../../Middlewares/Third_Party/LwIP/src/include/lwip/memp.h"
- 337              		.file 28 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 338              		.file 29 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/s
- 339              		.file 30 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 340              		.file 31 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
- 341              		.file 32 "../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/microros_transports.
- 342              		.file 33 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s 			page 10
+ 360      00000000 
+ 361 0014 803E0000 		.word	16000
+ 362 0018 18000000 		.word	24
+ 363 001c 00000000 		.space	8
+ 363      00000000 
+ 364              		.global	defaultTaskHandle
+ 365              		.section	.bss.defaultTaskHandle,"aw",%nobits
+ 366              		.align	2
+ 369              	defaultTaskHandle:
+ 370 0000 00000000 		.space	4
+ 371              		.text
+ 372              	.Letext0:
+ 373              		.file 2 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/lib/gcc/arm-none-eabi/14.3.1/includ
+ 374              		.file 3 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/machine/_defa
+ 375              		.file 4 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/sys/_stdint.h
+ 376              		.file 5 "../../Drivers/CMSIS/Device/ST/STM32H7xx/Include/stm32h755xx.h"
+ 377              		.file 6 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_gpio.h"
+ 378              		.file 7 "../../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h"
+ 379              		.file 8 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rc
+ 380              		.file 9 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/rc
+ 381              		.file 10 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 382              		.file 11 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 383              		.file 12 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 384              		.file 13 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 385              		.file 14 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 386              		.file 15 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 387              		.file 16 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 388              		.file 17 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 389              		.file 18 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 390              		.file 19 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 391              		.file 20 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 392              		.file 21 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 393              		.file 22 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 394              		.file 23 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/u
+ 395              		.file 24 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/u
+ 396              		.file 25 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/u
+ 397              		.file 26 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/s
+ 398              		.file 27 "../../Middlewares/Third_Party/LwIP/src/include/lwip/arch.h"
+ 399              		.file 28 "../../Middlewares/Third_Party/LwIP/src/include/lwip/memp.h"
+ 400              		.file 29 "../../Middlewares/Third_Party/LwIP/src/include/lwip/err.h"
+ 401              		.file 30 "../../Middlewares/Third_Party/LwIP/src/include/lwip/pbuf.h"
+ 402              		.file 31 "../../Middlewares/Third_Party/LwIP/src/include/lwip/ip4_addr.h"
+ 403              		.file 32 "../../Middlewares/Third_Party/LwIP/src/include/lwip/ip_addr.h"
+ 404              		.file 33 "../../Middlewares/Third_Party/LwIP/src/include/lwip/netif.h"
+ 405              		.file 34 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 406              		.file 35 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/s
+ 407              		.file 36 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 408              		.file 37 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 409              		.file 38 "../../micro_ros_stm32cubemx_utils/extra_sources/microros_transports/microros_transports.
+ 410              		.file 39 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
+ 411              		.file 40 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s 			page 11
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 freertos.c
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:19     .rodata.StartDefaultTask.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:29     .text.StartDefaultTask:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:35     .text.StartDefaultTask:00000000 StartDefaultTask
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:233    .text.StartDefaultTask:000000f4 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:249    .text.MX_FREERTOS_Init:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:255    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:281    .text.MX_FREERTOS_Init:00000014 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:296    .rodata.defaultTask_attributes:00000000 defaultTask_attributes
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:307    .bss.defaultTaskHandle:00000000 defaultTaskHandle
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:289    .rodata.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:293    .rodata.defaultTask_attributes:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//cc7MbB2Z.s:304    .bss.defaultTaskHandle:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:19     .rodata.StartDefaultTask.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:29     .text.StartDefaultTask:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:35     .text.StartDefaultTask:00000000 StartDefaultTask
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:294    .text.StartDefaultTask:0000013c $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:311    .text.MX_FREERTOS_Init:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:317    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:343    .text.MX_FREERTOS_Init:00000014 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:358    .rodata.defaultTask_attributes:00000000 defaultTask_attributes
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:369    .bss.defaultTaskHandle:00000000 defaultTaskHandle
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:351    .rodata.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:355    .rodata.defaultTask_attributes:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccQLBRZ9.s:366    .bss.defaultTaskHandle:00000000 $d
 
 UNDEFINED SYMBOLS
 MX_LWIP_Init
+HAL_GetTick
+HAL_GPIO_TogglePin
 osDelay
 rmw_uros_set_custom_transport
 rcutils_get_zero_initialized_allocator
 rcutils_set_default_allocator
-HAL_GPIO_TogglePin
 rcutils_get_default_allocator
 rclc_support_init
 rclc_node_init_default
@@ -523,6 +625,7 @@ rosidl_typesupport_c__get_message_type_support_handle__std_msgs__msg__Int32
 rclc_publisher_init_default
 HAL_GPIO_WritePin
 rcl_publish
+gnetif
 cubemx_transport_read
 cubemx_transport_write
 cubemx_transport_close

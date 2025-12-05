@@ -46,7 +46,27 @@ void StartDefaultTask(void *argument)
   /* USER CODE BEGIN StartDefaultTask */
 
   MX_LWIP_Init();
-  osDelay(3000);
+  extern struct netif gnetif;  // Reference to network interface in lwip.c
+
+  uint32_t wait_start = HAL_GetTick();
+
+  while ((HAL_GetTick() - wait_start) < 30000) {
+      if (netif_is_up(&gnetif) && netif_is_link_up(&gnetif)) {
+          // Network ready!
+          break;
+      }
+
+      HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);
+      osDelay(100);
+  }
+
+  if (!netif_is_link_up(&gnetif)) {
+      // Network failed - error handling
+      while(1) {
+          HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+          osDelay(200);
+      }
+  }
 
   rmw_uros_set_custom_transport(
     false,

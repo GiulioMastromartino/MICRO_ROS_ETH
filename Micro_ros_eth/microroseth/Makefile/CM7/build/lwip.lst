@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 1
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 1
   30:../../CM7/LWIP/App/lwip.c **** 
   31:../../CM7/LWIP/App/lwip.c **** /* USER CODE BEGIN 0 */
   32:../../CM7/LWIP/App/lwip.c **** 
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 2
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s 			page 2
 
 
   33:../../CM7/LWIP/App/lwip.c **** /* USER CODE END 0 */
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 1
   87:../../CM7/LWIP/App/lwip.c **** /* USER CODE BEGIN IP_ADDRESSES */
   88:../../CM7/LWIP/App/lwip.c **** /* USER CODE END IP_ADDRESSES */
   89:../../CM7/LWIP/App/lwip.c **** 
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 3
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s 			page 3
 
 
   90:../../CM7/LWIP/App/lwip.c ****   /* Initialize the LwIP stack with RTOS */
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 1
   32              		.loc 1 138 3 view .LVU1
  139:../../CM7/LWIP/App/lwip.c ****   {
  140:../../CM7/LWIP/App/lwip.c **** /* USER CODE BEGIN 5 */
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 4
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s 			page 4
 
 
  141:../../CM7/LWIP/App/lwip.c **** /* USER CODE END 5 */
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 1
   75 000a A823     		movs	r3, #168
   76 000c 7B70     		strb	r3, [r7, #1]
   71:../../CM7/LWIP/App/lwip.c ****   IP_ADDRESS[3] = 3;  // ← STM32's IP (not .12 which is Raspberry Pi)
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 5
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s 			page 5
 
 
   77              		.loc 1 71 3 is_stmt 1 view .LVU10
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 1
  112 002c EC70     		strb	r4, [r5, #3]
   91:../../CM7/LWIP/App/lwip.c **** 
  113              		.loc 1 91 3 is_stmt 1 view .LVU30
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 6
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s 			page 6
 
 
  114 002e 2146     		mov	r1, r4
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 1
  165 00ac 40EA0560 		orr	r0, r0, r5, lsl #24
  166 00b0 1D0A     		lsrs	r5, r3, #8
  167 00b2 05F47F45 		and	r5, r5, #65280
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 7
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s 			page 7
 
 
  168 00b6 2843     		orrs	r0, r0, r5
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 1
  211              		.loc 1 115 23 is_stmt 0 view .LVU44
  212 00fc 1023     		movs	r3, #16
  213 00fe B361     		str	r3, [r6, #24]
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 8
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s 			page 8
 
 
  116:../../CM7/LWIP/App/lwip.c **** /* USER CODE END H7_OS_THREAD_NEW_CMSIS_RTOS_V2 */
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 1
  271              	IP_ADDRESS:
  272 0000 00000000 		.space	4
  273              		.global	gw
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 9
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s 			page 9
 
 
  274              		.section	.bss.gw,"aw",%nobits
@@ -520,33 +520,33 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 1
  314              		.file 13 "/Applications/ArmGNUToolchain/14.3.rel1/arm-none-eabi/arm-none-eabi/include/string.h"
  315              		.file 14 "../../CM7/LWIP/Target/ethernetif.h"
  316              		.file 15 "<built-in>"
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s 			page 10
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s 			page 10
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 lwip.c
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:19     .text.ethernet_link_status_updated:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:24     .text.ethernet_link_status_updated:00000000 ethernet_link_status_updated
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:41     .rodata.MX_LWIP_Init.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:45     .text.MX_LWIP_Init:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:51     .text.MX_LWIP_Init:00000000 MX_LWIP_Init
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:229    .text.MX_LWIP_Init:00000110 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:271    .bss.IP_ADDRESS:00000000 IP_ADDRESS
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:264    .bss.NETMASK_ADDRESS:00000000 NETMASK_ADDRESS
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:257    .bss.GATEWAY_ADDRESS:00000000 GATEWAY_ADDRESS
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:292    .bss.ipaddr:00000000 ipaddr
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:285    .bss.netmask:00000000 netmask
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:278    .bss.gw:00000000 gw
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:299    .bss.gnetif:00000000 gnetif
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:250    .bss.attributes:00000000 attributes
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:247    .bss.attributes:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:254    .bss.GATEWAY_ADDRESS:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:261    .bss.NETMASK_ADDRESS:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:268    .bss.IP_ADDRESS:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:275    .bss.gw:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:282    .bss.netmask:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:289    .bss.ipaddr:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccz8kgMH.s:296    .bss.gnetif:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:19     .text.ethernet_link_status_updated:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:24     .text.ethernet_link_status_updated:00000000 ethernet_link_status_updated
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:41     .rodata.MX_LWIP_Init.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:45     .text.MX_LWIP_Init:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:51     .text.MX_LWIP_Init:00000000 MX_LWIP_Init
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:229    .text.MX_LWIP_Init:00000110 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:271    .bss.IP_ADDRESS:00000000 IP_ADDRESS
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:264    .bss.NETMASK_ADDRESS:00000000 NETMASK_ADDRESS
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:257    .bss.GATEWAY_ADDRESS:00000000 GATEWAY_ADDRESS
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:292    .bss.ipaddr:00000000 ipaddr
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:285    .bss.netmask:00000000 netmask
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:278    .bss.gw:00000000 gw
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:299    .bss.gnetif:00000000 gnetif
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:250    .bss.attributes:00000000 attributes
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:247    .bss.attributes:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:254    .bss.GATEWAY_ADDRESS:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:261    .bss.NETMASK_ADDRESS:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:268    .bss.IP_ADDRESS:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:275    .bss.gw:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:282    .bss.netmask:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:289    .bss.ipaddr:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccmk16m4.s:296    .bss.gnetif:00000000 $d
 
 UNDEFINED SYMBOLS
 tcpip_init
