@@ -22,6 +22,7 @@
 #include <std_msgs/msg/int32.h>
 #include <microros_transports.h>
 #include "lwip.h"
+#include "lwip/etharp.h"
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN PTD */
@@ -67,6 +68,21 @@ void StartDefaultTask(void *argument)
           osDelay(200);
       }
   }
+  // ============================================
+    // ADD THIS: Wait for network to fully initialize
+    // ============================================
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);  // Green on = waiting
+    osDelay(5000);  // ← 5 SECOND DELAY!
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+
+    // Force ARP initialization
+    ip_addr_t gateway_ip;
+    IP4_ADDR(&gateway_ip, 192, 168, 0, 8);  // Your computer
+    etharp_request(&gnetif, &gateway_ip);
+
+    osDelay(2000);  // Wait for ARP response
+    // ============================================
+    //
 
   rmw_uros_set_custom_transport(
     false,
