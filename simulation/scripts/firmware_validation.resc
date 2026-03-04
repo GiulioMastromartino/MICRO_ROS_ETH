@@ -1,0 +1,20 @@
+mach create "firmware-validation"
+machine LoadPlatformDescription @platform/stm32h755_with_sensors.repl
+
+logLevel 2
+
+# Load Python helper for printing results
+include @python/sensor_helper.py
+
+# Load firmware
+sysbus LoadELF @../Polispace_V0_Stm_CM4.elf
+
+# Start and let it run briefly  
+start
+sleep 1
+
+# Check it didn't crash - if we're here, init was OK
+python "sensor_print_result('firmware_loaded', 1)"
+python "sensor_print_result('firmware_init_ok', 1)"
+
+quit

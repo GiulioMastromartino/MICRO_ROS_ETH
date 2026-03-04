@@ -1,0 +1,31 @@
+mach create "stm32h755-sensor"
+machine LoadPlatformDescription @platform/stm32h755_with_sensors.repl
+
+# Silence only polled PWR registers to avoid spam warnings and peripheral overlap
+sysbus SilenceRange <0x58024804 0x4>
+sysbus SilenceRange <0x5802480C 0x4>
+
+logLevel 2
+
+# Load firmware and helper model.
+sysbus LoadELF @../Polispace_V0_Stm_CM4.elf
+include @python/sensor_helper.py
+# Register the sensor with the platform (binds PD0/ECHO and PD1/TRIG).
+python "register_jsn_sensor()"
+
+# Configure sensor defaults.
+python "sensor_reset()"
+python "sensor_set_distance(50)"
+python "sensor_set_timeout(30000)"
+python "sensor_print_result('sim_distance', sensor_get_distance())"
+python "sensor_print_result('sim_timeout', sensor_get_timeout())"
+
+# Start emulation and let firmware run.
+start
+sleep 10
+
+# Publish final state for automation checks.
+python "sensor_print_result('sim_final_state', sensor_get_state())"
+python "sensor_print_result('sim_final_info', sensor_get_info_json())"
+
+quit

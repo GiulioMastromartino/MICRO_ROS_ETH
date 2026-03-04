@@ -1,0 +1,12 @@
+using "platforms/cpus/stm32h743.repl"
+
+// Reference the existing 'cpu' variable from the base platform and override its type.
+// This avoids redeclaration error E02 by using the overlay syntax (colon without type).
+cpu:
+    cpuType: "cortex-m4"
+
+// The CM4 core on STM32H755 accesses the D2-domain SRAM (SRAM1/2/3) 
+// at the 0x10000000 alias. We must provide this memory region for 
+// the CM4 firmware which is linked at this address.
+sram_cm4: Memory.MappedMemory @ sysbus 0x10000000
+    size: 0x48000
