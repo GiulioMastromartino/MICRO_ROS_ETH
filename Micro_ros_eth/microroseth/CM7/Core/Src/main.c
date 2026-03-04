@@ -49,6 +49,22 @@ void MX_ETH_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+void simple_delay(uint32_t ms)
+{
+  for(volatile uint32_t i = 0; i < (ms * 8000); i++);
+}
+
+void blink_code(int code)
+{
+  // Blink LED to show which step we reached
+  for(int i=0; i<code; i++) {
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+    simple_delay(200);
+    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+    simple_delay(200);
+  }
+  simple_delay(1000);  // Pause between sequences
+}
 /* USER CODE END 0 */
 
 /**
@@ -61,6 +77,17 @@ int main(void)
   // CRITICAL FIX: D-Cache MUST be disabled for Ethernet DMA stability on H7
   // If enabled, Ethernet descriptors in SRAM will get corrupted.
   SCB_DisableDCache();
+
+  // Enable GPIO EARLY for diagnostics
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  GPIO_InitStruct.Pin = GPIO_PIN_0 | GPIO_PIN_7 | GPIO_PIN_14;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  blink_code(1);  // 1 blink = Entered main()
   /* USER CODE END 1 */
 
 /* USER CODE BEGIN Boot_Mode_Sequence_0 */
@@ -71,6 +98,7 @@ int main(void)
 
   /* MPU Configuration--------------------------------------------------------*/
   MPU_Config();
+  blink_code(2);  // 2 blinks = MPU OK
 
 /* USER CODE BEGIN Boot_Mode_Sequence_1 */
 #if defined(DUAL_CORE_BOOT_SYNC_SEQUENCE)
@@ -79,40 +107,44 @@ int main(void)
   while((__HAL_RCC_GET_FLAG(RCC_FLAG_D2CKRDY) != RESET) && (timeout-- > 0));
   if ( timeout < 0 )
   {
-  Error_Handler();
+    Error_Handler();
   }
 #endif /* DUAL_CORE_BOOT_SYNC_SEQUENCE */
+  blink_code(3);  // 3 blinks = Dual-core sync OK
 /* USER CODE END Boot_Mode_Sequence_1 */
 
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
   HAL_Init();
+  blink_code(4);  // 4 blinks = HAL_Init OK
 
   /* USER CODE BEGIN Init */
   /* USER CODE END Init */
 
   /* Configure the system clock */
   SystemClock_Config();
+  blink_code(5);  // 5 blinks = Clock configured
 
 /* USER CODE BEGIN Boot_Mode_Sequence_2 */
 #if defined(DUAL_CORE_BOOT_SYNC_SEQUENCE)
-/* When system initialization is finished, Cortex-M7 will release Cortex-M4 by means of
-HSEM notification */
-/*HW semaphore Clock enable*/
-__HAL_RCC_HSEM_CLK_ENABLE();
-/*Take HSEM */
-HAL_HSEM_FastTake(HSEM_ID_0);
-/*Release HSEM in order to notify the CPU2(CM4)*/
-HAL_HSEM_Release(HSEM_ID_0,0);
-/* wait until CPU2 wakes up from stop mode */
-timeout = 0xFFFF;
-while((__HAL_RCC_GET_FLAG(RCC_FLAG_D2CKRDY) == RESET) && (timeout-- > 0));
-if ( timeout < 0 )
-{
-Error_Handler();
-}
+  /* When system initialization is finished, Cortex-M7 will release Cortex-M4 by means of
+  HSEM notification */
+  /*HW semaphore Clock enable*/
+  __HAL_RCC_HSEM_CLK_ENABLE();
+  /*Take HSEM */
+  HAL_HSEM_FastTake(HSEM_ID_0);
+  /*Release HSEM in order to notify the CPU2(CM4)*/
+  HAL_HSEM_Release(HSEM_ID_0,0);
+  /* wait until CPU2 wakes up from stop mode */
+  timeout = 0xFFFF;
+  while((__HAL_RCC_GET_FLAG(RCC_FLAG_D2CKRDY) == RESET) && (timeout-- > 0));
+  if ( timeout < 0 )
+  {
+    Error_Handler();
+  }
 #endif /* DUAL_CORE_BOOT_SYNC_SEQUENCE */
+  blink_code(6);  // 6 blinks = HSEM OK
 /* USER CODE END Boot_Mode_Sequence_2 */
 
   /* USER CODE BEGIN SysInit */
@@ -120,7 +152,10 @@ Error_Handler();
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
+  blink_code(7);  // 7 blinks = GPIO OK
+
   MX_ETH_Init();
+  blink_code(8);  // 8 blinks = ETH OK (might hang here!)
 
   // NOTE: MX_LWIP_Init() is NOT called here because it uses RTOS primitives.
   // It is usually called inside the DefaultTask in freertos.c or automagically
@@ -131,22 +166,29 @@ Error_Handler();
 
   /* Init scheduler */
   osKernelInitialize();
+  blink_code(9);  // 9 blinks = RTOS initialized
+
   MX_FREERTOS_Init();
+  blink_code(10);  // 10 blinks = Tasks created
 
   // REMOVED: BSP_LED_Init and BSP_COM_Init to rely on pure HAL/FreeRTOS
   // to avoid conflicts and missing file errors.
 
   /* Start scheduler */
+  blink_code(11);  // 11 blinks = About to start RTOS
   osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
+  // If we reach here, RTOS didn't start
   while (1)
   {
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);  // Fast red blink = ERROR
+    simple_delay(50);
   }
 }
 
 /**
-  * @brief System Clock Configuration
+  * @brief System Clock Configuration - FIXED VERSION
   * @retval None
   */
 void SystemClock_Config(void)
@@ -154,43 +196,39 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  /** Supply configuration update enable
-  */
+  /** Supply configuration update enable */
   HAL_PWREx_ConfigSupply(PWR_DIRECT_SMPS_SUPPLY);
 
-  /** Configure the main internal regulator output voltage
-  */
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE2);
+  /** Configure the main internal regulator output voltage */
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE0);
 
-  while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
+  // Wait for voltage regulator to stabilize
+  for(volatile int i=0; i<100000; i++);
 
-  /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
+  // Wait for voltage ready with TIMEOUT
+  uint32_t timeout = 10000;
+  while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY) && timeout--);
+
+  if (timeout == 0) {
+    Error_Handler();
+  }
+
+  /** Use HSI directly (64MHz, NO PLL) */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_DIV1;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 4;
-  RCC_OscInitStruct.PLL.PLLN = 28;
-  RCC_OscInitStruct.PLL.PLLP = 2;
-  RCC_OscInitStruct.PLL.PLLQ = 5;
-  RCC_OscInitStruct.PLL.PLLR = 2;
-  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_3;
-  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
-  RCC_OscInitStruct.PLL.PLLFRACN = 1024;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;  // ← CRITICAL FIX: No PLL
+
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
   }
 
-  /** Initializes the CPU, AHB and APB buses clocks
-  */
+  /** Initializes the CPU, AHB and APB buses clocks */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
                               |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;  // ← Direct HSI
   RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV1;
   RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
@@ -198,7 +236,7 @@ void SystemClock_Config(void)
   RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
   RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_4) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
     Error_Handler();
   }
@@ -219,15 +257,15 @@ void SystemClock_Config(void)
    /* Configure MPU for Ethernet DMA descriptors at 0x30000000 */
    MPU_InitStruct.Enable = MPU_REGION_ENABLE;
    MPU_InitStruct.Number = MPU_REGION_NUMBER0;
-   MPU_InitStruct.BaseAddress = 0x30000000;  // ← MUST MATCH MAP FILE!
-   MPU_InitStruct.Size = MPU_REGION_SIZE_256KB; // Cover all sections
+   MPU_InitStruct.BaseAddress = 0x30000000;
+   MPU_InitStruct.Size = MPU_REGION_SIZE_256KB;
    MPU_InitStruct.SubRegionDisable = 0x0;
-   MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0; // TEX=0
+   MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
    MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
    MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_DISABLE;
-   MPU_InitStruct.IsShareable = MPU_ACCESS_NOT_SHAREABLE; // S=0
-   MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE; // C=0 ← CRITICAL
-   MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE; // B=0 ← Try NOT bufferable first
+   MPU_InitStruct.IsShareable = MPU_ACCESS_NOT_SHAREABLE;
+   MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
+   MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
 
    HAL_MPU_ConfigRegion(&MPU_InitStruct);
 
@@ -247,7 +285,20 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 void Error_Handler(void)
 {
   __disable_irq();
+
+  // Enable GPIO for error indication
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+  GPIO_InitStruct.Pin = GPIO_PIN_14;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
+  // Blink red LED rapidly = error
   while (1)
   {
+    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_14);
+    for(volatile uint32_t i=0; i<400000; i++);
   }
 }

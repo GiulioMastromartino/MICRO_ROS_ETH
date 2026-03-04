@@ -69,7 +69,7 @@ void StartDefaultTask(void *argument)
       }
   }
   // ============================================
-    // ADD THIS: Wait for network to fully initialize
+    // Wait for network to fully initialize
     // ============================================
     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);  // Green on = waiting
     osDelay(5000);  // ← 5 SECOND DELAY!

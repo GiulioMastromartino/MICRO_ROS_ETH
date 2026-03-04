@@ -1,4 +1,4 @@
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 1
 
 
    1              		.cpu cortex-m7
@@ -58,7 +58,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
   13:../../CM7/Core/Src/freertos.c **** 
   14:../../CM7/Core/Src/freertos.c **** /* USER CODE BEGIN Includes */
   15:../../CM7/Core/Src/freertos.c **** #include <rcl/rcl.h>
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 2
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 2
 
 
   16:../../CM7/Core/Src/freertos.c **** #include <rcl/error_handling.h>
@@ -118,7 +118,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
   55              		.loc 1 52 3 view .LVU4
   56              		.loc 1 52 25 is_stmt 0 view .LVU5
   57 0008 FFF7FEFF 		bl	HAL_GetTick
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 3
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 3
 
 
   58              	.LVL2:
@@ -178,7 +178,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
   95 003c E8D0     		beq	.L3
   96              	.L4:
   62:../../CM7/Core/Src/freertos.c ****   }
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 4
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 4
 
 
   63:../../CM7/Core/Src/freertos.c **** 
@@ -212,7 +212,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
   69:../../CM7/Core/Src/freertos.c ****       }
   70:../../CM7/Core/Src/freertos.c ****   }
   71:../../CM7/Core/Src/freertos.c ****   // ============================================
-  72:../../CM7/Core/Src/freertos.c ****     // ADD THIS: Wait for network to fully initialize
+  72:../../CM7/Core/Src/freertos.c ****     // Wait for network to fully initialize
   73:../../CM7/Core/Src/freertos.c ****     // ============================================
   74:../../CM7/Core/Src/freertos.c ****     HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);  // Green on = waiting
  118              		.loc 1 74 5 view .LVU25
@@ -238,7 +238,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
  136              	.LVL13:
   77:../../CM7/Core/Src/freertos.c **** 
   78:../../CM7/Core/Src/freertos.c ****     // Force ARP initialization
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 5
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 5
 
 
   79:../../CM7/Core/Src/freertos.c ****     ip_addr_t gateway_ip;
@@ -298,7 +298,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
  171              		.loc 1 98 3 is_stmt 1 view .LVU38
  172              		.loc 1 98 33 is_stmt 0 view .LVU39
  173 00ae 374B     		ldr	r3, .L16+32
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 6
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 6
 
 
  174 00b0 1F93     		str	r3, [sp, #124]
@@ -358,7 +358,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
  214              	.LVL21:
  215 00dc 0DF1280C 		add	ip, sp, #40
  216 00e0 0FCC     		ldmia	r4!, {r0, r1, r2, r3}
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 7
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 7
 
 
  217 00e2 ACE80F00 		stmia	ip!, {r0, r1, r2, r3}
@@ -418,7 +418,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
  258 011a FFF7FEFF 		bl	rosidl_typesupport_c__get_message_type_support_handle__std_msgs__msg__Int32
  259              	.LVL29:
  260 011e 0246     		mov	r2, r0
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 8
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 8
 
 
  261              		.loc 1 124 3 is_stmt 0 discriminator 1 view .LVU69
@@ -478,7 +478,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
  130:../../CM7/Core/Src/freertos.c **** 
  296              		.loc 1 130 5 view .LVU80
  297 0148 0121     		movs	r1, #1
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 9
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 9
 
 
  298 014a 0848     		ldr	r0, .L16
@@ -538,7 +538,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
  348              	MX_FREERTOS_Init:
  349              	.LFB175:
   41:../../CM7/Core/Src/freertos.c ****   defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 10
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 10
 
 
  350              		.loc 1 41 29 is_stmt 1 view -0
@@ -598,7 +598,7 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
  397              		.align	2
  400              	defaultTaskHandle:
  401 0000 00000000 		.space	4
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 11
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 11
 
 
  402              		.text
@@ -643,23 +643,23 @@ ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 1
  441              		.file 39 "../../micro_ros_stm32cubemx_utils/microros_static_library/libmicroros/microros_include/r
  442              		.file 40 "../../Middlewares/Third_Party/LwIP/src/include/lwip/etharp.h"
  443              		.file 41 "../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h"
-ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s 			page 12
+ARM GAS  /var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s 			page 12
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 freertos.c
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:19     .rodata.StartDefaultTask.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:29     .text.StartDefaultTask:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:35     .text.StartDefaultTask:00000000 StartDefaultTask
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:324    .text.StartDefaultTask:0000016c $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:342    .text.MX_FREERTOS_Init:00000000 $t
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:348    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:374    .text.MX_FREERTOS_Init:00000014 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:389    .rodata.defaultTask_attributes:00000000 defaultTask_attributes
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:400    .bss.defaultTaskHandle:00000000 defaultTaskHandle
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:382    .rodata.str1.4:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:386    .rodata.defaultTask_attributes:00000000 $d
-/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccpBgqAn.s:397    .bss.defaultTaskHandle:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:19     .rodata.StartDefaultTask.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:29     .text.StartDefaultTask:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:35     .text.StartDefaultTask:00000000 StartDefaultTask
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:324    .text.StartDefaultTask:0000016c $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:342    .text.MX_FREERTOS_Init:00000000 $t
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:348    .text.MX_FREERTOS_Init:00000000 MX_FREERTOS_Init
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:374    .text.MX_FREERTOS_Init:00000014 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:389    .rodata.defaultTask_attributes:00000000 defaultTask_attributes
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:400    .bss.defaultTaskHandle:00000000 defaultTaskHandle
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:382    .rodata.str1.4:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:386    .rodata.defaultTask_attributes:00000000 $d
+/var/folders/2r/mdtt8xvd351gdc398t28_m2m0000gn/T//ccWeWKJV.s:397    .bss.defaultTaskHandle:00000000 $d
 
 UNDEFINED SYMBOLS
 MX_LWIP_Init
