@@ -12,26 +12,29 @@
     <Description>JSN-SR04T Ultrasonic Sensor Plugin for Renode</Description>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <!--
-      Resolve Renode binaries in this order:
-      1) /p:RenodeBinDir=...
-      2) RENODE_BIN_DIR env var
-      3) local Renode source build
-      4) dotnet-tool Renode cache path
-    -->
-    <RenodeBinDir Condition="'$(RenodeBinDir)'=='' and '$(RENODE_BIN_DIR)'!=''">$(RENODE_BIN_DIR)</RenodeBinDir>
-    <RenodeBinDir Condition="'$(RenodeBinDir)'=='' and Exists('$(MSBuildProjectDirectory)/../../../../renode/output/bin/Release')">$(MSBuildProjectDirectory)/../../../../renode/output/bin/Release</RenodeBinDir>
-    <RenodeBinDir Condition="'$(RenodeBinDir)'=='' and Exists('$(HOME)/.net/renode/ThLhnt0ejjXPsWUsqImYupJxhG6fITM=')">$(HOME)/.net/renode/ThLhnt0ejjXPsWUsqImYupJxhG6fITM=</RenodeBinDir>
-  </PropertyGroup>
-
   <ItemGroup>
-    <Reference Include="Renode">
-      <HintPath>$(RenodeBinDir)/Renode.dll</HintPath>
+    <Reference Include="Antmicro.Renode">
+      <HintPath>../../../../renode/output/bin/Release/Antmicro.Renode.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Antmicro.Renode.Core">
+      <HintPath>../../../../renode/output/bin/Release/Antmicro.Renode.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Antmicro.Renode.Peripherals">
+      <HintPath>../../../../renode/output/bin/Release/Antmicro.Renode.Peripherals.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Antmicro.Renode.Debugging">
+      <HintPath>../../../../renode/output/bin/Release/Antmicro.Renode.Debugging.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Antmicro.Renode.Extensions">
+      <HintPath>../../../../renode/output/bin/Release/Antmicro.Renode.Extensions.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Infrastructure">
-      <HintPath>$(RenodeBinDir)/Infrastructure.dll</HintPath>
+      <HintPath>../../../../renode/output/bin/Release/Infrastructure.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

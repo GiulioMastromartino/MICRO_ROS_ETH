@@ -1,52 +1,108 @@
 #!/bin/bash
-# Build script for JSN-SR04T Renode plugin.
+#
+# Build script for JSN-SR04T Renode Plugin
+#
+# Prerequisites:
+# 1. .NET 8.0 SDK installed
+# 2. Renode source code cloned and built
+#
+# Usage:
+#   ./build.sh [path/to/renode]
+#
 
-set -euo pipefail
+set -e
 
+# Configuration
 PLUGIN_NAME="JSN_SR04T_Plugin"
 PROJECT_FILE="${PLUGIN_NAME}.csproj"
 
+# Colors
+RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
-RED='\033[0;31m'
-NC='\033[0m'
+NC='\033[0m' # No Color
 
-echo -e "${GREEN}=== JSN-SR04T Renode Plugin Build ===${NC}"
+echo -e "${GREEN}=== JSN-SR04T Renode Plugin Build Script ===${NC}"
 
-if ! command -v dotnet >/dev/null 2>&1; then
-  echo -e "${RED}dotnet SDK not found${NC}"
-  exit 1
+# Check for .NET SDK
+if ! command -v dotnet &> /dev/null; then
+    echo -e "${RED}Error: .NET SDK not found${NC}"
+    echo "Please install .NET 8.0 SDK from: https://dotnet.microsoft.com/download"
+    exit 1
 fi
 
-RENODE_BIN_DIR="${1:-${RENODE_BIN_DIR:-}}"
-if [ -z "${RENODE_BIN_DIR}" ]; then
-  if [ -d "../../../../renode/output/bin/Release" ]; then
-    RENODE_BIN_DIR="../../../../renode/output/bin/Release"
-  elif [ -d "${HOME}/.net/renode/ThLhnt0ejjXPsWUsqImYupJxhG6fITM=" ]; then
-    RENODE_BIN_DIR="${HOME}/.net/renode/ThLhnt0ejjXPsWUsqImYupJxhG6fITM="
-  fi
+DOTNET_VERSION=$(dotnet --version)
+echo "Found .NET version: $DOTNET_VERSION"
+
+# Find Renode
+RENODE_PATH="${1:-}"
+
+if [ -z "$RENODE_PATH" ]; then
+    # Try common locations
+    if [ -d "$HOME/Projects/renode" ]; then
+        RENODE_PATH="$HOME/Projects/renode"
+    elif [ -d "../renode" ]; then
+        RENODE_PATH="../renode"
+    elif [ -d "/opt/renode" ]; then
+        RENODE_PATH="/opt/renode"
+    fi
 fi
 
-if [ -z "${RENODE_BIN_DIR}" ] || [ ! -d "${RENODE_BIN_DIR}" ]; then
-  echo -e "${YELLOW}Renode binary directory not found.${NC}"
-  echo "Pass it explicitly: ./build.sh /path/to/renode/bin-or-output-dir"
-  exit 1
+if [ -z "$RENODE_PATH" ] || [ ! -d "$RENODE_PATH" ]; then
+    echo -e "${YELLOW}Warning: Renode path not specified or not found${NC}"
+    echo "Please provide path to Renode source/build directory:"
+    echo "  ./build.sh /path/to/renode"
+    echo ""
+    echo "Alternatively, you can:"
+    echo "1. Clone Renode: git clone https://github.com/renode/renode"
+    echo "2. Build Renode: cd renode && ./build.sh"
+    echo ""
+    
+    # Try to build without Renode references (for syntax checking)
+    echo "Attempting build without Renode references..."
+    dotnet build "$PROJECT_FILE" -c Release --no-restore 2>/dev/null || {
+        echo -e "${RED}Build failed. Please provide Renode path.${NC}"
+        exit 1
+    }
+else
+    echo "Using Renode from: $RENODE_PATH"
+    
+    # Check for Renode build output
+    RENODE_BIN="$RENODE_PATH/bin"
+    if [ ! -d "$RENODE_BIN" ]; then
+        echo -e "${YELLOW}Warning: Renode bin directory not found at $RENODE_BIN${NC}"
+        echo "Building Renode first..."
+        (cd "$RENODE_PATH" && ./build.sh) || {
+            echo -e "${RED}Failed to build Renode${NC}"
+            exit 1
+        }
+    fi
+    
+    # Update csproj with correct paths
+    sed -i.bak "s|\${RENODE_PATH}|$RENODE_PATH|g" "$PROJECT_FILE"
+    
+    # Build
+    echo "Building plugin..."
+    dotnet build "$PROJECT_FILE" -c Release
+    
+    # Restore original csproj
+    mv "$PROJECT_FILE.bak" "$PROJECT_FILE" 2>/dev/null || true
 fi
 
-echo "Using Renode binaries from: ${RENODE_BIN_DIR}"
-DOTNET_CLI_HOME="${DOTNET_CLI_HOME:-/tmp/dotnethome}"
-mkdir -p "${DOTNET_CLI_HOME}"
-
-dotnet build "${PROJECT_FILE}" -c Release \
-  /p:RenodeBinDir="${RENODE_BIN_DIR}" \
-  --no-restore \
-  --nologo
-
-OUTPUT_DLL="bin/Release/net8.0/${PLUGIN_NAME}.dll"
-if [ ! -f "${OUTPUT_DLL}" ]; then
-  echo -e "${RED}Build completed but ${OUTPUT_DLL} was not produced.${NC}"
-  exit 1
+# Output
+OUTPUT_DIR="bin/Release/net8.0"
+if [ -d "$OUTPUT_DIR" ]; then
+    echo ""
+    echo -e "${GREEN}Build successful!${NC}"
+    echo "Output: $OUTPUT_DIR/${PLUGIN_NAME}.dll"
+    echo ""
+    echo "To use the plugin:"
+    echo "1. Copy to Renode's plugin directory:"
+    echo "   cp $OUTPUT_DIR/${PLUGIN_NAME}.dll \$RENODE_PATH/bin/"
+    echo ""
+    echo "2. Or load via Python extension (recommended):"
+    echo "   emulation LoadPythonExtension \"python/sensor_helper.py\""
+else
+    echo -e "${RED}Build output not found${NC}"
+    exit 1
 fi
-
-echo -e "${GREEN}Build successful${NC}"
-echo "Output: ${OUTPUT_DLL}"
